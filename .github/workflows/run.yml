@@ -1,0 +1,13 @@
+name: form-example
+  on:
+    workflow_dispatch:
+      inputs:
+        input_base:
+          description:'Enter the branch name'
+          reqired: true
+
+  jobs:
+    check-bats-version:
+      runs-on: ubuntu-20.04
+        steps:
+        - run: echo "this is a pen"
