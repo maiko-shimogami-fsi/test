@@ -4,12 +4,12 @@ on:
       inputs:
         input_base:
           description:'Enter the branch name'
-          reqrired: true
+          reqrired:true
 
-  jobs:
+jobs:
     check-bats-version:
       runs-on: ubuntu-20.04
       
       steps:
         - name: Hello world 
-        run: echo "Hello world"
+        - run: echo "Hello world"
