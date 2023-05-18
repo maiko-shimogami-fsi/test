@@ -2,14 +2,13 @@ name: form-example
 on:
     workflow_dispatch:
       inputs:
-        input_base:
-          description:'Enter the branch name'
-          reqrired:true
+        inputs_base:
+            description:'Enter the branch name'
+            reqrired:true
 
 jobs:
     check-bats-version:
       runs-on: ubuntu-20.04
       
       steps:
-        - name: Hello world 
         - run: echo "Hello world"
