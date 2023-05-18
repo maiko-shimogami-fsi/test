@@ -1,5 +1,5 @@
-name: form-example
-  on:
+name: form-example 
+on:
     workflow_dispatch:
       inputs:
         input_base:
