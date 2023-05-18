@@ -3,8 +3,8 @@ on:
     workflow_dispatch:
       inputs:
         inputs_base:
-            description:'Enter the branch name'
-            reqrired:true
+            description: 'Enter the branch name'
+            reqrired: true
 
 jobs:
     check-bats-version:
