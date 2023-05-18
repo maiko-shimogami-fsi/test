@@ -4,7 +4,7 @@ on:
       inputs:
         input_base:
           description:'Enter the branch name'
-          reqired: true
+          reqrired: true
 
   jobs:
     check-bats-version:
