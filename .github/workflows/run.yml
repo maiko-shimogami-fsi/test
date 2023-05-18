@@ -9,5 +9,7 @@ name: form-example
   jobs:
     check-bats-version:
       runs-on: ubuntu-20.04
-        steps:
-        - run: echo "this is a pen"
+      
+      steps:
+        - name: Hello world 
+        run: echo "Hello world"
