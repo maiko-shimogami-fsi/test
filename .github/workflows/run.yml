@@ -1,10 +1,23 @@
 name: form-example 
 on:
     workflow_dispatch:
-      inputs:
-        inputs_base:
-            description: 'Enter the branch name'
-            reqrired: true
+    inputs:
+      text:
+        type: string
+        required: true
+        description: 'Text data'
+      optional:
+        type: string
+        required: false
+        description: 'Optional data'
+      secret:
+        type: string
+        required: true
+        description: 'Secret data'
+      flag:
+        type: boolean 
+        required: true 
+        description: 'Flag data'
 
 jobs:
     check-bats-version:
