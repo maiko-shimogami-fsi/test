@@ -6,7 +6,13 @@ on:
         description: 'compo_name'
         required: false
       input_node:
-        description: ' node_name'
+        description: 'node_name'
+        required: false
+      input_mirror:
+        description: 'mirror_SHA1'
+        required: false
+      input_1node:
+        description: '1node_BASE'
         required: false
 
 jobs:
