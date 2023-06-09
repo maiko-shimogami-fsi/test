@@ -2,14 +2,12 @@ name: form-example
 on:
   workflow_dispatch:
     inputs:
-      no_approval_required:
-        description: 'JQ member/On-site staff'
-        required: true
-        type: boolean
       input_base:
-        description: 'If you want to do a baseline analysis, enter the base branch name or SHA1 to QAC analysis.'
+        description: 'compo_name'
         required: false
-
+      input_base:
+        description: ' node_name'
+        required: false
 
 jobs:
     check-bats-version:
