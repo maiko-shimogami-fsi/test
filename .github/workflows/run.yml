@@ -1,23 +1,13 @@
 name: form-example 
 on:
     workflow_dispatch:
-    inputs:
-      text:
-        type: string
+    no_approval_required:
+        description: 'JQ member/On-site staff'
         required: true
-        description: 'Text data'
-      optional:
-        type: string
+        type: boolean
+      input_base:
+        description: 'If you want to do a baseline analysis, enter the base branch name or SHA1 to QAC analysis.'
         required: false
-        description: 'Optional data'
-      secret:
-        type: string
-        required: true
-        description: 'Secret data'
-      flag:
-        type: boolean 
-        required: true 
-        description: 'Flag data'
 
 jobs:
     check-bats-version:
