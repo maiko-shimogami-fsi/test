@@ -1,13 +1,15 @@
 name: form-example 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
     inputs:
-      name:
-        description: 'Name of the person'
+      no_approval_required:
+        description: 'JQ member/On-site staff'
         required: true
-      age:
-        description: 'Age of the person'
-        required: true
+        type: boolean
+      input_base:
+        description: 'If you want to do a baseline analysis, enter the base branch name or SHA1 to QAC analysis.'
+        required: false
+
 
 jobs:
     check-bats-version:
