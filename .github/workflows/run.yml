@@ -2,10 +2,10 @@ name: form-example
 on:
   workflow_dispatch:
     inputs:
-      input_base:
+      input_compo:
         description: 'compo_name'
         required: false
-      input_base:
+      input_node:
         description: ' node_name'
         required: false
 
