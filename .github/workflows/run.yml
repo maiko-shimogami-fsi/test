@@ -11,6 +11,15 @@ on:
       input_1node:
         description: 'Input 1node BASE.'
         required: false
+      select_switch_setting:
+        description: 'Please select the QAC Analysis setting.'
+        required: true
+        type: choice
+        options:
+          - "QAC9.8.0_DDS_standard_Agile_SILS"
+          - "QAC9.8.0_DDS_standard_release_SILS"
+          - "QAC9.8.0_VN-HILS_Agile_SILS"
+          - "QAC9.8.0_VN-HILS_release_SILS"
 
 jobs:
     check-bats-version:
