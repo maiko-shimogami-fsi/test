@@ -1,25 +1,26 @@
+name: form-example 
+on:
+ workflow_dispatch:
+    inputs:
+      input_node:
+        description: 'Serect Node Name.'
+        required: true
+        type: choice
+        options:
+          - "Node1"
+          - "Node2"
+          - "Node3"
+          - "Node4"
+      input_mirror:
+        description: 'Input mirror SHA1.'
+        required: false
+      input_1node:
+        description: 'Input 1node BASE.'
+        required: false
+
 jobs:
-  my_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    check-bats-version:
+      runs-on: ubuntu-20.04
       
-      - name: Read choices from JSON file
-        id: read_choices
-        run: |
-          echo "::set-output name=choices::$(cat choices.json | jq -r '.choices | join("\n")')"
-        shell: bash
-        
-      - name: Show prompt and get user input
-        id: user_input
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const choices = `${steps.read_choices.outputs.choices}`.split('\n'); 
-            const {inputs} = await github.prompt("Select a choice.", choices.map((c) => ({label: c, description: ''})), {required: true});
-            return {choice: inputs};
-          
-      - name: Echo user input
-        run: |
-          echo "User selected: ${steps.user_input.outputs.choice}"
+      steps:
+        - run: echo "Hello world"
