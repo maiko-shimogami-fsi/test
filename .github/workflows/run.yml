@@ -2,17 +2,14 @@ name: form-example
 on:
   workflow_dispatch:
     inputs:
-      input_compo:
-        description: 'compo_name'
-        required: false
       input_node:
-        description: 'node_name'
+        description: 'Serect Node Name.'
         required: false
       input_mirror:
-        description: 'mirror_SHA1'
+        description: 'Input mirror SHA1.'
         required: false
       input_1node:
-        description: '1node_BASE'
+        description: 'Input 1node BASE.'
         required: false
 
 jobs:
