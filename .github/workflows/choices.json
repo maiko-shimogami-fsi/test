@@ -1,7 +1,7 @@
 {
   "choices": [
-    "QAC1",
-    "QAC2",
-    "QAC3"
+    "node1",
+    "node2",
+    "node3"
   ]
 }
