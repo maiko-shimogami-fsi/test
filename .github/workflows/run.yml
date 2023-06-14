@@ -3,14 +3,15 @@ on:
  workflow_dispatch:
     inputs:
       input_node:
-        description: 'Serect Node Name.'
-        required: true
-        type: choice
-        options:
-          - "Node1"
-          - "Node2"
-          - "Node3"
-          - "Node4"
+        description: 'Input Node Name.'
+        required: false
+#        required: true
+#        type: choice
+#        options:
+#          - "Node1"
+#          - "Node2"
+#          - "Node3"
+#          - "Node4"
       input_mirror:
         description: 'Input mirror SHA1.'
         required: false
