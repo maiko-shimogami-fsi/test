@@ -7,7 +7,7 @@ on:
         type: string
         required: true
         default: 'a'
-        options: ${fromJson(file('a_b_c.json'))}
+        options: ${fromJson(file('choices.json'))}
 
 jobs:
     check-bats-version:
