@@ -6,7 +6,7 @@ on:
         description: 'Select an node'
         required: true
         type: choice
-        options: ${fromJson(file('choices.json value'))}
+        options: ${fromJson(file('choices.json') .[].value)}
 
 jobs:
     check-bats-version:
