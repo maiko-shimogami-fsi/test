@@ -7,7 +7,8 @@ on:
     description: 'Input Node Name.'
     required: true
     default: 'node A'
-    options: ${ fromJson( toString( fromFile('choices.json') ) ).['options']}
+   # options: ${ fromJson( toString( fromFile('choices.json') ) ).['options']}
+    options: ${ fromJson(readFileSync('./choices.json').toString())['options'] }
     
 jobs:
     check-bats-version:
