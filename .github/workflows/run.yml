@@ -6,13 +6,14 @@ on:
       input_node:
         description: 'Input Node Name.'
         required: true
-        options: |
-          ${ echo(fromJson(file('choices.json')).options) }
+        #options: |
+        #  ${ echo(fromJson(file('choices.json')).options) }
     
 jobs:
     check-bats-version:
       runs-on: ubuntu-20.04
       
       steps:
-        - run: echo "Hello world"
+        - run: echo(fromJson(file('choices.json')).options)
+        
 
