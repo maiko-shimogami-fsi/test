@@ -1,7 +1,11 @@
 {
-  "choices": [
-    "node1",
-    "node2",
-    "node3"
-  ]
+  "environment": {
+    "default": "staging",
+    "options": [
+      "staging",
+      "production"
+    ],
+    "required": true,
+    "type": "choice"
+  }
 }
