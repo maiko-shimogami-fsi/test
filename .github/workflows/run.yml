@@ -5,8 +5,16 @@ on:
       my_input:
         description: 'Select an node'
         required: true
+        default: 'a'
         type: choice
-        options: ${fromJson(file('choices.json') .[].value)}
+        options: ${ fromJson(  fromFile('choice.json') ) }
+        
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print selected option
+        run: echo "${ github.event.inputs.option }"
 
 jobs:
     check-bats-version:
