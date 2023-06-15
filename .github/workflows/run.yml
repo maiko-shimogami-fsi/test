@@ -6,7 +6,7 @@ on:
         description: 'Select an node'
         required: true
         default: 'a'
-        type: choice
+#        type: choice
         options: ${ fromJson(  fromFile('choices.json') ) }
         
 jobs:
