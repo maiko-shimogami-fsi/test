@@ -7,7 +7,7 @@ on:
         description: 'Input Node Name.'
         required: true
         options: |
-          ${ toJson(fromJson(file('choices.json')).options) }
+          ${ join(fromJson(file('choices.json')).options, '\n') }
     
 jobs:
     check-bats-version:
