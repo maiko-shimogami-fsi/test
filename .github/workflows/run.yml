@@ -6,7 +6,7 @@ on:
         description: 'Select an node'
         required: true
         type: choice
-        options: ${fromJson(file('choices.json.lavel'))}
+        options: ${fromJson(file('choices.json [0].value'))}
 
 jobs:
     check-bats-version:
