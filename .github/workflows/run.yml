@@ -7,7 +7,7 @@ on:
         required: true
         default: 'a'
         type: choice
-        options: ${ fromJson(  fromFile('choice.json') ) }
+        options: ${ fromJson(  fromFile('choices.json') ) }
         
 jobs:
   example:
