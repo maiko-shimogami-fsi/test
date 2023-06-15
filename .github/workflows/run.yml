@@ -6,6 +6,7 @@ on:
       input_node:
         description: 'Input Node Name.'
         required: true
+        type: choice
         options: |
           ${join(fromJson(toString(file('choices.json')))['options'], '\n')}
     
