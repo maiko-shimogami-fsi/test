@@ -1,12 +1,5 @@
 name: form-example 
-on:
-  workflow_dispatch:
-    inputs:
-      option:
-        description: 'Select an option'
-        required: true
-        default: 'Option A'
-        options: ${ fromJson( file('./choices.json') ).options }
+on: workflow_dispatch: inputs: option: description: 'Select an option' required: true default: 'Option A' options: ${fromJson(toString(file('./choices.json')))['options']}
 
 jobs:
     check-bats-version:
