@@ -1,4 +1,5 @@
-name: form-example 
+name: form-example
+
 on:
  workflow_dispatch:
   inputs:
@@ -6,7 +7,7 @@ on:
     description: 'Input Node Name.'
     required: true
     default: 'node A'
-    options: ${fromJson(toString(fromFile('choices.json'))).options}
+    options: ${ fromJson( toString( fromFile('choices.json') ) ).options}
     
 jobs:
     check-bats-version:
