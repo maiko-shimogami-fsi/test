@@ -1,11 +1,14 @@
-{
-  "environment": {
-    "default": "staging",
-    "options": [
-      "staging",
-      "production"
-    ],
-    "required": true,
-    "type": "choice"
+[
+  {
+    "value": "a",
+    "label": "Option A"
+  },
+  {
+    "value": "b",
+    "label": "Option B"
+  },
+  {
+    "value": "c",
+    "label": "Option C"
   }
-}
+]
