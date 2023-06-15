@@ -1,18 +1,13 @@
 name: form-example
 
 on:
- workflow_dispatch:
-  inputs:
-   input_node:
-    description: 'Input Node Name.'
-    required: true
-   #type: choice
-   # default: 'node A'
-    options: ${ fromJson( toString( fromFile('choices.json') ) ).'options[]'}
-   # options:
-   #  - ${ fromJson( toString( fromFile('choices.json') ) ).'options[]'}
-   #  - ${ fromJson( toString( fromFile('choices.json') ) ).'options[]'}
-    
+  workflow_dispatch:
+    inputs:
+      input_node:
+        description: 'Input Node Name.'
+        required: true
+        options: |
+          ${ join(fromJson(toString(fromFile('choices.json'))).options, '\n') }   
     
 jobs:
     check-bats-version:
