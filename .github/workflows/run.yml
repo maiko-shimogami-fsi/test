@@ -6,8 +6,7 @@ on:
         description: 'Select an option'
         required: true
         default: 'Option A'
-        options: ${fromJson(toString(fromFile('choices.json')))['options']}
-        #options: ${fromJson(fromFile('choices.json'))['options']}
+        options: ${fromJson(toString(fromFile('./choices.json')))['options']}
         
 jobs:
     check-bats-version:
