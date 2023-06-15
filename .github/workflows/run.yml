@@ -6,9 +6,13 @@ on:
    input_node:
     description: 'Input Node Name.'
     required: true
+    type: choice
    # default: 'node A'
    # options: ${ fromJson( toString( fromFile('choices.json') ) ).['options']}
-    options: ${ fromJson(readFileSync('./choices.json').toString())['options'] }
+    options:
+     - ${ fromJson( toString( fromFile('choices.json') ) ).'options[0]'}
+     - ${ fromJson( toString( fromFile('choices.json') ) ).'options[1]'}
+    
     
 jobs:
     check-bats-version:
