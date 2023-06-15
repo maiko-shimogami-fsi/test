@@ -6,7 +6,7 @@ on:
         description: 'Select an option'
         required: true
         default: 'Option A'
-        options: ${ fromJson( file('./choice.json') ).options }
+        options: ${ fromJson( file('./choices.json') ).options }
 
 jobs:
     check-bats-version:
