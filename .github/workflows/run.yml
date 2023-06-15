@@ -3,11 +3,10 @@ on:
  workflow_dispatch:
     inputs:
       my_input:
-        description: 'Select an option'
-        type: string
+        description: 'Select an node'
         required: true
-        default: 'a'
-        options: ${fromJson(file('choices.json'))}
+        type: choice
+        options: ${fromJson(file('choices.json.lavel'))}
 
 jobs:
     check-bats-version:
