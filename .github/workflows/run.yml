@@ -6,13 +6,13 @@ on:
       input_node:
         description: 'Input Node Name.'
         required: true
-        type: choice
         options: |
-          ${join(fromJson(toString(file('choices.json')))['options'], '\n')}
-    
+          ${ steps.read-json.outputs.options }
+          
 jobs:
-    check-bats-version:
-      runs-on: ubuntu-20.04
-      
-      steps:
-        - run: echo "Hello world"
+  read-json:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Read node options from JSON
+        id: read-json
+        run: echo "::set-output name=options::$(jq -r '.options | join(\"\n\")' choices.json)"
