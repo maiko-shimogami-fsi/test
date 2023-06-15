@@ -5,6 +5,7 @@ on:
       option:
         description: 'Select an option'
         required: true
+        type: choice
         default: 'Option A'
         options: ${ fromJson( file('./choices.json') ).options }
 
