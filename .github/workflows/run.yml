@@ -14,6 +14,8 @@ jobs:
       runs-on: ubuntu-20.04
       
       steps:
-        - run: echo file('choices.json').options
+        run: |
+        OPTIONS=$(jq -r '.options' choices.json)
+        echo $OPTIONS
         
 
