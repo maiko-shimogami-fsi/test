@@ -17,5 +17,7 @@ jobs:
       runs-on: ubuntu-20.04
       
       steps:
-       - run: echo ${{github.event.inputs.input_node}} > input.json
+       #- run: echo ${{github.event.inputs.input_node}} > input.json
+       - run: echo -e "{\n  \"createdAt\":\"${{ env.CURRENT_DATE_TIME }}\",\n  \"updatedAt\":\"${{ env.CURRENT_DATE_TIME }}\"\n}" \
+            > $ISSUE_NUM/config.json
        
