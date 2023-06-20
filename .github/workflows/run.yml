@@ -17,6 +17,5 @@ jobs:
       runs-on: ubuntu-20.04
       
       steps:
-       - run: echo "Node:${{ github.event.inputs.input_node }}"
-       #echo ${ toJson(github.event.inputs.input_node) } > input.json
+       - run: echo ${ toJson(github.event.inputs.input_node) } > input.json
        
