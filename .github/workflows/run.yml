@@ -18,6 +18,6 @@ jobs:
       
       steps:
        #- run: echo ${{github.event.inputs.input_node}} > input.json
-       - run: echo -e "{\n  \"createdAt\":\"${{ env.CURRENT_DATE_TIME }}\",\n  \"updatedAt\":\"${{ env.CURRENT_DATE_TIME }}\"\n}" \
-            > $ISSUE_NUM/config.json
+       - run: echo -e "{\n  \"NodeName\":\"${{ inputs.input_node }}\",\n  \"SHA1\":\"${{ inputs.input_mirror }}\"\n}" \
+            > $config.json
        
