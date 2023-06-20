@@ -1,14 +1,43 @@
-name: form-example
-
+name: form-example 
 on:
  workflow_dispatch:
-  inputs:
-   input_node:
-    description: 'Input Node Name.'
-    required: true
-    default: 'node A'
-    options: ${ fromJson( toString( fromFile(choices.json).options ) ) }
-    
+    inputs:
+      input_node:
+        description: 'Input Node Name.'
+        required: name: form-example 
+on:
+ workflow_dispatch:
+    inputs:
+      input_node:
+        description: 'Input Node Name.'
+        required: true
+      input_mirror:
+        description: 'Input mirror SHA1.'
+        required: true
+      input_1node:
+        description: 'Input 1node BASE.'
+        required: true
+
+jobs:
+    check-bats-version:
+      runs-on: ubuntu-20.04
+      
+      steps:
+        - run: echo "Hello world"
+
+        type: choice
+        options:
+          - "Node1"
+          - "Node2"
+          - "Node3"
+          - "Node4"
+      input_mirror:
+        description: 'Input mirror SHA1.'
+        required: false
+      input_1node:
+        description: 'Input 1node BASE.'
+        required: false
+
 jobs:
     check-bats-version:
       runs-on: ubuntu-20.04
