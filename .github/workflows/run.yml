@@ -4,12 +4,6 @@ on:
     inputs:
       input_node:
         description: 'Input Node Name.'
-        required: name: form-example 
-on:
- workflow_dispatch:
-    inputs:
-      input_node:
-        description: 'Input Node Name.'
         required: true
       input_mirror:
         description: 'Input mirror SHA1.'
