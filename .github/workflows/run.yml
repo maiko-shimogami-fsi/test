@@ -18,4 +18,4 @@ jobs:
       
       steps:
         - name: Clean self-hosted runner
-          run: echo "github.event.inputs.input_node"
+          run: echo "${ github.event.inputs.input_node }"
