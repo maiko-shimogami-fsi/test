@@ -18,7 +18,7 @@ jobs:
       runs-on: ubuntu-20.04
       
       steps:
-        - name: Echo input
+        - name: Set_InputData
           run: |
            INPUT_NODE=${{ inputs.input_node }}
            INPUT_MIRROR=${{ inputs.input_mirror }}
