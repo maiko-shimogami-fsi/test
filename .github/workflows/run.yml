@@ -17,15 +17,5 @@ jobs:
       runs-on: ubuntu-20.04
       
       steps:
-       #- run: echo ${{github.event.inputs.input_node}} > input.json
-       #- run: echo -e "{\n  \"NodeName\":\"${{ inputs.input_node }}\",\n  \"SHA1\":\"${{ inputs.input_mirror }}\"\n}" \
-       #     > $config.json
-       - run: |
-          echo "${ github.event.inputs.input_node }" > setting.txt
-          chmod +x results
-          mv setting.txt ./results
-          cat results/setting.txt 
-          uses: actions/upload-artifact@v2
-          with:
-          name: setting
-          path: results/
+        - name: Clean self-hosted runner
+          run: echo "github.event.inputs.input_node"
