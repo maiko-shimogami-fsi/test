@@ -31,7 +31,7 @@ jobs:
         - name: Get current datetime
           env:
            TZ: 'Asia/Tokyo' # タイムゾーン指定
-          run: echo "CURRENT_DATETIME=$('%Y_%m_%d_%H_%M_%S')" >> $GITHUB_ENV
+          run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
         
         - name: Print current datetime
           run: echo ${{ env.CURRENT_DATETIME }}
