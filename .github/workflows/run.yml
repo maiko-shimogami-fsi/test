@@ -11,6 +11,7 @@ on:
       input_1node:
         description: 'Input 1node BASE.'
         required: true
+        default: 'main'
 
 jobs:
     check-bats-version:
@@ -20,5 +21,7 @@ jobs:
         - name: Echo input
           run: |
            INPUT_NODE=${{ inputs.input_node }}
-           echo "Input: $INPUT_NODE"
+           INPUT_MIRROR=${{ inputs.input_mirror }}
+           INPUT_1NODE_BASE=${{ inputs.input_1node }}
+           echo "Input: $INPUT_NODE ,$INPUT_MIRROR ,$INPUT_1NODE_BASE"
 
