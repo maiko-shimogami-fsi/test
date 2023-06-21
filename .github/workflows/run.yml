@@ -18,4 +18,4 @@ jobs:
       
       steps:
         - name: Echo input
-          run: echo ${ github.event.inputs.input_node }
+          run: echo $input_node
