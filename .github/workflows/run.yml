@@ -17,5 +17,5 @@ jobs:
       runs-on: ubuntu-20.04
       
       steps:
-        - name: Clean self-hosted runner
-          run: echo "${inputs.input_node}"
+        - name: Echo input
+          run: echo ${ github.event.inputs.input_node }
