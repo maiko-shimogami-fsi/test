@@ -27,10 +27,11 @@ jobs:
            echo "Input: $INPUT_NODE ,$INPUT_MIRROR ,$INPUT_1NODE_BASE"
        
       #現在の日時の取得
+      #2023_0519_14_10_30
         - name: Get current datetime
           env:
            TZ: 'Asia/Tokyo' # タイムゾーン指定
-          run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+          run: echo "CURRENT_DATETIME=$('%Y_%m_%d_%H_%M_%S')" >> $GITHUB_ENV
         
         - name: Print current datetime
           run: echo ${{ env.CURRENT_DATETIME }}
