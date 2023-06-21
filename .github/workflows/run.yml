@@ -18,5 +18,7 @@ jobs:
       
       steps:
         - name: Echo input
-          run: echo ${{ inputs.input_node }}
+          run: |
+           INPUT_NODE=${{ inputs.input_node }}
+           echo "Input: $INPUT_NODE"
 
