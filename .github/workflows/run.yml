@@ -32,7 +32,7 @@ jobs:
           run: echo "::set-output name=datetime::$(date +"%Y/%m/%d %H:%M:%S")"
         
         - name: Print current datetime
-          run: echo "Current datetime is ${{ outputs.datetime }}"
+          run: echo "Current datetime is ${{ steps.datetime }}"
       
       
       #ブランチの作成
