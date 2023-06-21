@@ -18,6 +18,5 @@ jobs:
       
       steps:
         - name: Echo input
-          run: |
-            EXAMPLE_INPUT="${ github.event.inputs.input_node }"
-            echo "Input: $EXAMPLE_INPUT"
+          run: echo ${{ inputs.input_node }}
+
