@@ -18,6 +18,8 @@ jobs:
       
       steps:
        #- run: echo ${{github.event.inputs.input_node}} > input.json
-       - run: echo -e "{\n  \"NodeName\":\"${{ inputs.input_node }}\",\n  \"SHA1\":\"${{ inputs.input_mirror }}\"\n}" \
-            > $config.json
+       #- run: echo -e "{\n  \"NodeName\":\"${{ inputs.input_node }}\",\n  \"SHA1\":\"${{ inputs.input_mirror }}\"\n}" \
+       #     > $config.json
+       - run: echo '${\n  \"NodeName\":\"${{ inputs.input_node }}\",\n  \"SHA1\":\"${{ inputs.input_mirror }}\"\n}' \
+            > $config.txt
        
