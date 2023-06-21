@@ -28,11 +28,12 @@ jobs:
        
       #現在の日時の取得
         - name: Get current datetime
-          id: datetime
-          run: echo "::set-output name=datetime::$(date +"%Y/%m/%d %H:%M:%S")"
+          env:
+           TZ: 'Asia/Tokyo' # タイムゾーン指定
+          run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
         
         - name: Print current datetime
-          run: echo "Current datetime is ${{ steps.datetime }}"
+          run: echo ${{ env.CURRENT_DATETIME }}
       
       
       #ブランチの作成
