@@ -43,10 +43,10 @@ jobs:
            #BRANCH_NAME: "env.CURRENT_DATETIME"
           #run: git branch $BRANCH_NAME
           
-        - name: Create new branch
-          env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: |
-           git switch -c fix/hoge_${{ env.CURRENT_DATETIME }}
-           git push -u origin fix/hoge_${{ env.CURRENT_DATETIME }}
+        #- name: Create new branch
+          #env:
+           #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #run: |
+           #git switch -c fix/hoge_${{ env.CURRENT_DATETIME }}
+           #git push -u origin fix/hoge_${{ env.CURRENT_DATETIME }}
 
