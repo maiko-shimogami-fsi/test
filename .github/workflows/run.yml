@@ -50,3 +50,9 @@ jobs:
            #git switch -c fix/hoge_${{ env.CURRENT_DATETIME }}
            #git push -u origin fix/hoge_${{ env.CURRENT_DATETIME }}
 
+      #入力情報をtextファイルに追加
+        - name: create text
+          run: |
+           echo "$INPUT_NODE" >> data_info.txt
+           git commit -m "generated"
+
