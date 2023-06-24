@@ -52,7 +52,8 @@ jobs:
 
       #入力情報をtextファイルに追加
         - name: create text
-          run: |
+        - uses: actions/checkout@v2
+        - run: |
            echo "$INPUT_NODE" >> data_info.txt
            git commit -m "generated"
 
