@@ -27,7 +27,6 @@ jobs:
            echo "Input: $INPUT_NODE ,$INPUT_MIRROR ,$INPUT_1NODE_BASE"
        
       #現在の日時の取得
-      #2023_0519_14_10_30
         - name: Get current datetime
           env:
            TZ: 'Asia/Tokyo' # タイムゾーン指定
@@ -54,7 +53,9 @@ jobs:
         - name: create text
           uses: actions/checkout@v2
         - run: |
-           echo "${{ inputs.input_node }}" >> data_info.txt
+           echo "NodeName：${{ inputs.input_node }}" >> data_info.txt
+           echo "SHA1：${{ inputs.input_mirror }}" >> data_info.txt
+           echo "1NodeBase：${{ inputs.input_1node }}" >> data_info.txt
            git config user.name github-actions
            git config user.email github-actions@github.com
            git add .
