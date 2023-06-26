@@ -54,7 +54,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v2
         - run: |
-           echo "$INPUT_NODE" >> data_info.txt
+           echo "${{ inputs.input_node }}" >> data_info.txt
            git config user.name github-actions
            git config user.email github-actions@github.com
            git add .
