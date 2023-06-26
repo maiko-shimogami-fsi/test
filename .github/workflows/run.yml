@@ -3,15 +3,14 @@ on:
  workflow_dispatch:
     inputs:
       input_node:
-        description: 'Input Node Name.'
+        description: 'Please enter the node name.'
         required: true
       input_mirror:
-        description: 'Input mirror SHA1.'
+        description: 'Please enter the mirror branch name or SHA1.'
         required: true
       input_1node:
-        description: 'Input 1node BASE.'
-        required: true
-        default: 'main'
+        description: 'Please enter the 1node base branch name or SHA1.(If there is no input, it will be "main".)'
+        required: false
 
 jobs:
     check-bats-version:
