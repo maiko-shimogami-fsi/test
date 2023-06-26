@@ -38,8 +38,10 @@ jobs:
       #ブランチの作成
         - name: Create new branch
           env:
-           BRANCH_NAME: $CURRENT_DATETIME
-          run: git branch $BRANCH_NAME
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+           git switch -c fix/hoge_${{ env.CURRENT_DATETIME }}
+           git push -u origin fix/hoge_${{ env.CURRENT_DATETIME }}
 
       #入力情報をtextファイルに追加
         - name: create text
