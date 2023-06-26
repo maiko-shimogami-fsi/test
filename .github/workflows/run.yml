@@ -40,8 +40,8 @@ jobs:
           env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
-           git switch -c fix/hoge_${{ env.CURRENT_DATETIME }}
-           git push -u origin fix/hoge_${{ env.CURRENT_DATETIME }}
+           git switch -c AUTO/${{ env.CURRENT_DATETIME }}
+           git push -u origin AUTO/${{ env.CURRENT_DATETIME }}
 
       #入力情報をtextファイルに追加
         - name: create text
