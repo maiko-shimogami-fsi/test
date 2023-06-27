@@ -37,12 +37,12 @@ jobs:
       
       #ブランチの作成
         - name: Create New Branch
-          run: |
-           git checkout -b ${{ env.CURRENT_DATETIME }}
+          uses: actions/checkout@v2
+        - run: |
            git config user.name github-actions
            git config user.email github-actions@github.com
+           git checkout -b ${{ env.CURRENT_DATETIME }}
            git init
-           git commit -m "generated"
            git push -u origin ${{ env.CURRENT_DATETIME }}
         
       #入力情報をtextファイルに追加
