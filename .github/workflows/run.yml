@@ -42,9 +42,9 @@ jobs:
            git config --global user.email github-actions@github.com
            git init
            git checkout -b ${{ env.CURRENT_DATETIME }}
-           git add .
-           git commit -m "Commit message"
-           git push
+           #git add .
+           #git commit -m "Commit message"
+           #git push
         
       #入力情報をtextファイルに追加
         - name: create text
