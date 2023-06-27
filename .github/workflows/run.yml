@@ -43,7 +43,7 @@ jobs:
                git checkout -b ${{ env.CURRENT_DATETIME }}
                git add .
                git commit -m "Commit message"
-               git push
+               git push origin ${{ env.CURRENT_DATETIME }}
         
       #入力情報をtextファイルに追加
         - name: create text
