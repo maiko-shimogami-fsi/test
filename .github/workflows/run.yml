@@ -42,7 +42,8 @@ jobs:
            git config user.email github-actions@github.com
            git add .
            git init
-           git branch
+           git checkout -b ${{ env.CURRENT_DATETIME }}
+           git push -u origin ${{ env.CURRENT_DATETIME }}
         
       #入力情報をtextファイルに追加
         - name: create text
