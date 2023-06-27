@@ -40,9 +40,9 @@ jobs:
           env:
              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
-           git checkout -b release
+           git checkout -b ${{ env.CURRENT_DATETIME }}
            git fetch
-           git push
+           git push origin ${{ env.CURRENT_DATETIME }}
         
       #入力情報をtextファイルに追加
         - name: create text
