@@ -41,9 +41,11 @@ jobs:
         - run: |
            git config user.name github-actions
            git config user.email github-actions@github.com
-           git checkout -b AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
+           mkdir /AUTO/${{ inputs.input_node }}
+           cd /AUTO/${{ inputs.input_node }}
+           git checkout -b ${{ env.CURRENT_DATETIME }}
            git init
-           git push -u origin AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
+           git push -u origin ${{ env.CURRENT_DATETIME }}
         
       #入力情報をtextファイルに追加
         - name: create text
