@@ -4,3 +4,6 @@ SHA1：１１１１１
 NodeName:a
 SHA1:s
 1NodeBase:
+NodeName:a
+SHA1:s
+1NodeBase:d
