@@ -17,14 +17,6 @@ jobs:
       runs-on: ubuntu-20.04
       
       steps:
-      #入力値を保持
-        - name: Set_InputData
-          run: |
-           INPUT_NODE=${{ inputs.input_node }}
-           INPUT_MIRROR=${{ inputs.input_mirror }}
-           INPUT_1NODE_BASE=${{ inputs.input_1node }}
-           echo "Input: $INPUT_NODE ,$INPUT_MIRROR ,$INPUT_1NODE_BASE"
-       
       #現在の日時の取得
         - name: Get current datetime
           env:
@@ -45,11 +37,12 @@ jobs:
            #git init
            #git push -u origin ${{ env.CURRENT_DATETIME }}
         
+        
       #入力情報をtextファイルに追加
         - name: create text
           uses: actions/checkout@v2
         - run: |
-           echo "NodeName:$INPUT_NODE" >> data_info.txt
+           echo "NodeName:{{ inputs.input_node }}" >> data_info.txt
            echo "SHA1:${{ inputs.input_mirror }}" >> data_info.txt
            echo "1NodeBase:${{ inputs.input_1node }}" >> data_info.txt
            git config user.name github-actions
