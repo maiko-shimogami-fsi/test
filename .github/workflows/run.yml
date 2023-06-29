@@ -47,13 +47,13 @@ jobs:
            echo $COMP_NAME
            
       #ブランチの作成
-        #- name: Create New Branch
-        #  uses: actions/checkout@v2
-        #- run: |
-        #   git config user.name github-actions
-        #   git config user.email github-actions@github.com
-        #  git checkout -b ${{ env.CURRENT_DATETIME }}
-        #   git init
-        #   git push -u origin ${{ env.CURRENT_DATETIME }}
+        - name: Create New Branch
+          uses: actions/checkout@v2
+        - run: |
+           git config user.name github-actions
+           git config user.email github-actions@github.com
+           git checkout -b AUTO/Lcd/${{ env.CURRENT_DATETIME }}
+           git init
+           git push -u origin AUTO/Lcd/${{ env.CURRENT_DATETIME }}
         
       
