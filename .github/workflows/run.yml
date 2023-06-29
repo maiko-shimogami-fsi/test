@@ -38,13 +38,6 @@ jobs:
         
         - name: Print current datetime
           run: echo ${{ env.CURRENT_DATETIME }}
-         
-      #コンポ名を取得
-        - name: create text
-          uses: actions/checkout@v2
-        - run: |
-           COMP_NAME=$(jq -r '.[] | select(.NodeName == ${{ inputs.input_node }}).CompName' work/Test_setting/Test_for_tss4/test_env_info.json)
-           echo $COMP_NAME
            
       #ブランチの作成
         - name: Create New Branch
