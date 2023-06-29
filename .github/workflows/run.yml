@@ -43,7 +43,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v2
         - run: |
-           COMP_NAME=$(jq -r '.[] | select(.NodeName == "'$NODE'").CompName' work/Test_setting/Test_for_tss4/test_env_info.json)
+           COMP_NAME=$(jq -r '.[] | select(.NodeName == ${{ inputs.input_node }}).CompName' work/Test_setting/Test_for_tss4/test_env_info.json)
            echo $COMP_NAME
            
       #ブランチの作成
