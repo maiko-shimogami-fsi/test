@@ -51,7 +51,7 @@ jobs:
         - name: otamesi
           run: | 
            echo "otamesi1"
-           sh ./otamesi.sh
+           sh ./otamesi.sh || exit 1
            echo "otamesi2"
       
       #おためし2
