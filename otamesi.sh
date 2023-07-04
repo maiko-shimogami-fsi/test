@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGET_SHA1="aaa"
+TARGET_SHA1="aa"
 
 #入力されたブランチ名orSHA1が存在するか確認する
 if [ $TARGET_SHA1 = "aaa" ]; then
