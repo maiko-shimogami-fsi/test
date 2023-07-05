@@ -39,13 +39,13 @@ jobs:
         #  run: sh ./work/app_measure_proctime_1node/CI_tools/error_check.sh
            
       #現在の日時の取得
-        #- name: Get current datetime
-        #  env:
-        #   TZ: 'Asia/Tokyo' # タイムゾーン指定
-        #  run: echo "CURRENT_DATETIME=$(date +'%Y_%m%d_%H_%M_%S')" >> $GITHUB_ENV
+        - name: Get current datetime
+          #env:
+           #TZ: 'Asia/Tokyo' # タイムゾーン指定
+          run: echo "CURRENT_DATETIME=$(date +'%Y_%m%d_%H_%M_%S')" >> $GITHUB_ENV
         
-        #- name: Print current datetime
-        #  run: echo ${{ env.CURRENT_DATETIME }}
+        - name: Print current datetime
+          run: echo ${{ env.CURRENT_DATETIME }}
           
       #ブランチの作成
         #- name: Create New Branch
