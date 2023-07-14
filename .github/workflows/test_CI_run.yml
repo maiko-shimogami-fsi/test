@@ -56,6 +56,7 @@ jobs:
            git checkout -b AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
            echo "add start"
            git add .
+           git status
            echo "commit start"
            git commit -m "generated"
            echo "push start"
