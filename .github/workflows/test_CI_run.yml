@@ -55,7 +55,7 @@ jobs:
            git config user.email github-actions@github.com
            git checkout -b AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
            git add .
-           git commit -m "generated"
+           git commit -u origin AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
            git push
            #git push -u origin AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
         
