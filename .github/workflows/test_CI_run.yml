@@ -54,14 +54,14 @@ jobs:
            git config user.name github-actions
            git config user.email github-actions@github.com
            git checkout -b AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
-           echo "add start"
-           git add .
-           git status
-           echo "commit start"
-           git commit -m "generated"
-           echo "push start"
-           git push
-           #git push -u origin AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
+           #echo "add start"
+           #git add .
+           #git status
+           #echo "commit start"
+           #git commit -m "generated"
+           #echo "push start"
+           #git push
+           git push -u origin AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
         
       #スクリプトの実行
         #- name: execute script
