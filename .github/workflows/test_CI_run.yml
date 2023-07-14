@@ -56,8 +56,10 @@ jobs:
            git checkout -b AUTO/${{ inputs.input_node }}/${{ env.CURRENT_DATETIME }}
            #echo "add start"
            git add .
+           echo "git diff --cached"
            git diff --cached
-           #git status
+           echo "git status"
+           git status
            #echo "commit start"
            #git commit -m "generated"
            #echo "push start"
