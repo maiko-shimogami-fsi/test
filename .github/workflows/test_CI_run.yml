@@ -19,7 +19,7 @@ jobs:
       steps:
       #入力情報をtextファイルに追加
         - name: create text
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
         - run: |
            echo "NodeName:${{ inputs.input_node }}" >> CI_env_info.txt
            echo "SHA1:${{ inputs.input_mirror }}" >> CI_env_info.txt
@@ -32,7 +32,7 @@ jobs:
            
       #スレーブ環境クリーン
         #- name: clean environment
-        errorcheck.sh  run: sh ./work/app_measure_proctime_1node/CI_tools/clean.sh
+        #errorcheck.sh  run: sh ./work/app_measure_proctime_1node/CI_tools/clean.sh
       
       #チェックアウトとエラー確認
         - name: checkout and errorcheck
