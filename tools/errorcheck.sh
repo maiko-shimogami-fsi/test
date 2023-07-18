@@ -12,9 +12,10 @@ echo "NODE=$NODE"
 #cd $TEST_JSON_DIR
 
 #Nodeの値からmodule_dir_libを取得する
-MODULE_DIR_LIB=$(cat test_env_info.json | jq '.[] | select(.NodeName == "'$NODE'").module_dir_lib')
-MODULE_DIR_LIB=$(grep -A2 '\"NodeName\": \"$NODE\"' test_env_info.json | tail -n1 | awk -F'"' '{print $6}')
-#MODULE_DIR_LIB=$(jq -r '.[] | select(.NodeName == "'$NODE'").module_dir_lib' test_env_info.json)
+jq --version
+#MODULE_DIR_LIB=$(cat test_env_info.json | jq '.[] | select(.NodeName == "'$NODE'").module_dir_lib')
+#MODULE_DIR_LIB=$(grep -A2 '"NodeName": "aaa"' aaa.json | jq -r '.pass')
+MODULE_DIR_LIB=$(jq -r '.[] | select(.NodeName == "'$NODE'").module_dir_lib' test_env_info.json)
 echo $MODULE_DIR_LIB
 
 #TARGET_COMPOの有無をチェック
