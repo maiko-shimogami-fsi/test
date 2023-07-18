@@ -1,0 +1,15 @@
+{
+    "LCD": {
+        "CompName": "Lcd",
+        "NodeName": "Lcd",
+        "module_dir_lib": "tss4-25tm.adas_sdk_proj/impl/App/LaneChangeAssist",
+        "model_app": "False"
+
+    },
+    "PCS": {
+        "CompName": "Pcs",
+        "NodeName": "Pcs",
+        "module_dir_lib": "tss4-25tm.adas_sdk_proj/impl/App/LaneChangeAssist",
+        "model_app": "False"
+    }
+}
