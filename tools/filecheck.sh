@@ -5,7 +5,8 @@ pwd
 mkdir temp
 ls -al
 
-#cp CI_env_info.txt /temp/CI_env_info.txt
+echo "copy start"
+cp CI_env_info.txt /temp/CI_env_info.txt
 zip -r myfiles.zip temp
 
 ls -al
