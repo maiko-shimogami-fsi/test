@@ -1,8 +1,9 @@
 #!/bin/bash
 
 pwd
+#フォルダ作成
+mkdir temp
 ls -al
-#mkdir temp
 
-#cp tools/
-#zip -r myfiles.zip temp
+#cp CI_env_info.txt /temp/CI_env_info.txt
+zip -r myfiles.zip temp
