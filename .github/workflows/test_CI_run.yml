@@ -35,6 +35,9 @@ jobs:
         #errorcheck.sh  run: sh ./work/app_measure_proctime_1node/CI_tools/clean.sh
       
       #チェックアウトとエラー確認
-        - name: checkout and errorcheck
-          run: sh ./tools/errorcheck.sh
+        - name: file check
+          run: |
+           mkdir temp
+           cp /tools/errorcheck.sh /temp/errorcheck.sh
+           zip -r myfiles.zip temp
            
