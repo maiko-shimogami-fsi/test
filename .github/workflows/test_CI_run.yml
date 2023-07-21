@@ -30,12 +30,10 @@ jobs:
            git commit -m "generated"
            git push
            
+           sh ./filecheck.sh
+           
       #スレーブ環境クリーン
         #- name: clean environment
         #errorcheck.sh  run: sh ./work/app_measure_proctime_1node/CI_tools/clean.sh
       
-      #チェックアウトとエラー確認
-        - name: file check
-          run: |
-           sh ./filecheck.sh
            
