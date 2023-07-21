@@ -8,7 +8,7 @@ ls -al
 chmod 777 temp
 
 echo "copy start"
-cp /tools/errorcheck.sh /temp/errorcheck.sh
+cp /home/runner/work/test/test/tools/errorcheck.sh /home/runner/work/test/test/temp/errorcheck.sh
 
 zip -r myfiles.zip temp
 
