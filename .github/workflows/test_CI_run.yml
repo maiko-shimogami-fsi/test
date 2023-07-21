@@ -30,7 +30,7 @@ jobs:
            git commit -m "generated"
            git push
            
-           sh ./filecheck.sh
+           sh ./tools/filecheck.sh
            
       #スレーブ環境クリーン
         #- name: clean environment
