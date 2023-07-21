@@ -8,7 +8,7 @@ ls -al
 chmod 777 temp
 
 echo "copy start"
-\cp -f CI_env_info.txt /test/temp/CI_env_info.txt
+cp /tools/errorcheck.sh /temp/errorcheck.sh
 
 zip -r myfiles.zip temp
 
