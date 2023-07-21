@@ -37,7 +37,9 @@ jobs:
       #チェックアウトとエラー確認
         - name: file check
           run: |
-           mkdir temp
-           cp /tools/errorcheck.sh /temp/errorcheck.sh
-           zip -r myfiles.zip temp
+           pwd
+           ls al
+          #mkdir temp
+          #cp /tools/errorcheck.sh /temp/errorcheck.sh
+          #zip -r myfiles.zip temp
            
