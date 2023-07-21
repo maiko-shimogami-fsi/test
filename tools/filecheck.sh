@@ -2,6 +2,7 @@
 
 pwd
 #フォルダ作成
+ls -al
 mkdir temp
 ls -al
 
