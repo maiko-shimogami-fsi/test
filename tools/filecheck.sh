@@ -2,7 +2,7 @@
 
 pwd
 #フォルダ作成
-#mkdir temp
+mkdir temp
 ls -al
 
 chmod 777 temp
