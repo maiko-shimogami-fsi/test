@@ -39,7 +39,7 @@ jobs:
           run: |
            pwd
            ls -al
-          #mkdir temp
-          #cp /tools/errorcheck.sh /temp/errorcheck.sh
-          #zip -r myfiles.zip temp
+           mkdir temp
+           cp /tools/errorcheck.sh /temp/errorcheck.sh
+           zip -r myfiles.zip temp
            
