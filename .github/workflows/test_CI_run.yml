@@ -38,7 +38,7 @@ jobs:
         - name: file check
           run: |
            pwd
-           ls al
+           ls -al
           #mkdir temp
           #cp /tools/errorcheck.sh /temp/errorcheck.sh
           #zip -r myfiles.zip temp
