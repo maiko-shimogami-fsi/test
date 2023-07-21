@@ -5,6 +5,8 @@ pwd
 #mkdir temp
 ls -al
 
+chmod 777 temp
+
 echo "copy start"
 \cp -f CI_env_info.txt /temp/CI_env_info.txt
 
