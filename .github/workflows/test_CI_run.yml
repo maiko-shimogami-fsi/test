@@ -24,10 +24,7 @@ jobs:
            pwd
            cd tools
            chmod 777 filecheck.sh
-           ls -al
-           cd ../../..
-           pwd
-           ls -al
+           ./filecheck.sh
            
       #スレーブ環境クリーン
         #- name: clean environment
