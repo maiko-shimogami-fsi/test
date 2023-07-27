@@ -21,11 +21,8 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-           echo "NodeName:${{ inputs.input_node }}" >> CI_env_info.txt
-           echo "SHA1:${{ inputs.input_mirror }}" >> CI_env_info.txt
-           echo "1NodeBase:${{ inputs.input_1node }}" >> CI_env_info.txt
-           
-           sh ./tools/filecheck.sh
+           pwd
+           ls -al
            
       #スレーブ環境クリーン
         #- name: clean environment
