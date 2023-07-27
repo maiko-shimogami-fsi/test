@@ -24,11 +24,6 @@ jobs:
            echo "NodeName:${{ inputs.input_node }}" >> CI_env_info.txt
            echo "SHA1:${{ inputs.input_mirror }}" >> CI_env_info.txt
            echo "1NodeBase:${{ inputs.input_1node }}" >> CI_env_info.txt
-           git config user.name github-actions
-           git config user.email github-actions@github.com
-           git add .
-           git commit -m "generated"
-           git push
            
            sh ./tools/filecheck.sh
            
