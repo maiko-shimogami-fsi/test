@@ -1,16 +1,4 @@
 #!/bin/bash
 
-pwd
-#フォルダ作成
-ls -al
-mkdir temp
-ls -al
-
-chmod 777 temp
-
-echo "copy start"
-cp /home/runner/work/test/test/tools/errorcheck.sh /home/runner/work/test/test/temp/errorcheck.sh
-
-zip -r myfiles.zip temp
-
-ls -al
+cp work/app_measure_proctime_1node/tools/gen_env
+./generate_build_enviroment_capp.sh
