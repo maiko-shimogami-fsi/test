@@ -23,8 +23,9 @@ jobs:
 
       steps:
       #環境を設定する
-        - name: set env_var_exe
-          run: |
+        - name: create text
+          uses: actions/checkout@v3
+        - run: |
            if [[ ! -z "$ENV_VAR_EXE_JQ" ]]; then
             #JQ環境
             ENV_VAR_EXE='env_JQ'
