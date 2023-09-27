@@ -38,6 +38,6 @@ jobs:
         - name: check
           run: |
            cd tools
-           chmod 777 test.sh
-           sh ./test.sh $ENV_VAR_EXE
+           chmod 777 check.sh
+           sh ./check.sh $ENV_VAR_EXE
            
