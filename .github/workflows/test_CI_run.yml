@@ -12,22 +12,30 @@ on:
         description: 'Please enter the 1node base branch name or SHA1.(If there is no input, it will be "main".)'
         required: false
 
+env:
+  ENV_VAR_EXE_JQ: ${ secrets.ENV_VAR_EXE_JQ }
+  ENV_VAR_EXE_WBYT: ${ secrets.ENV_VAR_EXE_WBYT }
+  ENV_VAR_EXE: ""
+  
 jobs:
-    check-bats-version:
-      runs-on: ubuntu-20.04
-      
+    Exec-1node-build:
+      runs-on: 1node
+
       steps:
-      #入力情報をtextファイルに追加
-        - name: create text
-          uses: actions/checkout@v3
-        - run: |
-           pwd
-           cd tools
-           chmod 777 filecheck.sh
-           ./filecheck.sh
-           
-      #スレーブ環境クリーン
-        #- name: clean environment
-        #errorcheck.sh  run: sh ./work/app_measure_proctime_1node/CI_tools/clean.sh
-      
+      #環境を設定する
+        - name: set env_var_exe
+          run: |
+           if [[ ! -z "$ENV_VAR_EXE_JQ" ]]; then
+            #JQ環境
+            ENV_VAR_EXE='env_JQ'
+           elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]];; then
+            #WbyT環境
+            ENV_VAR_EXE='env_WbyT'
+           fi
+
+      #チェックアウトとエラー確認
+        - name: checkout and errorcheck
+          run: |
+           chmod 777 test.sh
+           sh ./test.sh $ENV_VAR_EXE
            
