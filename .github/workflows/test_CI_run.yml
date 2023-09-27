@@ -18,8 +18,8 @@ env:
   ENV_VAR_EXE: ""
   
 jobs:
-    Exec-1node-build:
-      runs-on: 1node
+    check-bats-version:
+      runs-on: ubuntu-20.04
 
       steps:
       #環境を設定する
