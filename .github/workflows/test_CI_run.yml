@@ -28,7 +28,7 @@ jobs:
            if [[ ! -z "$ENV_VAR_EXE_JQ" ]]; then
             #JQ環境
             ENV_VAR_EXE='env_JQ'
-           elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]];; then
+           elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]]; then
             #WbyT環境
             ENV_VAR_EXE='env_WbyT'
            fi
