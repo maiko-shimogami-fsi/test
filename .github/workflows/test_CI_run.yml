@@ -33,9 +33,10 @@ jobs:
             ENV_VAR_EXE='env_WbyT'
            fi
 
-      #チェックアウトとエラー確認
-        - name: checkout and errorcheck
+      #チェック確認
+        - name: check
           run: |
+           cd tools
            chmod 777 test.sh
            sh ./test.sh $ENV_VAR_EXE
            
