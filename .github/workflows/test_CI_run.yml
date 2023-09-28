@@ -20,22 +20,13 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-           echo "ENV_VAR_EXE_JQ:${{ ENV_VAR_EXE_JQ }}"
-           echo "ENV_VAR_EXE_WBYT:${{ ENV_VAR_EXE_WBYT }}"
-           
-           #if [[ ! -z "$ENV_VAR_EXE_JQ" ]]; then
-           # #JQ環境
-           # ENV_VAR_EXE='env_JQ'
-           #elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]]; then
-           # #WbyT環境
-           # ENV_VAR_EXE='env_WbyT'
-           #fi
-           #echo "$ENV_VAR_EXE"
+           echo "ENV_VAR_EXE_JQ:${{ env.ENV_VAR_EXE_JQ }}"
+           echo "ENV_VAR_EXE_WBYT:${{ env.ENV_VAR_EXE_WBYT }}"
+           echo "ENV_VAR_EXE:${{ env.ENV_VAR_EXE }}"
 
       #チェック確認
         - name: check
           run: |
-           #echo "ENV_VAR_EXE=${ env.ENV_VAR_EXE }"
            cd tools
            chmod 777 check.sh
            sh ./check.sh $ENV_VAR_EXE
