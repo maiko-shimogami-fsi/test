@@ -44,5 +44,5 @@ jobs:
            echo "$ENV_VAR_EXE"
            cd tools
            chmod 777 check.sh
-           sh ./check.sh 'env_JQ'
+           sh ./check.sh "$ENV_VAR_EXE"
            
