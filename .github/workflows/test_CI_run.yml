@@ -5,17 +5,11 @@ on:
       input_node:
         description: 'Please enter the node name.'
         required: true
-      input_mirror:
-        description: 'Please enter the mirror branch name or SHA1.'
-        required: true
-      input_1node:
-        description: 'Please enter the 1node base branch name or SHA1.(If there is no input, it will be "main".)'
-        required: false
 
 env:
   ENV_VAR_EXE_JQ: ${ secrets.ENV_VAR_EXE_JQ }
   ENV_VAR_EXE_WBYT: ${ secrets.ENV_VAR_EXE_WBYT }
-  ENV_VAR_EXE: ${ env.ENV_VAR_EXE_JQ != '' && 'env_JQ' || env.ENV_VAR_EXE_WBYT != '' && 'env_WbyT' || '' }
+  ENV_VAR_EXE: ${ ENV_VAR_EXE_JQ != '' && 'env_JQ' || ENV_VAR_EXE_WBYT != '' && 'env_WbyT' || '' }
   
 jobs:
     check-bats-version:
@@ -26,8 +20,8 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-           echo "ENV_VAR_EXE_JQ:${{ ENV_VAR_EXE_JQ }}"
-           echo "ENV_VAR_EXE_WBYT:${{ ENV_VAR_EXE_WBYT }}"
+           echo "ENV_VAR_EXE_JQ:${{ env.ENV_VAR_EXE_JQ }}"
+           echo "ENV_VAR_EXE_WBYT:${{ env.ENV_VAR_EXE_WBYT }}"
            
            #if [[ ! -z "$ENV_VAR_EXE_JQ" ]]; then
            # #JQ環境
