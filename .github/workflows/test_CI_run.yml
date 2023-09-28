@@ -20,6 +20,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
+           echo "${{ secrets.ENV_VAR_EXE_JQ }}"
            echo "ENV_VAR_EXE_JQ:${{ env.ENV_VAR_EXE_JQ }}"
            echo "ENV_VAR_EXE_WBYT:${{ env.ENV_VAR_EXE_WBYT }}"
            echo "ENV_VAR_EXE:${{ env.ENV_VAR_EXE }}"
