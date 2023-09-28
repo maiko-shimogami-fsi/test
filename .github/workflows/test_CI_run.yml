@@ -40,10 +40,14 @@ jobs:
            cd tools
            chmod 777 check.sh
            sh ./check.sh $ENV_VAR_EXE
-
+            
+    Exec-convert-mf4:
+     needs: check-bats-version
+     runs-on: ubuntu-20.04
+     
+     steps:
       #チェック確認
-        - name: check plus
-          if: ${{ env.ENV_VAR_EXE }} == 'env_JQ'
-          run: |
-            echo "再確認!"
-            echo "ENV_VAR_EXE=$ENV_VAR_EXE"
+       - name: check plus
+         run: |
+          echo "ENV_VAR_EXE=$ENV_VAR_EXE"
+      
