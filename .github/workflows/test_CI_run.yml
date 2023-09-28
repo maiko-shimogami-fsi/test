@@ -39,4 +39,9 @@ jobs:
            cd tools
            chmod 777 check.sh
            sh ./check.sh $ENV_VAR_EXE
-           
+
+      #チェック確認
+        - name: check plus
+          run: |
+           echo "再確認!"
+           echo "ENV_VAR_EXE=$ENV_VAR_EXE"
