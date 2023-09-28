@@ -24,7 +24,7 @@ jobs:
              ENV_VAR_EXE='env_JQ'
              echo "ENV_VAR_EXE=$ENV_VAR_EXE" >> $GITHUB_ENV
              
-            elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]];; then
+            elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]]; then
              #WbyT環境
              ENV_VAR_EXE='env_WbyT'
              echo "ENV_VAR_EXE=$ENV_VAR_EXE" >> $GITHUB_ENV
