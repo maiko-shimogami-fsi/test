@@ -15,7 +15,7 @@ on:
 env:
   ENV_VAR_EXE_JQ: ${ secrets.ENV_VAR_EXE_JQ }
   ENV_VAR_EXE_WBYT: ${ secrets.ENV_VAR_EXE_WBYT }
-  ENV_VAR_EXE: ${ env.ENV_VAR_EXE_JQ != '' && 'env_JQ' || env.ENV_VAR_EXE_WBYT != '' && 'env_WbyT' || '' }
+  ENV_VAR_EXE: ${ ENV_VAR_EXE_JQ != '' && 'env_JQ' || ENV_VAR_EXE_WBYT != '' && 'env_WbyT' || '' }
   
 jobs:
     check-bats-version:
@@ -41,7 +41,7 @@ jobs:
       #チェック確認
         - name: check
           run: |
-           echo "$ENV_VAR_EXE"
+           echo "ENV_VAR_EXE=$ENV_VAR_EXE"
            cd tools
            chmod 777 check.sh
            sh ./check.sh $ENV_VAR_EXE
