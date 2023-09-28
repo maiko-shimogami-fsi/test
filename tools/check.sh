@@ -2,6 +2,7 @@
 
 #引数をENV_VAR_EXEに設定
 ENV_VAR_EXE=$1
+echo "ENV_VAR_EXE=$ENV_VAR_EXE"
 
 if [ "$ENV_VAR_EXE" = "env_JQ" ]; then
  echo "env_JQ"
