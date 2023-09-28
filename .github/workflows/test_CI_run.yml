@@ -44,5 +44,7 @@ jobs:
       #チェック確認
         - name: check plus
           run: |
-           echo "再確認!"
-           echo "ENV_VAR_EXE=$ENV_VAR_EXE"
+           if [ "$ENV_VAR_EXE" = "env_WbyT" ]; then
+            echo "再確認!"
+            echo "ENV_VAR_EXE=$ENV_VAR_EXE"
+           fi
