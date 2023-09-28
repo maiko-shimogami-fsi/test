@@ -43,7 +43,7 @@ jobs:
 
       #チェック確認
         - name: check plus
-          if: $ENV_VAR_EXE = 'env_JQ'
+          if: $ENV_VAR_EXE == "env_JQ"
           run: |
             echo "再確認!"
             echo "ENV_VAR_EXE=$ENV_VAR_EXE"
