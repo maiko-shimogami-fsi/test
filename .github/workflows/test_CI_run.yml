@@ -9,7 +9,7 @@ on:
 env:
   ENV_VAR_EXE_JQ: ${{ secrets.ENV_VAR_EXE_JQ }}
   ENV_VAR_EXE_WBYT: ${{ secrets.ENV_VAR_EXE_WBYT }}
-  #ENV_VAR_EXE: ${{ ENV_VAR_EXE_JQ != '' && 'env_JQ' || ENV_VAR_EXE_WBYT != '' && 'env_WbyT' || '' }}
+  ENV_VAR_EXE: ${{ ENV_VAR_EXE_JQ != '' && 'env_JQ' || ENV_VAR_EXE_WBYT != '' && 'env_WbyT' || '' }}
   
 jobs:
     check-bats-version:
