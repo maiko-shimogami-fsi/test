@@ -24,11 +24,12 @@ jobs:
              #JQ環境
              ENV_VAR_EXE='env_JQ'
              echo "ENV_VAR_EXE=$ENV_VAR_EXE" >> $GITHUB_ENV
-             
+             echo "1をとおる"
             elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]]; then
              #WbyT環境
              ENV_VAR_EXE='env_WbyT'
              echo "ENV_VAR_EXE=$ENV_VAR_EXE" >> $GITHUB_ENV
+             echo "2をとおる"
             fi
             
             echo "ENV_VAR_EXE=$ENV_VAR_EXE" 
