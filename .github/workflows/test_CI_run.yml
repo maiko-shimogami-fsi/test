@@ -7,8 +7,8 @@ on:
         required: true
 
 env:
-  ENV_VAR_EXE_JQ: ${{ secrets.ENV_VAR_EXE_JQ }}
-  ENV_VAR_EXE_WBYT: ${{ secrets.ENV_VAR_EXE_WBYT }}
+  ENV_VAR_EXE_JQ: ${ secrets.ENV_VAR_EXE_JQ }
+  ENV_VAR_EXE_WBYT: ${ secrets.ENV_VAR_EXE_WBYT }
   ENV_VAR_EXE: ""
   
 jobs:
