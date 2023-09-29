@@ -7,9 +7,7 @@ on:
         required: true
 
 env:
-  ENV_VAR_EXE_JQ: ${{ secrets.ENV_VAR_EXE_JQ }}
-  ENV_VAR_EXE_WBYT: ${{ secrets.ENV_VAR_EXE_WBYT }}
-  ENV_VAR_EXE: ""
+  ENV_VAR_EXE1node: ${{ secrets.ENV_VAR_EXE1node }}
   
 jobs:
     check-bats-version:
@@ -20,26 +18,15 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-            if [[ ! -z "$ENV_VAR_EXE_JQ" ]]; then
-             #JQ環境
-             ENV_VAR_EXE='env_JQ'
-             echo "ENV_VAR_EXE=$ENV_VAR_EXE" >> $GITHUB_ENV
-             echo "1をとおる"
-            elif [[ ! -z "$ENV_VAR_EXE_WBYT" ]]; then
-             #WbyT環境
-             ENV_VAR_EXE='env_WbyT'
-             echo "ENV_VAR_EXE=$ENV_VAR_EXE" >> $GITHUB_ENV
-             echo "2をとおる"
-            fi
             
-            echo "ENV_VAR_EXE=$ENV_VAR_EXE" 
+            echo "ENV_VAR_EXE1node=$ENV_VAR_EXE1node" 
 
       #チェック確認
         - name: check
           run: |
            cd tools
            chmod 777 check.sh
-           sh ./check.sh $ENV_VAR_EXE
+           sh ./check.sh $ENV_VAR_EXE1node
             
     Exec-convert-mf4:
      needs: check-bats-version
@@ -49,5 +36,5 @@ jobs:
       #チェック確認
        - name: check plus
          run: |
-          echo "ENV_VAR_EXE=$ENV_VAR_EXE"
+          echo "2 ENV_VAR_EXE1node=$ENV_VAR_EXE1node"
       
