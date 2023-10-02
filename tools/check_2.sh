@@ -12,6 +12,9 @@ ls -al
 cd ..
 pwd
 ls -al
+cd ..
+pwd
+ls -al
 # 1nodeのディレクトリ
 APP_MEASURE=work/app_measure_proctime_1node
 
