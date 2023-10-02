@@ -9,11 +9,11 @@ APP_MEASURE=/work/app_measure_proctime_1node
 #1node環境へ移動
 cd $APP_MEASURE
 
-TARGET_SOFT="aaaaabbbbb"
-TARGET_SOFT_NUM=${#TARGET_SOFT}
+TARGET_SOFT="main"
+#TARGET_SOFT_NUM=${#TARGET_SOFT}
 
 #TARGET_SOFTが7桁以上かつすべての文字が16進であるかどうか
-if [ "$TARGET_SOFT_NUM" -ge 7 ] && (echo "$TARGET_SOFT" | grep -Eq '^[[:xdigit:]]+$') ; then
+#if [ "$TARGET_SOFT_NUM" -ge 7 ] && (echo "$TARGET_SOFT" | grep -Eq '^[[:xdigit:]]+$') ; then
   
   #SHA1の場合
   echo "SHA1=$TARGET_SOFT"
@@ -26,6 +26,8 @@ if [ "$TARGET_SOFT_NUM" -ge 7 ] && (echo "$TARGET_SOFT" | grep -Eq '^[[:xdigit:]
    
   else
    git checkout $TARGET_SOFT
+   echo "sha1が存在しません。"
+   exit 1
   fi
 
   cmdstatus=$?
@@ -36,6 +38,6 @@ if [ "$TARGET_SOFT_NUM" -ge 7 ] && (echo "$TARGET_SOFT" | grep -Eq '^[[:xdigit:]
    # 実行を終了させる
    exit $cmdstatus
   fi
-else
- echo "else"
-fi
+#else
+# echo "else"
+#fi
