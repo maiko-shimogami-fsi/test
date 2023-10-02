@@ -6,7 +6,7 @@
 pwd
 
 # 1nodeのディレクトリ
-APP_MEASURE=/work/app_measure_proctime_1node
+APP_MEASURE=work/app_measure_proctime_1node
 
 #1node環境へ移動
 cd $APP_MEASURE
