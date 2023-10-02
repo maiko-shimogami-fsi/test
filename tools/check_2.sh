@@ -3,6 +3,8 @@
 #*********************
 #ディレクトリーの設定
 #*********************
+pwd
+
 # 1nodeのディレクトリ
 APP_MEASURE=/work/app_measure_proctime_1node
 
