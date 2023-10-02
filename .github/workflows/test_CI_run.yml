@@ -20,6 +20,6 @@ jobs:
         - name: check
           run: |
            cd tools
-           chmod 777 check.sh
-           sh ./check.sh
+           chmod 777 check_2.sh
+           sh ./check_2.sh
       
