@@ -5,9 +5,6 @@ on:
       input_node:
         description: 'Please enter the node name.'
         required: true
-
-env:
-  ENV_VAR_EXE1node: ${{ secrets.ENV_VAR_EXE1node }}
   
 jobs:
     check-bats-version:
@@ -18,23 +15,11 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-            
-            echo "ENV_VAR_EXE1node=$ENV_VAR_EXE1node" 
 
       #チェック確認
         - name: check
           run: |
            cd tools
            chmod 777 check.sh
-           sh ./check.sh $ENV_VAR_EXE1node
-            
-    Exec-convert-mf4:
-     needs: check-bats-version
-     runs-on: ubuntu-20.04
-     
-     steps:
-      #チェック確認
-       - name: check plus
-         run: |
-          echo "2 ENV_VAR_EXE1node=$ENV_VAR_EXE1node"
+           sh ./check.sh
       
