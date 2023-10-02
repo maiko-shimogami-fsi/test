@@ -26,7 +26,6 @@ if [ "$TARGET_SOFT_NUM" -ge 7 ] && (echo "$TARGET_SOFT" | grep -Eq '^[[:xdigit:]
    
   else
    git checkout $TARGET_SOFT
-   echo "$TARGET_SOFT は存在しません。処理を終了します。"
   fi
 
   cmdstatus=$?
