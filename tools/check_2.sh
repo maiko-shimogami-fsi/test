@@ -7,20 +7,18 @@
 cd /home/runner/work/test/test/
 
 #echo -n > index.lock
+rm -rf index.lock
 
 ls -al
 
 cd .git
 
-ls -al
-
-
-#if [ -e index.lock ];then
-#  echo remove index.lock
-#  ls -al
-#  rm -rf index.lock
-#  ls -al
-#fi
+if [ -e index.lock ];then
+  echo remove index.lock
+  ls -al
+  rm -rf index.lock
+  ls -al
+fi
 
 #git clean -df
 
