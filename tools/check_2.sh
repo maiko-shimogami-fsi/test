@@ -4,7 +4,7 @@
 #ディレクトリーの設定
 #*********************
 
-cd /home/runner/work/test/test/.git/
+cd /home/runner/work/test/test/
 
 echo -n > index.lock
 
@@ -15,7 +15,7 @@ echo -n > index.lock
 #  ls -al
 #fi
 
-git clean -df
+#git clean -df
 
 cmdstatus=$?
 echo "cmdstatus=$cmdstatus"
