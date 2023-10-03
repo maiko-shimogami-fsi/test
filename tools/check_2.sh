@@ -6,11 +6,12 @@
 
 cd /home/runner/work/test/test/
 
-touch index.lock
-
+ls -al
+rm -rf index.lock
 ls -al
 
 cd .git
+touch index.lock
 
 if [ -e index.lock ];then
   echo remove index.lock
