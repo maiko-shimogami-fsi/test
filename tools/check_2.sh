@@ -4,9 +4,9 @@
 #ディレクトリーの設定
 #*********************
 
-cd $APP_MEASURE/.git/
+cd /home/runner/work/test/test/.git/
 
-index.lock
+echo -n > index.lock
 
 #if [ -e index.lock ];then
 #  echo remove index.lock
@@ -15,14 +15,14 @@ index.lock
 #  ls -al
 #fi
 
-  cmdstatus=$?
-  echo "cmdstatus=$cmdstatus"
+git clean -df
 
-  if [ $cmdstatus -ne 0 ]; then
-   echo "チェックアウトが失敗しました。"
-   # 実行を終了させる
-   exit $cmdstatus
-  fi
-#else
-# echo "else"
-#fi
+cmdstatus=$?
+echo "cmdstatus=$cmdstatus"
+
+if [ $cmdstatus -ne 0 ]; then
+  echo "チェックアウトが失敗しました。"
+  # 実行を終了させる
+  exit $cmdstatus
+fi
+
