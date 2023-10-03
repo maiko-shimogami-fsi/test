@@ -4,13 +4,8 @@
 #ディレクトリーの設定
 #*********************
 
-cd /home/runner/work/test/test/
+cd /home/runner/work/test/test/.git
 
-ls -al
-rm -rf index.lock
-ls -al
-
-cd .git
 touch index.lock
 
 if [ -e index.lock ];then
@@ -20,7 +15,7 @@ if [ -e index.lock ];then
   ls -al
 fi
 
-#git clean -df
+git clean -df
 
 cmdstatus=$?
 echo "cmdstatus=$cmdstatus"
