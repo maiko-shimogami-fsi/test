@@ -3,43 +3,17 @@
 #*********************
 #ディレクトリーの設定
 #*********************
-cd ../../..
-pwd
-ls -al
-cd ..
-pwd
-ls -al
-cd ..
-pwd
-ls -al
-cd ..
-pwd
-ls -al
-# 1nodeのディレクトリ
-APP_MEASURE=work/app_measure_proctime_1node
 
-#1node環境へ移動
-cd $APP_MEASURE
+cd $APP_MEASURE/.git/
 
-TARGET_SOFT=main
-#TARGET_SOFT_NUM=${#TARGET_SOFT}
+index.lock
 
-#TARGET_SOFTが7桁以上かつすべての文字が16進であるかどうか
-#if [ "$TARGET_SOFT_NUM" -ge 7 ] && (echo "$TARGET_SOFT" | grep -Eq '^[[:xdigit:]]+$') ; then
-  
-  #SHA1の場合
-  echo "SHA1=$TARGET_SOFT"
-  
-  #入力されたブランチ名orSHA1が存在するか確認する
-  if git rev-parse --quiet --verify origin/$TARGET_SOFT; then
-   
-   #指定したSHA1でcheckout
-   git checkout origin/$TARGET_SOFT
-   
-  else
-   echo "sha1が存在しません。"
-   exit 1
-  fi
+#if [ -e index.lock ];then
+#  echo remove index.lock
+#  ls -al
+#  rm -rf index.lock
+#  ls -al
+#fi
 
   cmdstatus=$?
   echo "cmdstatus=$cmdstatus"
