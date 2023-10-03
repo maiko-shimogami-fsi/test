@@ -6,8 +6,7 @@
 
 cd /home/runner/work/test/test/
 
-#echo -n > index.lock
-rm -rf index.lock
+touch index.lock
 
 ls -al
 
