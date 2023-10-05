@@ -4,7 +4,7 @@
 ENV_VAR_EXE1node=$1
 echo "ENV_VAR_EXE=$ENV_VAR_EXE1node"
 
-if [ "$ENV_VAR_EXE1node" = 1 ]; then
+if [ "$ENV_VAR_EXE1node" = "hogehogehoge" ]; then
  echo "env_JQ"
 else
  echo "env_WbyT"
