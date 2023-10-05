@@ -23,5 +23,5 @@ jobs:
           run: |
            cd tools
            chmod 777 check.sh
-           sh ./check.sh ENV_VAR_EXE
+           sh ./check.sh $ENV_VAR_EXE
       
