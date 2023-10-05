@@ -5,11 +5,13 @@ on:
       input_node:
         description: 'Please enter the node name.'
         required: true
-  
+env:
+ ENV_VAR_EXE: ${{ secrets.ENV_VAR_EXE }} 
+ 
 jobs:
     check-bats-version:
       runs-on: ubuntu-20.04
-
+     
       steps:
       #環境を設定する
         - name: create text
@@ -20,6 +22,6 @@ jobs:
         - name: check
           run: |
            cd tools
-           chmod 777 check_2.sh
-           sh ./check_2.sh
+           chmod 777 check.sh
+           sh ./check.sh ENV_VAR_EXE
       
