@@ -27,7 +27,14 @@ jobs:
 
         - name: Show parameters
           run: |
-           echo "### Parameters" >> $GITHUB_STEP_SUMMARY
+           echo "### Parameters1" >> $GITHUB_STEP_SUMMARY
+           echo "| Key | Value |" >> $GITHUB_STEP_SUMMARY
+           echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
+           echo "| inputs.input_node | inputs.input_node |" >> $GITHUB_STEP_SUMMARY
+
+        - name: Show parameters2
+          run: |
+           echo "### Parameters2" >> $GITHUB_STEP_SUMMARY
            echo "| Key | Value |" >> $GITHUB_STEP_SUMMARY
            echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
            echo "| inputs.input_node | inputs.input_node |" >> $GITHUB_STEP_SUMMARY
