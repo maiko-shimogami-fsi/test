@@ -24,4 +24,11 @@ jobs:
            cd tools
            chmod 777 check.sh
            sh ./check.sh $ENV_VAR_EXE
+
+        - name: Show parameters
+          run: |
+           echo "### Parameters" >> $GITHUB_STEP_SUMMARY
+           echo "| Key | Value |" >> $GITHUB_STEP_SUMMARY
+           echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
+           echo "| inputs.input_node | inputs.input_node |" >> $GITHUB_STEP_SUMMARY
       
