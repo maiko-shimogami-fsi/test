@@ -27,7 +27,7 @@ jobs:
 
         - name: Show parameters
           run: |
-           echo "### 条件" >> $GITHUB_STEP_SUMMARY
+           echo "### parameters" >> $GITHUB_STEP_SUMMARY
            echo "NodeName:${{ inputs.input_node }}" >> $GITHUB_STEP_SUMMARY
            echo "NodeName:${{ inputs.input_node }}" >> $GITHUB_STEP_SUMMARY
            echo "NodeName:${{ inputs.input_node }}" >> $GITHUB_STEP_SUMMARY
@@ -35,7 +35,7 @@ jobs:
 
         - name: Show parameters2
           run: |
-           echo "### 結果" >> $GITHUB_STEP_SUMMARY
+           echo "### parameters2" >> $GITHUB_STEP_SUMMARY
            echo "| 最大処理時間 | B2B一致／不一致 |" >> $GITHUB_STEP_SUMMARY
            echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
            echo "| ${{ inputs.input_node }} | ${{ inputs.input_node }} |" >> $GITHUB_STEP_SUMMARY
