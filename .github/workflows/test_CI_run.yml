@@ -31,7 +31,8 @@ jobs:
            echo "NodeName:${{ inputs.input_node }}" >> $GITHUB_STEP_SUMMARY
            echo "CompName:${{ inputs.input_node }}" >> $GITHUB_STEP_SUMMARY
            echo "TargetSHA1:xxxxxxxxxxxxxxxx" >> $GITHUB_STEP_SUMMARY
-           echo "mf4branch:main" >> $GITHUB_STEP_SUMMARY
+           echo "mf4ブランチ名:main" >> $GITHUB_STEP_SUMMARY
+           echo "計測対象ブランチ名:AUTO_xxxxxx" >> $GITHUB_STEP_SUMMARY
 
         - name: Show parameters2
           run: |
