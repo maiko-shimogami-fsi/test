@@ -37,5 +37,5 @@ jobs:
            echo "### Parameters2" >> $GITHUB_STEP_SUMMARY
            echo "| 最大処理時間 | B2B一致／不一致 |" >> $GITHUB_STEP_SUMMARY
            echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
-           echo "| inputs.input_node | inputs.input_node |" >> $GITHUB_STEP_SUMMARY
+           echo "| ${{ inputs.input_node }} | ${{ inputs.input_node }} |" >> $GITHUB_STEP_SUMMARY
       
