@@ -36,8 +36,10 @@ jobs:
 
         - name: Show parameters2
           run: |
+           DATA=$(awk -F'\t' '{print $1, $2}' /work/app_measure_proctime_1node/tools/csv_diff/01.comp/2.output/00000000/btob_datainfo.txt)
+           read -r DATA1 DATA2 DATA3 <<< "$DATA"
            echo "### 結果" >> $GITHUB_STEP_SUMMARY
            echo "| シナリオ名 | 最大処理時間 | B2B一致／不一致 |" >> $GITHUB_STEP_SUMMARY
            echo "| --- | ---| --- |" >> $GITHUB_STEP_SUMMARY
-           echo "| 00000000 | 1.111111 | 一致 |" >> $GITHUB_STEP_SUMMARY
+           echo "| $DATA1 | $DATA2 | $DATA3 |" >> $GITHUB_STEP_SUMMARY
       
