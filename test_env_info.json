@@ -1,6 +1,6 @@
 {
     "LCD": {
-        "CompName": "Lcd",
+        "CompName": "Lcd(comp)",
         "NodeName": "Lcd",
         "module_dir_lib": "tss4-25tm.adas_sdk_proj/impl/App/LaneChangeAssist",
         "model_app": "False"
