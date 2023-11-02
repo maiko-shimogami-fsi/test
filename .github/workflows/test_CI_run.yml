@@ -41,5 +41,5 @@ jobs:
            echo "### 結果" >> $GITHUB_STEP_SUMMARY
            echo "| シナリオ名 | 最大処理時間 | B2B一致／不一致 |" >> $GITHUB_STEP_SUMMARY
            echo "| --- | ---| --- |" >> $GITHUB_STEP_SUMMARY
-           echo "| $DATA1 | $DATA2 | $DATA3 |" >> $GITHUB_STEP_SUMMARY
+           echo "| $DATA1 | $DATA2(../blob/master/tools) | $DATA3 |" >> $GITHUB_STEP_SUMMARY
       
