@@ -1,13 +1,9 @@
 #!/bin/bash
+INPUT_FOLDER=/test/tools
+OUTPUT_FOLDER=/test/tools/tools2
 
-#引数をENV_VAR_EXEに設定
-ENV_VAR_EXE1node=$1
-echo "ENV_VAR_EXE=$ENV_VAR_EXE1node"
-
-if [ "$ENV_VAR_EXE1node" = "hogehogehoge" ]; then
- echo "env_JQ"
+if [ ! "$(find "$INPUT_FOLDER" -name '*.mf4')" ] || [ ! "$(find "$OUTPUT_FOLDER" -name '*.mf4')" ]; then
+      echo "mf4ファイルが格納されていません"
 else
- echo "env_WbyT"
+      echo "mf4ファイルが格納されてます。"
 fi
-
-echo "end"
