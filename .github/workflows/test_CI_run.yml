@@ -30,4 +30,10 @@ jobs:
         - name: check2
           run: |
            echo "完了"
-           
+
+concurrency:
+ group: my-workflow
+ cancel-in-progress: true
+ max: 1
+ 
+ 
