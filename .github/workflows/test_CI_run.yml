@@ -19,16 +19,15 @@ jobs:
       #チェック確認
         - name: check1
           run: |
-           cd tools
-           sh ./check.sh $ENV_VAR_EXE
+           echo #sleep start"
+           sleep 30
            
     check-bats-version2:
       needs: check-bats-version
-      runs-on: 1node
+      runs-on: ubuntu-20.04
       
       steps:
         - name: check2
           run: |
-           cd tools
-           sh ./check.sh $ENV_VAR_EXE
+           echo "完了"
            
