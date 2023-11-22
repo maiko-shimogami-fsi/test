@@ -33,6 +33,6 @@ jobs:
 
 concurrency:
  group: my-workflow
- cancel-in-progress: true
+ cancel-in-progress: false
  
  
