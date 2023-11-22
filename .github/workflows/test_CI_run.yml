@@ -4,9 +4,7 @@ on:
     inputs:
       input_node:
         description: 'Please enter the node name.'
-        required: true
-env:
- ENV_VAR_EXE: ${{ secrets.ENV_VAR_EXE }} 
+        required: false
  
 jobs:
     check-bats-version:
@@ -19,27 +17,18 @@ jobs:
         - run: |
 
       #チェック確認
-        - name: check
+        - name: check1
           run: |
            cd tools
-           chmod 777 check.sh
            sh ./check.sh $ENV_VAR_EXE
-
-        - name: Show parameters
-          run: |
-           echo "### 条件" >> $GITHUB_STEP_SUMMARY
-           echo "NodeName:${{ inputs.input_node }}" >> $GITHUB_STEP_SUMMARY
-           echo "CompName:${{ inputs.input_node }}" >> $GITHUB_STEP_SUMMARY
-           echo "TargetSHA1:xxxxxxxxxxxxxxxx" >> $GITHUB_STEP_SUMMARY
-           echo "mf4ブランチ名:main" >> $GITHUB_STEP_SUMMARY
-           echo "計測対象ブランチ名:AUTO_xxxxxx" >> $GITHUB_STEP_SUMMARY
-
-        - name: Show parameters2
-          run: |
-           DATA=$(awk -F'\t' '{print $1, $2, $3}' btob_datainfo.txt)
-           read -r DATA1 DATA2 DATA3 <<< "$DATA"
-           echo "### 結果" >> $GITHUB_STEP_SUMMARY
-           echo "| シナリオ名 | 最大処理時間 | B2B一致／不一致 |" >> $GITHUB_STEP_SUMMARY
-           echo "| --- | ---| --- |" >> $GITHUB_STEP_SUMMARY
-           echo "| $DATA1 | $DATA2(../blob/master/tools) | $DATA3 |" >> $GITHUB_STEP_SUMMARY
+           
+    check-bats-version2:
+      needs: check-bats-version
+      runs-on: 1node
       
+      steps:
+        - name: check2
+          run: |
+           cd tools
+           sh ./check.sh $ENV_VAR_EXE
+           
