@@ -19,25 +19,21 @@ jobs:
       #チェック確認
         - name: check1
           run: |
-           foreach ($l in Get-Content ./unittest_setting.json) {
-              if ($l -like "*node_name*") {
-                $node_name = $l.Substring(22, ($l.Length-24))
-              } elseif ($l -like "*scheduled*") {
-                if ($l -like "*true*") {
-                  $targetcompo += "`""
-                  $targetcompo += $node_name.trim()
-                  $targetcompo += "`""
-                  $flag = 1
-                }
-              }
+            foreach ($l in Get-Content ./unittest_setting.json) {
+             if ($l -like "*node_name*") {
+              $node_name = $l.Substring(22, ($l.Length-24))
+             } elseif ($l -like "*scheduled*") {
+               if ($l -like "*true*") {
+                $targetcompo += "`""
+                $targetcompo += $node_name.trim()
+                $targetcompo += "`""
+                $flag = 1
+               }
+             }
               if ($flag -eq 1) {
                 $targetcompo += ","
                 $flag = 0
               }
             }
             $targetcompo += "]"
-            echo "targetcompo_info2=$targetcompo"
-           
-   
- 
- 
+            echo "targetcompo_info2=$targetcompo" 
