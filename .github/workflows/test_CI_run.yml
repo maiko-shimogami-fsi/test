@@ -8,7 +8,7 @@ on:
  
 jobs:
     check-bats-version:
-      runs-on: ubuntu-20.04
+      runs-on: windows-latest
      
       steps:
       #環境を設定する
@@ -19,9 +19,9 @@ jobs:
       #チェック確認
         - name: check1
           run: |
-            if [[ -z "${{inputs.input_node}}" ]]; then
+            if ("${{inputs.input_node}}" -eq "") {
              echo "空です"
-            else
+            }else{
              echo "空じゃないです"
-            fi
+            }
             
