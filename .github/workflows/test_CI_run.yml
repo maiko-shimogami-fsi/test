@@ -19,9 +19,9 @@ jobs:
       #チェック確認
         - name: check1
           run: |
-            if ("${{inputs.input_node}}" -eq "") {
-             echo "空です"
-            }else{
+            if ("${{inputs.input_node}}" -ne "") {
              echo "空じゃないです"
+            }else{
+             echo "空です"
             }
             
