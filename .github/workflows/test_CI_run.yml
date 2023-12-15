@@ -4,10 +4,11 @@ on:
     inputs:
       input_node:
         description: 'Please enter the node name.'
+        type: boolean
         required: false
  
 jobs:
-    check-bats-version:
+    check-bats-version1:
       runs-on: windows-latest
      
       steps:
@@ -19,9 +20,37 @@ jobs:
       #チェック確認
         - name: check1
           run: |
-            if ("${{inputs.input_node}}" -ne "") {
-             echo "空じゃないです"
-            }else{
-             echo "空です"
-            }
-            
+             echo "check-bats-version1を実施しました"
+
+    check-bats-version2:
+      runs-on: windows-latest
+      needs: check-bats-version1
+     
+      steps:
+      #環境を設定する
+        - name: create text
+          uses: actions/checkout@v3
+        - run: |
+
+      #チェック確認
+        - name: check1
+          run: |
+             echo "check-bats-version2を実施しました"
+           
+    check-bats-version3:
+      runs-on: windows-latest
+      if: >
+        ${{ github.event.inputs.input_node == 'true' && needs.check-bats-version2 }}
+        needs:[ check-bats-version1, check-bats-version2] 
+      
+      steps:
+      #環境を設定する
+        - name: create text
+          uses: actions/checkout@v3
+        - run: |
+
+      #チェック確認
+        - name: check3
+          run: |
+             echo "check-bats-version3を実施しました"
+                 
