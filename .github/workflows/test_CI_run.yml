@@ -48,8 +48,8 @@ jobs:
 
         - name: check3
           run: |
-            echo "setting_errstatus=$setting_errstatus" 
-            echo "aaa_errstatus=$aaa_errstatus"
+            echo "setting_errstatus=${{ env.setting_errstatus }}" 
+            echo "aaa_errstatus=${{ env.aaa_errstatus }}"
             #if [ $setting_errstatus ] || [ $aaa_errstatus ]; then
              # 実行を終了させる
             # echo "エラー終了します"
