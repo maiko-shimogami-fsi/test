@@ -43,7 +43,7 @@ jobs:
              
       #チェック確認
         - name: check2
-          if: input_mod != ""
+          if: input_mod != ''
           run: |
             echo "入力値が入ってます"
 
