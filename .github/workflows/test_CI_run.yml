@@ -11,7 +11,7 @@ on:
  
 jobs:
     check-bats-version1:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
      
       steps:
       #環境を設定する
@@ -26,7 +26,7 @@ jobs:
              echo "check-bats-version1を実施しました"
 
     check-bats-version2:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       needs: check-bats-version1
      
       steps:
@@ -34,14 +34,15 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
+             echo "前処理"
 
       #チェック確認
         - name: check2
-          if: ${{ inputs.input_mod }} && ${{ inputs.input_compo }}
+          if: '${{ inputs.input_mod }} && ${{ inputs.input_compo }}'
           run: |
             echo "入力値が入ってます"
 
         - name: check3
-          if: ! ${{ inputs.input_mod }} || ! ${{ inputs.input_compo }}
+          if: '! ${{ inputs.input_mod }} || ! ${{ inputs.input_compo }}'
           run: |
             echo "入力値が入ってません" 
