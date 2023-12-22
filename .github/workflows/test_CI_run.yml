@@ -50,7 +50,7 @@ jobs:
           run: |
             echo "setting_errstatus=$setting_errstatus" 
             echo "aaa_errstatus=$aaa_errstatus"
-            if [ $setting_errstatus ] || [ $aaa_errstatus ]; then
+            #if [ $setting_errstatus ] || [ $aaa_errstatus ]; then
              # 実行を終了させる
-             echo "エラー終了します"
-            fi
+            # echo "エラー終了します"
+            #fi
