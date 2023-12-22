@@ -34,7 +34,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             setting_errstatus=1
+             $setting_errstatus=1
              echo "setting_errstatus=$setting_errstatus" 
              #echo "setting_errstatus=$setting_errstatus" >> $GITHUB_ENV
              
@@ -42,7 +42,7 @@ jobs:
         - name: check2
           if: ( (github.event.inputs.input_mod != '') && ( github.event.inputs.input_compo != ''))
           run: |
-            aaa_errstatus=1
+            $aaa_errstatus=1
             echo "aaa_errstatus=$aaa_errstatus"
             #echo "aaa_errstatus=$aaa_errstatus" >> $GITHUB_ENV
 
