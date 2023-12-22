@@ -34,11 +34,12 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             echo "前処理"
+             echo "input_mod=${{inputs.input_mod}}"
+             echo "input_compo=${{inputs.input_compo}}"
 
       #チェック確認
         - name: check2
-          if: (("${{inputs.input_compo}}" -ne "") && ("${{inputs.input_compo}}" -ne ""))
+          if: ( github.event.inputs.input_mod -ne "")
           run: |
             echo "入力値が入ってます"
 
