@@ -39,7 +39,7 @@ jobs:
 
       #チェック確認
         - name: check2
-          if: ( github.event.inputs.input_mod != '""')
+          if: env.INPUT_MOD
           run: |
             echo "入力値が入ってます"
 
