@@ -44,7 +44,7 @@ jobs:
 
         - name: check3
           run: |
-            echo "env.bbb_flg=${env.bbb_flg}"
+            echo "env.bbb_flg=${{ env.bbb_flg }}"
             #if [ $setting_errstatus ] || [ $aaa_errstatus ]; then
              # 実行を終了させる
             # echo "エラー終了します"
