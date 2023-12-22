@@ -36,14 +36,10 @@ jobs:
         - run: |
              echo "input_mod=${{inputs.input_mod}}"
              echo "input_compo=${{inputs.input_compo}}"
-             $input_mod="${{ inputs.input_mod }}" -replace "　", ""
-             $input_compo="${{ inputs.input_compo }}" -replace "　", ""
-             echo "input_mod=$input_mod" >> $GITHUB_ENV
-             echo "input_compo=$input_compo" >> $GITHUB_ENV
              
       #チェック確認
         - name: check2
-          if: input_mod != ''
+          if: (github.event.inputs.input_mod != '')
           run: |
             echo "入力値が入ってます"
 
