@@ -42,7 +42,7 @@ jobs:
         - name: check2
           if: ( (github.event.inputs.input_mod != '') && ( github.event.inputs.input_compo != ''))
           run: |
-            echo "$aaa_errstatus=bbb" >> $GITHUB_ENV
+            echo "aaa_errstatus=bbb" >> $GITHUB_ENV
             echo "aaa_errstatus=$aaa_errstatus"
 
         - name: check3
