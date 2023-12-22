@@ -38,11 +38,11 @@ jobs:
 
       #チェック確認
         - name: check2
-          if: '${{ inputs.input_mod }} && ${{ inputs.input_compo }}'
+          if: ("${{inputs.input_mod}}" -ne "") && ("${{inputs.input_compo}}" -ne "")
           run: |
             echo "入力値が入ってます"
 
         - name: check3
-          if: '! ${{ inputs.input_mod }} || ! ${{ inputs.input_compo }}'
+          if: ("${{inputs.input_mod}}" -eq "") || ("${{inputs.input_compo}}" -eq "")
           run: |
             echo "入力値が入ってません" 
