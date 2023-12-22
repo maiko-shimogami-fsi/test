@@ -8,8 +8,6 @@ on:
       input_compo:
         description: 'Please enter the compo name to UnitTest.'
         required: false
-env:
-  DATETIME: ${ Get-Date -Format "yyyyMMddHHmm" }
  
 jobs:
     check-bats-version1:
@@ -20,7 +18,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             echo "$DATETIME"
+             echo "aaa"
              
       #チェック確認
         - name: check1
@@ -36,15 +34,21 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             echo "input_mod=${{inputs.input_mod}}"
-             echo "input_compo=${{inputs.input_compo}}"
+             setting_errstatus=ture
+             echo "setting_errstatus=$setting_errstatus" >> $GITHUB_OUTPUT
              
       #チェック確認
         - name: check2
           if: ( (github.event.inputs.input_mod != '') && ( github.event.inputs.input_compo != ''))
           run: |
-            echo "入力値が入ってます"
+            aaa_errstatus=ture
+            echo "aaa_errstatus=$aaa_errstatus" >> $GITHUB_OUTPUT
 
         - name: check3
           run: |
-            echo "入力値が入ってません" 
+            echo "setting_errstatus=$setting_errstatus" 
+            echo "aaa_errstatus=$aaa_errstatus"
+            if [ $setting_errstatus -eq 'ture' ] || [ $aaa_errstatus -eq 'ture' ]; then
+             # 実行を終了させる
+             echo "エラー終了します"
+            fi
