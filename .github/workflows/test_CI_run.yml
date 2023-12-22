@@ -2,9 +2,11 @@ name: form-example
 on:
  workflow_dispatch:
     inputs:
-      input_node:
-        description: 'Please enter the node name.'
-        type: boolean
+      input_mod:
+        description: 'Please enter the SHA-1 or branch name to UnitTest.'
+        required: false
+      input_compo:
+        description: 'Please enter the compo name to UnitTest.'
         required: false
  
 jobs:
@@ -16,7 +18,8 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-
+             echo "前処理"
+             
       #チェック確認
         - name: check1
           run: |
@@ -24,7 +27,6 @@ jobs:
 
     check-bats-version2:
       runs-on: windows-latest
-      if: ${{ github.event.inputs.input_node == 'true' }}
       needs: check-bats-version1
      
       steps:
@@ -34,22 +36,12 @@ jobs:
         - run: |
 
       #チェック確認
-        - name: check1
+        - name: check2
+          if: ${{ inputs.input_mod }} && ${{ inputs.input_compo }}
           run: |
-             echo "check-bats-version2を実施しました"
-           
-    check-bats-version3:
-      runs-on: windows-latest
-      if: ${{ github.event.inputs.input_node == 'true' }}
-      needs: ${{ github.event.inputs.input_node == 'true' &&  [ check-bats-version1, check-bats-version2 ] || [ check-bats-version2 ] }}
-      steps:
-      #環境を設定する
-        - name: create text
-          uses: actions/checkout@v3
-        - run: |
+            echo "入力値が入ってます"
 
-      #チェック確認
         - name: check3
+          if: ! ${{ inputs.input_mod }} || ! ${{ inputs.input_compo }}
           run: |
-             echo "check-bats-version3を実施しました"
-                 
+            echo "入力値が入ってません" 
