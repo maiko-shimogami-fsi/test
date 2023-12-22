@@ -20,7 +20,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             echo "${env.DATETIME}"
+             echo "$DATETIME"
              
       #チェック確認
         - name: check1
