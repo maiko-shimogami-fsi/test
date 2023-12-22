@@ -8,6 +8,8 @@ on:
       input_compo:
         description: 'Please enter the compo name to UnitTest.'
         required: false
+env:
+ DATETIME: ${{ Get-Date -Format "yyyyMMddHHmm" }}
  
 jobs:
     check-bats-version1:
@@ -18,7 +20,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             echo "前処理"
+             echo "${env.DATETIME}"
              
       #チェック確認
         - name: check1
