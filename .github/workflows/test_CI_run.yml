@@ -34,23 +34,23 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             setting_errstatus=ture
+             setting_errstatus=1
              echo "setting_errstatus=$setting_errstatus" 
-             #echo "setting_errstatus=$setting_errstatus" >> $GITHUB_OUTPUT
+             #echo "setting_errstatus=$setting_errstatus" >> $GITHUB_ENV
              
       #チェック確認
         - name: check2
           if: ( (github.event.inputs.input_mod != '') && ( github.event.inputs.input_compo != ''))
           run: |
-            aaa_errstatus=ture
+            aaa_errstatus=1
             echo "aaa_errstatus=$aaa_errstatus"
-            #echo "aaa_errstatus=$aaa_errstatus" >> $GITHUB_OUTPUT
+            #echo "aaa_errstatus=$aaa_errstatus" >> $GITHUB_ENV
 
         - name: check3
           run: |
             echo "setting_errstatus=$setting_errstatus" 
             echo "aaa_errstatus=$aaa_errstatus"
-            #if [ $setting_errstatus -eq 'ture' ] || [ $aaa_errstatus -eq 'ture' ]; then
-            # # 実行を終了させる
-            # echo "エラー終了します"
-            #fi
+            if [ $setting_errstatus ] || [ $aaa_errstatus ]; then
+             # 実行を終了させる
+             echo "エラー終了します"
+            fi
