@@ -9,7 +9,7 @@ on:
         description: 'Please enter the compo name to UnitTest.'
         required: false
 env:
- DATETIME: ${{ `date +%Y%m%d%H%M` }}
+  DATETIME: ${ Get-Date -Format "yyyyMMddHHmm" }
  
 jobs:
     check-bats-version1:
