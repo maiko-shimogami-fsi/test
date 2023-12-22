@@ -35,20 +35,22 @@ jobs:
           uses: actions/checkout@v3
         - run: |
              setting_errstatus=ture
-             echo "setting_errstatus=$setting_errstatus" >> $GITHUB_OUTPUT
+             echo "setting_errstatus=$setting_errstatus" 
+             #echo "setting_errstatus=$setting_errstatus" >> $GITHUB_OUTPUT
              
       #チェック確認
         - name: check2
           if: ( (github.event.inputs.input_mod != '') && ( github.event.inputs.input_compo != ''))
           run: |
             aaa_errstatus=ture
-            echo "aaa_errstatus=$aaa_errstatus" >> $GITHUB_OUTPUT
+            echo "aaa_errstatus=$aaa_errstatus"
+            #echo "aaa_errstatus=$aaa_errstatus" >> $GITHUB_OUTPUT
 
         - name: check3
           run: |
             echo "setting_errstatus=$setting_errstatus" 
             echo "aaa_errstatus=$aaa_errstatus"
-            if [ $setting_errstatus -eq 'ture' ] || [ $aaa_errstatus -eq 'ture' ]; then
-             # 実行を終了させる
-             echo "エラー終了します"
-            fi
+            #if [ $setting_errstatus -eq 'ture' ] || [ $aaa_errstatus -eq 'ture' ]; then
+            # # 実行を終了させる
+            # echo "エラー終了します"
+            #fi
