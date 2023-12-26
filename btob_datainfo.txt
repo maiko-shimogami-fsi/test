@@ -1,1 +1,166 @@
-00000000	None	一致
+<Line Comment>
+<Line Comment>
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static VD fn_set_jdg_thre_stt( const StOFsnMwrObjRaw *pst_a_mwr_obj_raw, const StOFsnMwrObj *   pst_a_mwr_obj_out, EnOFsnMwrThre *        pen_a_thre_stt )], skip_tmp=4
+ofsn_fn_set_fg_mwr, fn_set_jdg_thre_stt
+<Line Comment>
+concat_line() : line_tmp=[    if (pst_a_mwr_obj_out->bl_is_ena == OFF) {], skip_tmp=0
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static VD fn_set_extr_flg( const StOFsnMwrObjRaw *pst_a_mwr_obj_raw, Bool *                 pbl_a_extr_high )], skip_tmp=3
+ofsn_fn_set_fg_mwr, fn_set_extr_flg
+<Line Comment>
+concat_line() : line_tmp=[    if (  (pst_a_mwr_obj_raw->bl_is_thre == ON)], skip_tmp=0
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static Bool bl_set_merge_flg( const U2               u2_a_ctr_sns_mwr_diff, const StOFsnMwrObjRaw *pst_a_mwr_obj_raw )], skip_tmp=3
+ofsn_fn_set_fg_mwr, bl_set_merge_flg
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[    return (bl_t_merge_out);], skip_tmp=0
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static VD fn_set_tmp_flg( /* ミリ波仮フラグ設定 */ const U2               u2_a_ctr_sns_mwr_diff, const StOFsnMwrObjRaw *pst_a_mwr_obj_raw, StOFsnMwrGstFlg *      pst_a_tmp_flg)], skip_tmp=3
+ofsn_fn_set_fg_mwr, fn_set_tmp_flg
+concat_line() : line_tmp=[    if (u2_a_ctr_sns_mwr_diff > (U2)1) {], skip_tmp=0
+concat_line() : line_tmp=[        for (U1 u1_t_gst_idx = (U1)0; u1_t_gst_idx < (U1)EN_OFSN_MWR_GST_FLG_TYPE_NUM; u1_t_gst_idx++) {], skip_tmp=0
+concat_line() : line_tmp=[        for (U1 u1_t_gst_idx = (U1)0; u1_t_gst_idx < (U1)EN_OFSN_MWR_GST_FLG_TYPE_NUM; u1_t_gst_idx++) {], skip_tmp=0
+<Line Comment>
+concat_line() : line_tmp=[    if (  (pst_a_tmp_flg->abl_each[EN_OFSN_MWR_GST_FLG_TYPE_WRONG_ANG] == ON)], skip_tmp=0
+<Line Comment>
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static Bool bl_set_fsn_inv_obj_flg( const Bool             bl_a_new, const StOFsnMwrObj *   pst_a_mwr_obj_out, const StOFsnMwrObjRaw *pst_a_mwr_obj_raw, const StOFsnMwrGstFlg *pst_a_tmp_flg_tmp )], skip_tmp=5
+ofsn_fn_set_fg_mwr, bl_set_fsn_inv_obj_flg
+<Line Comment>
+concat_line() : line_tmp=[    if (  (bl_a_new == ON)], skip_tmp=0
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[    if (  (  (CU1_FSN_MWR_TMP1_FSN_INV_SEL == (U1)1)], skip_tmp=0
+concat_line() : line_tmp=[    return (bl_t_fsn_inv_obj);], skip_tmp=0
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static VD fn_jdg_likelihood( const FL               fl_a_speed, const Bool             bl_a_ena, const StOFsnMwrObjRaw *pst_a_mwr_obj_raw, StOFsnMwrObjTypeInfo * pst_a_type_info )], skip_tmp=5
+ofsn_fn_set_fg_mwr, fn_jdg_likelihood
+<Line Comment>
+concat_line() : line_tmp=[    if (bl_a_ena == ON) {], skip_tmp=0
+<Line Comment>
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[    if (  (u1_t_max_lik == (U1)0)], skip_tmp=0
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[        if (u1_t_max_lik == pst_a_type_info->st_lik_value.u1_other) {], skip_tmp=0
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[    if (pst_a_type_info->en_type_obj == EN_OFSN_FSN_LIK_TYPE_CTG_MWR_MODE0) {], skip_tmp=0
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static U1 u1_upd_ctr_extr( const FL               fl_a_speed, const StOFsnMwrObj *   pst_a_mwr_obj_out, const StOFsnMwrObjRaw *pst_a_mwr_obj_raw )], skip_tmp=4
+ofsn_fn_set_fg_mwr, u1_upd_ctr_extr
+<Line Comment>
+concat_line() : line_tmp=[    if (  (pst_a_mwr_obj_out->bl_is_ena == ON)], skip_tmp=0
+<Line Comment>
+concat_line() : line_tmp=[    return (u1_t_ctr_extr);], skip_tmp=0
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static U2 u2_upd_ctr_dtct( const Bool          bl_a_fsn_rnew_mwr, const StOFsnMwrObj *pst_a_mwr_obj_out )], skip_tmp=3
+ofsn_fn_set_fg_mwr, u2_upd_ctr_dtct
+<Line Comment>
+concat_line() : line_tmp=[    if (bl_a_fsn_rnew_mwr == ON) {], skip_tmp=0
+<Line Comment>
+concat_line() : line_tmp=[        if (pst_a_mwr_obj_out->bl_is_ena == ON) {], skip_tmp=0
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[    return (u2_t_ctr_dtct);], skip_tmp=0
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static U2 u2_upd_ctr_dtct_no_extr( const Bool             bl_a_fsn_rnew_mwr, const StOFsnMwrObj *   pst_a_mwr_obj_out, const StOFsnMwrObjRaw *pst_a_mwr_obj_raw )], skip_tmp=4
+ofsn_fn_set_fg_mwr, u2_upd_ctr_dtct_no_extr
+<Line Comment>
+concat_line() : line_tmp=[    if (bl_a_fsn_rnew_mwr == ON) {], skip_tmp=0
+<Line Comment>
+concat_line() : line_tmp=[        if (  (pst_a_mwr_obj_out->bl_is_ena == OFF)], skip_tmp=0
+<Line Comment>
+concat_line() : line_tmp=[    return (u2_t_ctr_dtct_no_extr);], skip_tmp=0
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[static VD fn_set_rcs_est_flg( const FL              fl_a_curverad, const StOFsnPoint *   pst_a_pos_dely_cmp, StOFsnMwrObjTypeInfo *pst_a_type_info )], skip_tmp=4
+ofsn_fn_set_fg_mwr, fn_set_rcs_est_flg
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+
+rule_check_sub() [gtest_ofsn_fn_jdg_low_pow_mode.cpp]------------------------------------------
+
+/work/app_unit_test/tool_test6/test/use_stub/IP_GSP_Fusion/app/fsn/fcn_211_01_fsn_set_fg_mwr/sub_jdg_low_pow_mode/gtest_ofsn_fn_jdg_low_pow_mode.cpp
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Block Comment Start>
+<Block Comment End>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[  EXPECT_CALL(*testMock, ofsn_count_up_u1(_, _, _)) .WillRepeatedly(Invoke(AMSTB_Test_ofsn_fn_jdg_low_pow_mode_stub_1_STUB_ofsn_count_up_u1));], skip_tmp=1
+
+ERROR: TEST_F()のテストケース名とスタブ関数名に含まれるテストケース名が一致していません。
+  →TEST_F()   :Test_ofsn_fn_jdg_low_pow_mode_Test_ofsn_fn_jdg_low_pow_mode_1
+   スタブ関数 :Test_ofsn_fn_jdg_low_pow_mode_stub_1
+<Line Comment>
+<Line Comment>
+<Line Comment>
+sub_jdg_low_pow_mode.c
+テストに対応するCソースファイルあり : sub_jdg_low_pow_mode
+<Line Comment>
+<Block Comment Start>
+<Block Comment End>
+concat_line() : line_tmp=[VD ofsn_fn_jdg_low_pow_mode( const FL          fl_a_spd_rcg_grd, StOFsnLowPowMode *pst_a_low_pow_mode)], skip_tmp=2
+ofsn_fn_jdg_low_pow_mode, ofsn_fn_jdg_low_pow_mode
+テスト対象関数を評価対象ソースに発見 : ofsn_fn_jdg_low_pow_mode
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+concat_line() : line_tmp=[    if (pst_a_low_pow_mode->bl_low_power_mode == OFF) {], skip_tmp=0
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
+<Line Comment>
