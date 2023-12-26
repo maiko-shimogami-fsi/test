@@ -23,20 +23,8 @@ jobs:
       #チェック確認
         - name: check1
           run: |
-             echo "check-bats-version1を実施しました"
-
-    check-bats-version2:
-      runs-on: windows-latest
-      needs: check-bats-version1
-     
-      steps:
-      #環境を設定する
-        - name: create text
-          uses: actions/checkout@v3
-        - run: |
              for file in *.txt; do
-                   if grep -q "ERROR" "$file"; then
-                     echo "Error found in ${file##*/}"
-                   fi
-                 done
-             
+              if grep -q "ERROR" "$file"; then
+               echo "Error found in ${file##*/}"
+               fi
+             done
