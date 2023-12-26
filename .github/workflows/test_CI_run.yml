@@ -34,18 +34,12 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             echo "bbb_flg=false" >> $GITHUB_ENV
+             for file in /*.txt; do
+                 # Check if "error" is present in the file
+                 if grep -q "ERROR" "$file"; then
+                     echo "Error found in $file"
+                 else
+                     echo "No error found in $file"
+                 fi
+             done
              
-      #チェック確認
-        - name: check2
-          if: ( (github.event.inputs.input_mod != '') && ( github.event.inputs.input_compo != ''))
-          run: |
-            echo "aaa_flg=true" >> $GITHUB_ENV
-
-        - name: check3
-          run: |
-            echo "env.bbb_flg=${{ env.bbb_flg }}"
-            #if [ $setting_errstatus ] || [ $aaa_errstatus ]; then
-             # 実行を終了させる
-            # echo "エラー終了します"
-            #fi
