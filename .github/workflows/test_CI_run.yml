@@ -24,7 +24,7 @@ jobs:
         - name: check1
           run: |
              status=false
-             for file in *.txt; do
+             for file in /tools/*.txt; do
               if grep -q "ERROR" "$file"; then
                echo "Error found in ${file##*/}"
                status=true
