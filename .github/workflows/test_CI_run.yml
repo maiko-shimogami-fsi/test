@@ -23,8 +23,14 @@ jobs:
       #チェック確認
         - name: check1
           run: |
+             status=false
              for file in *.txt; do
               if grep -q "ERROR" "$file"; then
                echo "Error found in ${file##*/}"
-               fi
+               status=true
+              fi
              done
+             
+             if [ error_status='false' ]; then
+              echo "false"
+             fi
