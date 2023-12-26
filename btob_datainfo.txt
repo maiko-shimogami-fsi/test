@@ -140,27 +140,3 @@ rule_check_sub() [gtest_ofsn_fn_jdg_low_pow_mode.cpp]---------------------------
 <Line Comment>
 concat_line() : line_tmp=[  EXPECT_CALL(*testMock, ofsn_count_up_u1(_, _, _)) .WillRepeatedly(Invoke(AMSTB_Test_ofsn_fn_jdg_low_pow_mode_stub_1_STUB_ofsn_count_up_u1));], skip_tmp=1
 
-ERROR: TEST_F()のテストケース名とスタブ関数名に含まれるテストケース名が一致していません。
-  →TEST_F()   :Test_ofsn_fn_jdg_low_pow_mode_Test_ofsn_fn_jdg_low_pow_mode_1
-   スタブ関数 :Test_ofsn_fn_jdg_low_pow_mode_stub_1
-<Line Comment>
-<Line Comment>
-<Line Comment>
-sub_jdg_low_pow_mode.c
-テストに対応するCソースファイルあり : sub_jdg_low_pow_mode
-<Line Comment>
-<Block Comment Start>
-<Block Comment End>
-concat_line() : line_tmp=[VD ofsn_fn_jdg_low_pow_mode( const FL          fl_a_spd_rcg_grd, StOFsnLowPowMode *pst_a_low_pow_mode)], skip_tmp=2
-ofsn_fn_jdg_low_pow_mode, ofsn_fn_jdg_low_pow_mode
-テスト対象関数を評価対象ソースに発見 : ofsn_fn_jdg_low_pow_mode
-<Line Comment>
-<Line Comment>
-<Line Comment>
-<Line Comment>
-concat_line() : line_tmp=[    if (pst_a_low_pow_mode->bl_low_power_mode == OFF) {], skip_tmp=0
-<Line Comment>
-<Line Comment>
-<Line Comment>
-<Line Comment>
-<Line Comment>
