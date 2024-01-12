@@ -1,5 +1,7 @@
 name: form-example 
 on:
+ schedule:
+    - cron: '30 17 * * *'
  workflow_dispatch:
     inputs:
       input_mod:
@@ -17,20 +19,12 @@ jobs:
       #環境を設定する
         - name: create text
           uses: actions/checkout@v3
+          if: github.event.schedule != null
         - run: |
-             echo "aaa"
+             echo "nullじゃない場合"
              
       #チェック確認
         - name: check1
+          if: github.event.schedule == null
           run: |
-             status=false
-             for file in tools/*.txt; do
-              if grep -q "ERROR" "$file"; then
-               echo "Error found in ${file##*/}"
-               status=true
-              fi
-             done
-             
-             if [ error_status='false' ]; then
-              echo "false"
-             fi
+             echo "nullの場合"
