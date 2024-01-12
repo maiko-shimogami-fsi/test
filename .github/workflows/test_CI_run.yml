@@ -20,7 +20,7 @@ jobs:
         - name: create text
           uses: actions/checkout@v3
         - run: |
-             echo "aaa"
+             echo $(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M:%S(%z)')
              
       #チェック確認
         - name: check1
