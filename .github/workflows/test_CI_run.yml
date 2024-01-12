@@ -19,12 +19,17 @@ jobs:
       #環境を設定する
         - name: create text
           uses: actions/checkout@v3
-          if: github.event.schedule != null
         - run: |
-             echo "nullじゃない場合"
+             echo "aaa"
              
       #チェック確認
         - name: check1
           if: github.event.schedule == null
           run: |
              echo "nullの場合"
+
+      #チェック確認
+        - name: check2
+          if: github.event.schedule != null
+          run: |
+             echo "nullじゃない場合"
