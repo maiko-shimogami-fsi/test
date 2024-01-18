@@ -28,7 +28,8 @@ jobs:
         - name: Set DATETIME
           id: set_datetime
           run: |
-            $datetime = Get-Date -Format "yyyyMMddHHmm"
+            datetime = Get-Date -Format "yyyyMMddHHmm"
+            echo "datetime=$datetime"
             echo "datetime=$datetime" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
       #チェック確認
