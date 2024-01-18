@@ -34,7 +34,8 @@ jobs:
             
     check-bats-version2:
       runs-on: windows-latest
-
+      needs: [ check-bats-version1 ]
+      
       steps:
       #チェック確認
         - name: check2
