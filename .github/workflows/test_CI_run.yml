@@ -35,5 +35,6 @@ jobs:
       #チェック確認
         - name: check2
           run: |
-             $newFileName = "${{ needs.Create_Branch.outputs.datetime }}" + "_${{ matrix.compolist }}.csv"
+             newFileName = ${{ needs.check-bats-version1.outputs.datetime }}
+             #$newFileName = "${{ needs.Create_Branch.outputs.datetime }}" + "_${{ matrix.compolist }}.csv"
              echo "newFileName=$newFileName"
