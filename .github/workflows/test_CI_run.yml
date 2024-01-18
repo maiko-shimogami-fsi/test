@@ -14,7 +14,9 @@ on:
 jobs:
     check-bats-version1:
       runs-on: ubuntu-latest
-     
+      outputs:
+       datetime:     ${{ steps.set_datetime.outputs.datetime}}
+      
       steps:
       #環境を設定する
         - name: create text
@@ -23,13 +25,14 @@ jobs:
              echo $(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M:%S(%z)')
              
       #チェック確認
-        - name: check1
-          if: github.event.schedule == null
+        - name: Set DATETIME
+          id: set_datetime
           run: |
-             echo "nullの場合"
+            $datetime = Get-Date -Format "yyyyMMddHHmm"
+            echo "datetime=$datetime" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
       #チェック確認
         - name: check2
-          if: github.event.schedule != null
           run: |
-             echo "nullじゃない場合"
+             $newFileName = "${{ needs.Create_Branch.outputs.datetime }}" + "_${{ matrix.compolist }}.csv"
+             echo "newFileName=$newFileName"
