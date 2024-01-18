@@ -31,10 +31,13 @@ jobs:
             $datetime = Get-Date -Format "yyyyMMddHHmm"
             echo "datetime=$datetime"
             echo "datetime=$datetime" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+            
+    check-bats-version2:
+      runs-on: windows-latest
 
+      steps:
       #チェック確認
         - name: check2
           run: |
-             newFileName = ${{ needs.check-bats-version1.outputs.datetime }}
-             #$newFileName = "${{ needs.Create_Branch.outputs.datetime }}" + "_${{ matrix.compolist }}.csv"
+             #$newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
              echo "newFileName=$newFileName"
