@@ -40,7 +40,7 @@ jobs:
       #チェック確認
         - name: check2
           uses: actions/checkout@v3
-          run: |
+        - run: |
              #$newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
              #echo "newFileName=$newFileName"
              pwd
