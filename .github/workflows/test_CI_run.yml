@@ -46,14 +46,9 @@ jobs:
              cd tools
              $NODE = "Lcd"
              $JsonFilePath = "unittest_setting.json"
-             echo "step1"
-             Get-Location
-             Get-ChildItem -Recurse -Depth 3
-             echo "step2"
+             
              chmod 777 unittest_setting.json
-             echo "step3"
              $json = Get-Content $JsonFilePath | ConvertFrom-Json
-             echo "step4"
-             $core = ($json | where NodeName -eq $NODE).core_partition
+             $core = ($json | where node_name -eq $NODE).core_partition
              echo "CORE=$core"
              
