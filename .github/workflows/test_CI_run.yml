@@ -45,6 +45,7 @@ jobs:
 
         - name: check3
           run: |
+             $NODE = "Lcd"
              $JsonFilePath = "unittest_setting.json"
              CORE=$(jq -r '.[] | select(.NodeName == "'$NODE'").core_partition' $JsonFilePath)
              echo "CORE=$CORE"
