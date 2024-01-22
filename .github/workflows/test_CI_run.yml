@@ -42,7 +42,7 @@ jobs:
           run: |
              #$newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
              #echo "newFileName=$newFileName"
-             cd tools
+             cd /home/runner/work/test/test/tools
              pwd
              ls -al
              #$NODE = "Lcd"
