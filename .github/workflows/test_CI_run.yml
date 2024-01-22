@@ -42,3 +42,15 @@ jobs:
           run: |
              $newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
              echo "newFileName=$newFileName"
+
+        - name: check3
+          run: |
+             $JsonFilePath = "choices.json"
+             $JsonData = Get-Content $JsonFilePath -Raw | ConvertFrom-Json
+ 
+             foreach ($cmp_info in $JsonData.PSObject.Properties.Value) {
+              if ($cmp_info.node_name -eq "${{ inputs.input_compo }}") {
+               $build_info = $cmp_info.core_partition
+               Write-Host "$build_info get information"
+             }
+          }
