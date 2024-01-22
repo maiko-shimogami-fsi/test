@@ -49,11 +49,11 @@ jobs:
              $JsonFilePath = "unittest_setting.json"
              echo "step1"
              Get-Location
-             Get-ChildItem -Recurse
+             Get-ChildItem -Recurse -Depth 3
              cd ../
              echo "step1.5"
              Get-Location
-             Get-ChildItem -Recurse
+             Get-ChildItem -Recurse -Depth 3
              echo "step2"
              chmod 777 unittest_setting.json
              echo "step3"
