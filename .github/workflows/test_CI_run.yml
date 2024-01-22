@@ -44,7 +44,7 @@ jobs:
              #$newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
              #echo "newFileName=$newFileName"
              cd tools
-             $NODE = "Lcd"
+             $NODE = ""Lcd""
              $JsonFilePath = "unittest_setting.json"
              
              chmod 777 unittest_setting.json
