@@ -47,8 +47,8 @@ jobs:
           run: |
              $NODE = "Lcd"
              $JsonFilePath = "unittest_setting.json"
-             pwd
-             ls -al
+             Get-Location
+             Get-ChildItem -Force -Recurse | Format-Table -AutoSize
              chmod 777 unittest_setting.json
              $json = Get-Content $JsonFilePath | ConvertFrom-Json
              $core = ($json | where NodeName -eq $NODE).core_partition
