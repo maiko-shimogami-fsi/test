@@ -33,7 +33,7 @@ jobs:
             echo "datetime=$datetime" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
             
     check-bats-version2:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       needs: [ check-bats-version1 ]
       
       steps:
@@ -43,28 +43,17 @@ jobs:
         - run: |
              #$newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
              #echo "newFileName=$newFileName"
-             pwd
              cd tools
-             pwd
-             ls -al
-             #$NODE = "Lcd"
-             #$JsonFilePath = "unittest_setting.json"
-             #echo "step1"
-             #Get-Location
-             #Get-ChildItem -Recurse -Depth 3
-             #cd ../
-             #echo "step1.5"
-             #Get-Location
-             #Get-ChildItem -Recurse -Depth 3
-             #echo "step2"
-             #chmod 777 unittest_setting.json
-             #echo "step3"
-             #$json = Get-Content $JsonFilePath | ConvertFrom-Json
-             #echo "step4"
-             #$core = ($json | where NodeName -eq $NODE).core_partition
-             #echo "CORE=$core"
-
-
-        - name: check3
-          run: |
+             $NODE = "Lcd"
+             $JsonFilePath = "unittest_setting.json"
+             echo "step1"
+             Get-Location
+             Get-ChildItem -Recurse -Depth 3
+             echo "step2"
+             chmod 777 unittest_setting.json
+             echo "step3"
+             $json = Get-Content $JsonFilePath | ConvertFrom-Json
+             echo "step4"
+             $core = ($json | where NodeName -eq $NODE).core_partition
+             echo "CORE=$core"
              
