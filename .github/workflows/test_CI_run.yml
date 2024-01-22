@@ -39,10 +39,12 @@ jobs:
       steps:
       #チェック確認
         - name: check2
+          uses: actions/checkout@v3
           run: |
              #$newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
              #echo "newFileName=$newFileName"
-             cd /D:/a/test/test/tools
+             pwd
+             cd tools
              pwd
              ls -al
              #$NODE = "Lcd"
