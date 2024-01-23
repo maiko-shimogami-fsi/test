@@ -33,7 +33,7 @@ jobs:
             echo "datetime=$datetime" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
             
     check-bats-version2:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
       
       steps:
@@ -41,14 +41,10 @@ jobs:
         - name: check2
           uses: actions/checkout@v3
         - run: |
-             #$newFileName = "${{ needs.check-bats-version1.outputs.datetime }}" + ".csv"
-             #echo "newFileName=$newFileName"
-             cd tools
-             $NODE = ""Lcd""
-             $JsonFilePath = "unittest_setting.json"
+             error_status=false
              
-             chmod 777 unittest_setting.json
-             $json = Get-Content $JsonFilePath | ConvertFrom-Json
-             $core = ($json | where node_name -eq $NODE).core_partition
-             echo "CORE=$core"
+             if [ $error_status='true' ]; then
+              echo "エラー終了します"
+              exit 1
+             fi
              
