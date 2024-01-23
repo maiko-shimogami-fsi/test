@@ -43,7 +43,7 @@ jobs:
         - run: |
              error_status=false
              
-             if [ $error_status='true' ]; then
+             if [ $error_status = 'true' ]; then
               echo "エラー終了します"
               exit 1
              fi
