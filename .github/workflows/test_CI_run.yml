@@ -41,7 +41,7 @@ jobs:
         - name: check2
           uses: actions/checkout@v3
         - run: |
-             error_status=false
+             error_status=ture
              
              if [ $error_status = 'true' ]; then
               echo "エラー終了します"
