@@ -10,7 +10,13 @@ on:
       input_compo:
         description: 'Please enter the compo name to UnitTest.'
         required: false
- 
+      input_coretype:
+        description: 'Please enter the core type.'
+        default: 'cr'
+        options:
+          - cr
+          - ca
+          
 jobs:
     check-bats-version1:
       runs-on: windows-latest
