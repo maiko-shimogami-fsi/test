@@ -38,10 +38,12 @@ jobs:
             $datetime = Get-Date -Format "yyyyMMddHHmm"
             echo "datetime=$datetime"
             echo "datetime=$datetime" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+            exit 1
             
     check-bats-version2:
       runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
+      continue-on-error: true
       
       steps:
       #チェック確認
