@@ -23,6 +23,7 @@ jobs:
       runs-on: windows-latest
       outputs:
        datetime:     ${{ steps.set_datetime.outputs.datetime}}
+      continue-on-error: true
       
       steps:
       #環境を設定する
