@@ -48,7 +48,8 @@ jobs:
                   $targetcompo += $node_name
                   $targetcompo += "`""
                   $targetcompo += ","
-                 }
+                  }
+                }
                }
              $targetcompo += "]"
              $targetcompo = $targetcompo -replace '\,]',']'
