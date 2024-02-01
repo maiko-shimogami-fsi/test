@@ -78,7 +78,7 @@ jobs:
              
         - name: check1.5
           if: always()
-        - run: |
+          run: |
              conv_compo=${{ matrix.compolist }}
              echo "conv_compo=$conv_compo"
 
