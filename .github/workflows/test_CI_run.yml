@@ -77,7 +77,8 @@ jobs:
               echo "エラー終了します"
               exit 1
              fi
-             echo "::set-output name=message::check-bats-version2 ${{ job.status }}" 
+             echo "job.status=${{ job.status }}" 
+             
 
     check-bats-version3:
       runs-on: ubuntu-latest
