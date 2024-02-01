@@ -80,7 +80,7 @@ jobs:
           if: always()
           run: |
              echo "job.status=${{ job.status }}" 
-             if [ ${{ job.status }} = 'failture' ]; then
+             if [ ${{ job.status }} = 'failure' ]; then
               echo "エラー"
              fi
 
