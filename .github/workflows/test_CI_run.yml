@@ -59,7 +59,7 @@ jobs:
       strategy:
        max-parallel: 2
        matrix:
-         compolist: ${{fromJson( needs.Create_Branch.outputs.targetcompo )}}
+         compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
       continue-on-error: true
       
       steps:
