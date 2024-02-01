@@ -22,8 +22,7 @@ jobs:
     check-bats-version1:
       runs-on: windows-latest
       outputs:
-       datetime:     ${{ steps.set_datetime.outputs.datetime}}
-      continue-on-error: true
+       targetcompo:  ${{ steps.create_unittest_brach.outputs.targetcompo }}
       
       steps:
       #環境を設定する
@@ -33,12 +32,10 @@ jobs:
              echo "aaa"
              
       #チェック確認
-        - name: Set DATETIME
-          id: set_datetime
+        - name: CRESTE_BRANCH
+          id: create_unittest_brach
           run: |
              $targetcompo += "["
-             echo "targetcompo_info1=$targetcompo"
-
              foreach ($l in Get-Content ./unittest_setting.json) {
               if ($l -like "*node_name*") {
                 $node_name = $l.Substring(22, ($l.Length-24))
@@ -54,19 +51,26 @@ jobs:
              $targetcompo += "]"
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
-            
+             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
             
     check-bats-version2:
       runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
+      strategy:
+       max-parallel: 2
+       matrix:
+         compolist: ${{fromJson( needs.Create_Branch.outputs.targetcompo )}}
+      continue-on-error: true
       
       steps:
       #チェック確認
         - name: check2
           uses: actions/checkout@v3
         - run: |
-             #error_status=true
+             conv_compo: ${{ matrix.compolist }}
+             echo "conv_compo=$conv_compo"
              
+             error_status=false
              if [ $error_status = 'true' ]; then
               echo "エラー終了します"
               exit 1
