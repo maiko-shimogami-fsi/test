@@ -75,6 +75,12 @@ jobs:
               echo "エラー終了します"
               exit 1
              fi
+             
+        - name: check1.5
+          if: always()
+        - run: |
+             conv_compo=${{ matrix.compolist }}
+             echo "conv_compo=$conv_compo"
 
         - name: check2-1
           if: always()
