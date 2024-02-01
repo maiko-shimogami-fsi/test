@@ -36,10 +36,24 @@ jobs:
         - name: Set DATETIME
           id: set_datetime
           run: |
-            $datetime = Get-Date -Format "yyyyMMddHHmm"
-            echo "datetime=$datetime"
-            echo "datetime=$datetime" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-            exit 1
+             $targetcompo += "["
+             echo "targetcompo_info1=$targetcompo"
+
+             foreach ($l in Get-Content ./unittest_setting.json) {
+              if ($l -like "*node_name*") {
+                $node_name = $l.Substring(22, ($l.Length-24))
+               } elseif ($l -like "*scheduled*") {
+                if ($l -like "*true*") {
+                  $targetcompo += "`""
+                  $targetcompo += $node_name
+                  $targetcompo += "`""
+                  $targetcompo += ","
+                 }
+               }
+             $targetcompo += "]"
+             $targetcompo = $targetcompo -replace '\,]',']'
+             echo "targetcompo=$targetcompo"
+            
             
     check-bats-version2:
       runs-on: ubuntu-latest
@@ -56,5 +70,3 @@ jobs:
               echo "エラー終了します"
               exit 1
              fi
-             
-      continue-on-error: true
