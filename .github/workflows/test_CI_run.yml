@@ -62,12 +62,10 @@ jobs:
          compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
       outputs:
        done: ${{ steps.check2.outputs.message }}
-      #continue-on-error: true
       
       steps:
       #チェック確認
         - name: check2
-          id: check2
           uses: actions/checkout@v3
         - run: |
              conv_compo=${{ matrix.compolist }}
@@ -77,8 +75,12 @@ jobs:
               echo "エラー終了します"
               exit 1
              fi
+
+        - name: check2-1
+          if: always()
+          run: |
              echo "job.status=${{ job.status }}" 
-             
+        
 
     check-bats-version3:
       runs-on: ubuntu-latest
