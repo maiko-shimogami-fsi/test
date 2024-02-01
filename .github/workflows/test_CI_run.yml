@@ -67,7 +67,7 @@ jobs:
         - name: check2
           uses: actions/checkout@v3
         - run: |
-             conv_compo: ${{ matrix.compolist }}
+             conv_compo=${{ matrix.compolist }}
              echo "conv_compo=$conv_compo"
              
              error_status=false
