@@ -80,7 +80,9 @@ jobs:
           if: always()
           run: |
              echo "job.status=${{ job.status }}" 
-        
+             if [ ${{ job.status }} = 'failture' ]; then
+              echo "エラー"
+             fi
 
     check-bats-version3:
       runs-on: ubuntu-latest
