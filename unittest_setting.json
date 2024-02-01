@@ -36,7 +36,7 @@
         "csv_bratch": "TBD",
         "csv_pah": "TBD",
         "stub_path": "TBD",
-        "scheduled": "true"
+        "scheduled": "false"
     },
     "MultiRadarObjectFusion": {
         "node_name": "Mrf",
@@ -88,7 +88,7 @@
         "csv_bratch": "TBD",
         "csv_pah": "TBD",
         "stub_path": "TBD",
-        "scheduled": "true"
+        "scheduled": "false"
     },
     "RearCrossTrafficAlertIntg": {
         "node_name": "RctaIntg",
