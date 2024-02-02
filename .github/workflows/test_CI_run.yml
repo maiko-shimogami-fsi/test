@@ -123,15 +123,12 @@ jobs:
       strategy:
        max-parallel: 2
        matrix:
-         compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-      #continue-on-error: true
-      
+         #compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
+         compolist: [1]
+         
       steps:
       #チェック確認
         - name: check2
           uses: actions/checkout@v3
         - run: |
-            targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
-            echo "targetcompo=$targetcompo"
-            {{ needs.check-bats-version1.outputs.targetcompo }}="aaa"
-            echo "{{ needs.check-bats-version1.outputs.targetcompo }}"
+            conv_compo=${{ matrix.compolist }}
