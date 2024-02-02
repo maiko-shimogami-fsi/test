@@ -87,7 +87,7 @@ jobs:
              echo $$ > /tmp/lockfile
              # ロックを取得するまで待つ
              while true; do
-             　if ln /tmp/lockfile /tmp/lockfile.lock 2>/dev/null; then
+             　if [ ln /tmp/lockfile /tmp/lockfile.lock 2>/dev/null ]; then
                　break
                else
                　sleep 1
