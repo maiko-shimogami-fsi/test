@@ -70,7 +70,7 @@ jobs:
         - run: |
              conv_compo=${{ matrix.compolist }}
              echo "conv_compo=$conv_compo"
-             
+             Get-Date -Format "yyyy/MM/dd HH:mm:ss"
              if [ $conv_compo = 'Lcd' ]; then
               echo "エラー終了します"
               exit 1
@@ -79,9 +79,35 @@ jobs:
         - name: check1.5
           if: always()
           run: |
-             conv_compo=${{ matrix.compolist }}
-             echo "conv_compo=$conv_compo"
-
+             echo "制御前"
+             Get-Date -Format "yyyy/MM/dd HH:mm:ss"
+             sleep 10
+             
+             # ロックファイルを作成する
+             echo $$ > /tmp/lockfile
+             # ロックを取得するまで待つ
+             while true; do
+             　if ln /tmp/lockfile /tmp/lockfile.lock 2>/dev/null; then
+               　break
+               else
+               　sleep 1
+               fi
+              done
+              echo "ロック中"
+              Get-Date -Format "yyyy/MM/dd HH:mm:ss"
+              sleep 10
+              echo "ロック中　10秒後"
+              Get-Date -Format "yyyy/MM/dd HH:mm:ss"
+              
+              conv_compo=${{ matrix.compolist }}
+              echo "conv_compo=$conv_compo"
+              
+              # ロックを解放する
+              rm -f /tmp/lockfile.lock
+              
+              echo "ロック解除"
+              Get-Date -Format "yyyy/MM/dd HH:mm:ss"
+              
         - name: check2-1
           if: always()
           run: |
