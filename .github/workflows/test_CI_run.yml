@@ -86,13 +86,13 @@ jobs:
              # ロックファイルを作成する
              echo $$ > /tmp/lockfile
              # ロックを取得するまで待つ
-             while true; do
-             　if [ ln /tmp/lockfile /tmp/lockfile.lock 2>/dev/null ]; then
-               　break
-               else
-               　sleep 1
-               fi
-              done
+             #while true; do
+             #　if [ ln /tmp/lockfile /tmp/lockfile.lock 2>/dev/null ]; then
+             #  　break
+             #  else
+             #  　sleep 1
+             #  fi
+             # done
               echo "ロック中"
               date +%Y/%m/%d\ %H:%M:%S
               sleep 10
@@ -103,7 +103,7 @@ jobs:
               echo "conv_compo=$conv_compo"
               
               # ロックを解放する
-              rm -f /tmp/lockfile.lock
+              #rm -f /tmp/lockfile.lock
               
               echo "ロック解除"
               date +%Y/%m/%d\ %H:%M:%S
@@ -131,4 +131,7 @@ jobs:
         - name: check2
           uses: actions/checkout@v3
         - run: |
-             echo "チェック"
+            targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
+            echo "targetcompo=$targetcompo"
+            {{ needs.check-bats-version1.outputs.targetcompo }}="aaa"
+            echo "{{ needs.check-bats-version1.outputs.targetcompo }}"
