@@ -61,7 +61,7 @@ jobs:
        matrix:
          compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
       outputs:
-       done: ${{ steps.check2.outputs.message }}
+       targetcompo:  ${{ needs.check-bats-version1.outputs.targetcompo }}
       
       steps:
       #チェック確認
@@ -73,6 +73,8 @@ jobs:
              date +%Y/%m/%d\ %H:%M:%S
              if [ $conv_compo = 'Lcd' ]; then
               echo "エラー終了します"
+              targetcompo=["aaa"]
+              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
               exit 1
              fi
              
@@ -123,8 +125,7 @@ jobs:
       strategy:
        max-parallel: 2
        matrix:
-         #compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-         compolist: [1]
+         compolist: ${{fromJson( needs.check-bats-version2.outputs.targetcompo )}}
          
       steps:
       #チェック確認
