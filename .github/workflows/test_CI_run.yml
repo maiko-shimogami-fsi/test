@@ -7,33 +7,23 @@ on:
       input_mod:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
-      input_compo:
-        description: 'Please enter the compo name to UnitTest.'
-        required: false
-      input_coretype:
-        description: 'Please enter the core type.'
-        default: 'cr'
-        type: choice
-        options:
-          - cr
-          - ca
           
 jobs:
     check-bats-version1:
       runs-on: windows-latest
       outputs:
-       targetcompo:  ${{ steps.create_unittest_brach.outputs.targetcompo }}
+       targetcompo:  ${{ steps.step2.outputs.targetcompo }}
       
       steps:
       #環境を設定する
-        - name: create text
+        - name: step1
           uses: actions/checkout@v3
         - run: |
-             echo "aaa"
+             echo "checkout"
              
       #チェック確認
-        - name: CRESTE_BRANCH
-          id: create_unittest_brach
+        - name: step2
+          id: step2
           run: |
              $targetcompo += "["
              foreach ($l in Get-Content ./unittest_setting.json) {
@@ -60,56 +50,23 @@ jobs:
        max-parallel: 2
        matrix:
          compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-      outputs:
-       targetcompo:  ${{ needs.check-bats-version1.outputs.targetcompo }}
       
       steps:
       #チェック確認
-        - name: check2
+        - name: step1
           uses: actions/checkout@v3
         - run: |
              conv_compo=${{ matrix.compolist }}
              echo "conv_compo=$conv_compo"
-             date +%Y/%m/%d\ %H:%M:%S
+             echo "targetcompo=$targetcompo"
+             
              if [ $conv_compo = 'Lcd' ]; then
               echo "エラー終了します"
               targetcompo=["aaa"]
-              echo "::set-output name=targetcompo::updated_value"
+              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
               exit 1
              fi
-             
-        - name: check1.5
-          if: always()
-          run: |
-             echo "制御前"
-             date +%Y/%m/%d\ %H:%M:%S
-             sleep 10
-             
-             # ロックファイルを作成する
-             echo $$ > /tmp/lockfile
-             # ロックを取得するまで待つ
-             #while true; do
-             #　if [ ln /tmp/lockfile /tmp/lockfile.lock 2>/dev/null ]; then
-             #  　break
-             #  else
-             #  　sleep 1
-             #  fi
-             # done
-              echo "ロック中"
-              date +%Y/%m/%d\ %H:%M:%S
-              sleep 10
-              echo "ロック中　10秒後"
-              date +%Y/%m/%d\ %H:%M:%S
-              
-              conv_compo=${{ matrix.compolist }}
-              echo "conv_compo=$conv_compo"
-              
-              # ロックを解放する
-              #rm -f /tmp/lockfile.lock
-              
-              echo "ロック解除"
-              date +%Y/%m/%d\ %H:%M:%S
-              
+ 
         - name: check2-1
           if: always()
           run: |
