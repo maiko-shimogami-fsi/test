@@ -25,6 +25,7 @@ jobs:
              
       #チェック確認
         - name: step2
+          id: step2
           run: |
              $targetcompo += "["
              foreach ($l in Get-Content ./unittest_setting.json) {
