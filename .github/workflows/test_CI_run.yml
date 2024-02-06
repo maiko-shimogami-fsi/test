@@ -54,8 +54,8 @@ jobs:
       steps:
       #チェック確認
         - name: step1
-          uses: actions/checkout@v3
-        - run: |
+          id: step1
+          run: |
              conv_compo=${{ matrix.compolist }}
              targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
              echo "conv_compo=$conv_compo"
