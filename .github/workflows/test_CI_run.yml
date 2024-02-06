@@ -64,7 +64,7 @@ jobs:
              if [ $conv_compo = 'Lcd' ]; then
               echo "エラー終了します"
               targetcompo=['Bsm']
-              echo "::set-output name=targetcompo::${{ steps.step1.outputs.targetcompo }}"
+              echo "::set-output name=targetcompo::${{ needs.check-bats-version1.outputs.targetcompo }}"
               #exit 1
              fi
  
