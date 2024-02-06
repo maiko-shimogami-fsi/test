@@ -7,8 +7,6 @@ on:
       input_mod:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
-env:
-  MY_ENV_COMPO: "[ aaa ]"
   
 jobs:
     check-bats-version1:
@@ -54,7 +52,7 @@ jobs:
        max-parallel: 2
        matrix:
          #compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-         compolist: ${{fromJson(secrets.MY_ENV_COMPO)}}
+         compolist: ${{fromJson(MY_ENV_COMPO)}}
       steps:
       #チェック確認
         - name: step1
