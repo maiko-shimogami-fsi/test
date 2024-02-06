@@ -57,12 +57,13 @@ jobs:
           uses: actions/checkout@v3
         - run: |
              conv_compo=${{ matrix.compolist }}
+             targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
              echo "conv_compo=$conv_compo"
              echo "targetcompo=$targetcompo"
              
              if [ $conv_compo = 'Lcd' ]; then
               echo "エラー終了します"
-              targetcompo=["aaa"]
+              targetcompo=['Bsm']
               echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
               exit 1
              fi
