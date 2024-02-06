@@ -44,7 +44,7 @@ jobs:
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              echo 'export MY_ENV_COMPO=$targetcompo' >> $GITHUB_ENV
-             echo 'export MY_ENV_COMPO=$targetcompo'
+             echo "MY_ENV_COMPO=$targetcompo"
             
     check-bats-version2:
       runs-on: ubuntu-latest
