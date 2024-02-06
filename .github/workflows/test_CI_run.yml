@@ -64,7 +64,7 @@ jobs:
              if [ $conv_compo = 'Lcd' ]; then
               echo "エラー終了します"
               targetcompo=['Bsm']
-              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+              echo "targetcompo=$targetcompo" >> $GITHUB_OUTPUT
               exit 1
              fi
  
