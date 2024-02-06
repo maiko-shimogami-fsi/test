@@ -65,10 +65,10 @@ jobs:
               echo "エラー終了します"
               #targetcompo=['Bsm']
               #echo "targetcompo=$targetcompo" >> $GITHUB_OUTPUT
-              exit 1
+              #exit 1
              fi
  
-        - name: check2-1
+        - name: step2
           if: always()
           run: |
              echo "job.status=${{ job.status }}" 
@@ -87,7 +87,7 @@ jobs:
          
       steps:
       #チェック確認
-        - name: check2
+        - name: step1
           uses: actions/checkout@v3
         - run: |
             conv_compo=${{ matrix.compolist }}
