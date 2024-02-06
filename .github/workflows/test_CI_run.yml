@@ -65,7 +65,7 @@ jobs:
               echo "エラー終了します"
               targetcompo="[Bsm]"
               echo "::set-output name=needs.check-bats-version1.outputs.targetcompo::$targetcompo"
-              echo "targetcompo=$targetcompo"
+              echo "targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}"
               #exit 1
              fi
  
