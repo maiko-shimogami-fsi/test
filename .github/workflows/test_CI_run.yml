@@ -7,8 +7,6 @@ on:
       input_mod:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
-env:
- COMPO: temp_compo
  
 jobs:
     check-bats-version1:
@@ -44,7 +42,7 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "{{env.COMPO}}=$targetcompo" >> $GITHUB_ENV
+             echo 'export MY_ENV_COMPO=$targetcompo' >> $GITHUB_ENV
             
     check-bats-version2:
       runs-on: ubuntu-latest
@@ -67,8 +65,8 @@ jobs:
              if [ $conv_compo = 'Lcd' ]; then
               echo "エラー終了します"
               targetcompo="[Bsm]"
-              echo "COMPO=$COMPO"
-              echo "COMPO=$targetcompo" >> $GITHUB_ENV
+              echo 'export MY_ENV_COMPO=$targetcompo' >> $GITHUB_ENV
+              echo "export MY_ENV_COMPO=$targetcompo"
               #exit 1
              fi
  
@@ -95,4 +93,4 @@ jobs:
           uses: actions/checkout@v3
         - run: |
             conv_compo=${{ matrix.compolist }}
-            echo "COMPO=$COMPO"
+            echo "This is my environment variable $MY_ENV_VAR"
