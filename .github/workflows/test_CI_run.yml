@@ -14,8 +14,8 @@ env:
 jobs:
     check-bats-version1:
       runs-on: windows-latest
-      outputs:
-       targetcompo:  ${{ steps.step2.outputs.targetcompo }}
+      #outputs:
+      # targetcompo:  ${{ steps.step2.outputs.targetcompo }}
       
       steps:
       #環境を設定する
@@ -44,7 +44,6 @@ jobs:
              $targetcompo += "]"
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
-             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              echo "MY_ENV_COMPO1=$targetcompo"
              echo 'export MY_ENV_COMPO=$targetcompo' >> $GITHUB_ENV
              echo "MY_ENV_COMPO2=$targetcompo"
