@@ -63,16 +63,16 @@ jobs:
           id: step1
           run: |
              conv_compo=${{ matrix.compolist }}
-             targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
+             #targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
              echo "conv_compo=$conv_compo"
-             echo "targetcompo=$targetcompo"
+             #echo "targetcompo=$targetcompo"
              
-             if [ $conv_compo = 'Lcd' ]; then
-              echo "エラー終了します"
-              targetcompo="[Bsm]"
-              echo 'targetcompo=$targetcompo' >> $GITHUB_OUTPUT
-              #exit 1
-             fi
+             #if [ $conv_compo = 'Lcd' ]; then
+             # echo "エラー終了します"
+             targetcompo="[Bsm]"
+             echo 'targetcompo=$targetcompo' >> $GITHUB_OUTPUT
+             #exit 1
+             #fi
  
         - name: step2
           if: always()
