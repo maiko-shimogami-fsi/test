@@ -9,7 +9,7 @@ on:
         required: false
 
 env:
-  MY_ENV_COMPO : "[ Lcd,BSM ]"
+  MY_ENV_COMPO : '["Lcd","Bsm"]'
 
 jobs:
     check-bats-version1:
@@ -48,7 +48,6 @@ jobs:
              echo "MY_ENV_COMPO=$targetcompo" >> $GITHUB_ENV
              echo "MY_ENV_COMPO2=${{ env.MY_ENV_COMPO }}"
         - name: step3
-          id: step3
           run: |
              echo "MY_ENV_COMPO3=${{ env.MY_ENV_COMPO }}"
             
@@ -58,7 +57,7 @@ jobs:
       strategy:
        max-parallel: 2
        matrix:
-         compolist: ${{fromJson( env.MY_ENV_COMPO )}}
+         compolist: ${{fromJson( ${{ env.MY_ENV_COMPO }} )}}
       steps:
       #チェック確認
         - name: step1
