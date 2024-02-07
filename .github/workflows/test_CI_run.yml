@@ -70,8 +70,8 @@ jobs:
              
              #if [ $conv_compo = 'Lcd' ]; then
              # echo "エラー終了します"
-             #targetcompo1="[Bsm]"
-             echo "targetcompo1=[Bsm]" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             targetcompo1="[Bsm]"
+             echo "targetcompo1=$targetcompo1" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              #exit 1
              #fi
  
