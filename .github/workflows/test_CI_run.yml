@@ -49,7 +49,8 @@ jobs:
              echo "targetcompo=$targetcompo"
             
     check-bats-version2:
-      runs-on: ubuntu-latest
+      #runs-on: ubuntu-latest
+      runs-on: windows-latest
       needs: [ check-bats-version1 ]
       outputs:
        targetcompo1:  ${{ steps.step1.outputs.targetcompo1 }}
