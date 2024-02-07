@@ -44,9 +44,9 @@ jobs:
              $targetcompo += "]"
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
-             echo "MY_ENV_COMPO1=$MY_ENV_COMPO"
+             echo "MY_ENV_COMPO1=${{ env.MY_ENV_COMPO }}""
              echo 'export MY_ENV_COMPO=$targetcompo' >> $GITHUB_ENV
-             echo "MY_ENV_COMPO2=$MY_ENV_COMPO"
+             echo "MY_ENV_COMPO2=${{ env.MY_ENV_COMPO }}"
             
     check-bats-version2:
       runs-on: ubuntu-latest
