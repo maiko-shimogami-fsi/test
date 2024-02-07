@@ -9,7 +9,7 @@ on:
         required: false
 
 env:
-  MY_ENV_COMPO : '["Lcd","Bsm"]'
+  MY_ENV_COMPO : '["Lcd"]'
 
 jobs:
     check-bats-version1:
