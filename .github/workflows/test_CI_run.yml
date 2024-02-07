@@ -45,7 +45,7 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "MY_ENV_COMPO1=${{ env.MY_ENV_COMPO }}"
-             $env:MY_ENV_COMPO=$targetcompo
+             echo "MY_ENV_COMPO=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_ENV
              echo "MY_ENV_COMPO2=${{ env.MY_ENV_COMPO }}"
         - name: step3
           run: |
