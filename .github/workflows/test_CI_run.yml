@@ -52,7 +52,7 @@ jobs:
       runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
       outputs:
-       targetcompo:  ${{ steps.step1.outputs.targetcompo }}
+       targetcompo1:  ${{ steps.step1.outputs.targetcompo1 }}
       strategy:
        max-parallel: 2
        matrix:
@@ -69,8 +69,8 @@ jobs:
              
              #if [ $conv_compo = 'Lcd' ]; then
              # echo "エラー終了します"
-             targetcompo="[Bsm]"
-             echo 'targetcompo=$targetcompo' >> $GITHUB_OUTPUT
+             targetcompo1="[Bsm]"
+             echo 'targetcompo1=$targetcompo1' >> $GITHUB_OUTPUT
              #exit 1
              #fi
  
@@ -89,7 +89,7 @@ jobs:
       strategy:
        max-parallel: 2
        matrix:
-         compolist: ${{fromJson( needs.check-bats-version2.outputs.targetcompo )}}
+         compolist: ${{fromJson( needs.check-bats-version2.outputs.targetcompo1 )}}
          
       steps:
       #チェック確認
