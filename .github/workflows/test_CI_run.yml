@@ -9,7 +9,7 @@ on:
         required: false
 
 env:
-  MY_ENV_COMPO : "[ Lcd ]"
+  MY_ENV_COMPO : "[ Lcd,BSM ]"
 
 jobs:
     check-bats-version1:
@@ -58,8 +58,7 @@ jobs:
       strategy:
        max-parallel: 2
        matrix:
-         compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-         #compolist: ${{fromJson( MY_ENV_COMPO )}}
+         compolist: ${{fromJson( env.MY_ENV_COMPO )}}
       steps:
       #チェック確認
         - name: step1
