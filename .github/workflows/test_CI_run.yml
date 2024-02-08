@@ -84,7 +84,7 @@ jobs:
         #     fi
         - name: step3
           run: |
-             echo "targetcompo=$targetcompo"
+             echo "targetcompo1=$targetcompo1"
              
     check-bats-version3:
       runs-on: ubuntu-latest
