@@ -45,19 +45,10 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "MY_ENV_COMPO=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             
-        - name: step3
-          run: |
-             echo "targetcompo=$targetcompo"
-             echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO}}"
             
     check-bats-version2:
-      #runs-on: ubuntu-latest
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
-      outputs:
-       targetcompo1: ${{ steps.step1.outputs.targetcompo1 }}
       strategy:
        max-parallel: 2
        matrix:
@@ -67,16 +58,14 @@ jobs:
         - name: step1
           id: step1
           run: |
-             #conv_compo=${{ matrix.compolist }}
+             conv_compo=${{ matrix.compolist }}
              #targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
-             #if [ $conv_compo = 'Lcd' ]; then
-             # echo "エラー終了します"
-             #exit 1
-             #fi
-             #$targetcompo1="[Bsm]"
-             #echo "targetcompo1=$targetcompo1"
-             #echo "MY_ENV_COMPO=$targetcompo1" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "MY_ENV_COMPO=$MY_ENV_COMPO" 
+             echo "MY_ENV_COMPO=$conv_compo" >> $GITHUB_ENV
+             
+        - name: step2
+          id: step2
+          run: |
+             echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO}}"          
              
         #- name: step2
         #  if: always()
