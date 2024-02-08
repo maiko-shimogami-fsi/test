@@ -60,8 +60,8 @@ jobs:
           run: |
              #conv_compo=${{ matrix.compolist }}
              conv_compo='["Lcd"]'
-             #targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
-             echo "MY_ENV_COMPO=$conv_compo" >> $GITHUB_ENV
+             targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
+             echo "MY_ENV_COMPO=$targetcompo" >> $GITHUB_ENV
              
         - name: step2
           id: step2
