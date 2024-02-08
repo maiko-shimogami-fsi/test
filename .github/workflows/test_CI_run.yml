@@ -8,8 +8,8 @@ on:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
 
-#env:
-  #MY_ENV_COMPO : '["Lcd"]'
+env:
+  MY_ENV_COMPO : '["Lcd"]'
 
 jobs:
     check-bats-version1:
@@ -43,11 +43,13 @@ jobs:
                }
              $targetcompo += "]"
              $targetcompo = $targetcompo -replace '\,]',']'
-             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             #echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "targetcompo=$MY_ENV_COMPO" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
         - name: step3
           run: |
              echo "targetcompo=$targetcompo"
+             echo "MY_ENV_COMPO=$MY_ENV_COMPO"
             
     check-bats-version2:
       #runs-on: ubuntu-latest
@@ -70,9 +72,10 @@ jobs:
              # echo "エラー終了します"
              #exit 1
              #fi
-             $targetcompo1="[Bsm]"
-             echo "targetcompo1=$targetcompo1"
-             echo "targetcompo1=$targetcompo1" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             #$targetcompo1="[Bsm]"
+             #echo "targetcompo1=$targetcompo1"
+             #echo "MY_ENV_COMPO=$targetcompo1" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "MY_ENV_COMPO=$MY_ENV_COMPO" 
              
         #- name: step2
         #  if: always()
