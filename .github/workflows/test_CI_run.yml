@@ -15,7 +15,7 @@ jobs:
     check-bats-version1:
       runs-on: windows-latest
       outputs:
-       targetcompo:  ${{ steps.step2.outputs.targetcompo }}
+       targetcompo: ${{ steps.step2.outputs.targetcompo }}
       
       steps:
       #環境を設定する
@@ -24,7 +24,7 @@ jobs:
         - run: |
              echo "checkout"
              
-      #チェック確認
+      #コンポの値設定
         - name: step2
           id: step2
           run: |
@@ -44,6 +44,7 @@ jobs:
              $targetcompo += "]"
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             
         - name: step3
           run: |
              echo "targetcompo=$targetcompo"
@@ -53,7 +54,7 @@ jobs:
       runs-on: windows-latest
       needs: [ check-bats-version1 ]
       outputs:
-       targetcompo1:  ${{ steps.step1.outputs.targetcompo1 }}
+       targetcompo1: ${{ steps.step1.outputs.targetcompo1 }}
       strategy:
        max-parallel: 2
        matrix:
@@ -65,16 +66,14 @@ jobs:
           run: |
              #conv_compo=${{ matrix.compolist }}
              #targetcompo=${{ needs.check-bats-version1.outputs.targetcompo }}
-             #echo "conv_compo=$conv_compo"
-             #echo "targetcompo=$targetcompo"
-             
              #if [ $conv_compo = 'Lcd' ]; then
              # echo "エラー終了します"
-             $targetcompo1="[Bsm]"
-             echo "targetcompo1=$targetcompo1" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              #exit 1
              #fi
- 
+             $targetcompo1="[Bsm]"
+             echo "targetcompo1=$targetcompo1"
+             echo "targetcompo1=$targetcompo1" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             
         #- name: step2
         #  if: always()
         #  run: |
