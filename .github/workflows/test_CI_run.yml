@@ -66,7 +66,7 @@ jobs:
           id: step2
           run: |
              echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}" 
-             targetcompo2=${{ env.MY_ENV_COMPO }}
+             targetcompo2='["Lcd"]'
              echo "targetcompo2=$targetcompo2"
              echo "targetcompo2=$targetcompo2" >> "$GITHUB_OUTPUT"
              
