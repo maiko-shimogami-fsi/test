@@ -65,13 +65,13 @@ jobs:
         - name: step1
           id: step1
           run: |
-             echo "skip"
+             echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}" 
              
         - name: step2
           id: step2
           run: |
-             echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}" 
-             targetcompo2='["Lcd"]'
+             targetcompo2=${{ needs.check-bats-version1.outputs.targetcompo }}
+             targetcompo2.remove("Lcd")
              echo "targetcompo2=$targetcompo2"
              echo "targetcompo2=$targetcompo2" >> "$GITHUB_OUTPUT"
              
