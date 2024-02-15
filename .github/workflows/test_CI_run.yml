@@ -72,7 +72,7 @@ jobs:
           run: |
              targetcompo2=${{ needs.check-bats-version1.outputs.targetcompo }}
              targetcompo2=(${targetcompo2[@]/"Lcd"})
-             IFS=','; targetcompo2="${conp_list[*]}"; unset IFS
+             IFS=','; targetcompo2="${targetcompo2[*]}"; unset IFS
              echo "targetcompo2=$targetcompo2"
              echo "targetcompo2=$targetcompo2" >> "$GITHUB_OUTPUT"
              
