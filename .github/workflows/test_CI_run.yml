@@ -43,7 +43,7 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "MY_ENV_COMPO=$MY_ENV_COMPO" | Out-File -Append -FilePath $env:GITHUB_ENV           
+             echo "MY_ENV_COMPO=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_ENV
             
     check-bats-version2:
       runs-on: ubuntu-latest
