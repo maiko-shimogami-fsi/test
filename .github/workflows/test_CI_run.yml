@@ -71,9 +71,7 @@ jobs:
           id: step2
           run: |
              targetcompo2=${{ needs.check-bats-version1.outputs.targetcompo }}
-             for i in "${!targetcompo2[@]}"; do
-              [ "${targetcompo2[$i]}" = "Lcd" ] && unset -v 'targetcompo2[$i]'
-             done
+             targetcompo2=($(echo ${targetcompo2[@]} | sed 's/Lcd//g'))
              echo "targetcompo2=$targetcompo2"
              echo "targetcompo2=$targetcompo2" >> "$GITHUB_OUTPUT"
              
