@@ -43,7 +43,7 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "$targetcompo" > $MY_ENV_COMPO
+             echo "MY_ENV_COMPO=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
         
         - name: step3
           id: step3
