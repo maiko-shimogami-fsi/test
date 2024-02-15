@@ -85,7 +85,7 @@ jobs:
       strategy:
        max-parallel: 2
        matrix:
-         compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
+         compolist: ${{fromJson( needs.check-bats-version2.outputs.targetcompo2 )}}
          
       steps:
       #チェック確認
