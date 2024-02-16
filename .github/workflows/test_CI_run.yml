@@ -72,7 +72,9 @@ jobs:
           id: step2
           run: |
              MY_ENV_COMPO=${{ needs.check-bats-version1.outputs.targetcompo }}
-             MY_ENV_COMPO=($(echo ${MY_ENV_COMPO[@]} | sed 's/$targetcompo//g'))
+             echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}"
+             echo "targetcompo=$targetcompo"
+             "MY_ENV_COMPO=($(echo ${MY_ENV_COMPO[@]} | sed 's/$targetcompo//g'))
              echo "targetcompo2=$MY_ENV_COMPO"
              echo "targetcompo2=$MY_ENV_COMPO" >> "$GITHUB_OUTPUT"
              
