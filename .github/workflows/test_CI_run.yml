@@ -70,7 +70,7 @@ jobs:
         - name: step2
           id: step2
           run: |
-             if [ $env_compo = "" ]; then
+             if [ -z "$env_compo" ]; then
               env_compo=${{ env.MY_ENV_COMPO }}
              fi
              targetcompo=${{ matrix.compolist }}
