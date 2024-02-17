@@ -76,12 +76,12 @@ jobs:
         - name: step1
           id: step2
           run: |
-             echo "::set-output name=targetcompo2::${{ matrix.compolist | filter(item => item.status == 'success') }}"
+             echo "name=targetcompo2=${{ matrix.compolist | filter(item => item.status == 'success') }}" >> $GITHUB_OUTPUT
         #- name: step2
         #  id: step2
         #  run: |
         #     echo "targetcompo2=${{ env.MY_ENV_COMPO }}"
-        #     echo "targetcompo2=${{ env.MY_ENV_COMPO }}" >> "$GITHUB_OUTPUT"
+        #     echo "targetcompo2=${{ env.MY_ENV_COMPO }}" >> $GITHUB_OUTPUT
 
         #- name: step2
         #  if: always()
