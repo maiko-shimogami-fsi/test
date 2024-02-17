@@ -70,7 +70,11 @@ jobs:
         - name: step2
           id: step2
           run: |
-             env_compo=${{ env.MY_ENV_COMPO }}
+             if [ count1 >= 1 ]; then
+              env_compo=${{ env.MY_ENV_COMPO }}
+             fi
+             count1=$count1+1
+             echo "count1=$count1"
              targetcompo=${{ matrix.compolist }}
              echo "env_compo=$env_compo"
              echo "targetcompo=$targetcompo"
