@@ -40,12 +40,12 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "MY_ENV_COMPO=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_ENV
+             #echo "MY_ENV_COMPO=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_ENV
         
-        - name: step3
-          id: step3
-          run: |
-             echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}" 
+       # - name: step3
+       #   id: step3
+       #   run: |
+       #      echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}" 
              
     check-bats-version2:
       runs-on: ubuntu-latest
@@ -68,7 +68,7 @@ jobs:
              targetcompo=${{ matrix.compolist }}
              #MY_ENV_COMPO=("${MY_ENV_COMPO[@]/$targetcompo}")
              echo "MY_ENV_COMPO=$MY_ENV_COMPO"
-             echo "MY_ENV_COMPO=$MY_ENV_COMPO" >> "$GITHUB_OUTPUT"
+             echo "MY_ENV_COMPO=$MY_ENV_COMPO" >> "$GITHUB_ENV"
              
         - name: step2
           id: step2
