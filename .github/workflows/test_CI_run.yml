@@ -76,7 +76,7 @@ jobs:
         - name: step1
           id: step2
           run: |
-             echo "name=targetcompo2=${{ matrix.compolist | filter(item => item.status == 'success') }}" >> $GITHUB_OUTPUT
+             echo "name=targetcompo2=${{ matrix.compolist | filter(item => item.success == 'success') }}" >> $GITHUB_OUTPUT
         #- name: step2
         #  id: step2
         #  run: |
