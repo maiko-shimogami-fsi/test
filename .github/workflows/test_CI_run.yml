@@ -75,7 +75,7 @@ jobs:
              echo "env_compo=$env_compo"
              echo "targetcompo=$targetcompo"
              env_compo=("${env_compo[@]/targetcompo}")
-             "env_compo=("${env_compo[@]//\"\"}")
+             #env_compo=("${env_compo[@]//\"\"}")
              echo "targetcompo2=$env_compo"
              echo "targetcompo2=$env_compo" >> "$GITHUB_OUTPUT"
              
