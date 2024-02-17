@@ -6,9 +6,6 @@ on:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
 
-env:
-  MY_ENV_COMPO : '["aaa"]'
-
 jobs:
     check-bats-version1:
       runs-on: windows-latest
@@ -59,6 +56,8 @@ jobs:
        max-parallel: 2
        matrix:
          compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
+      env:
+       MY_ENV_COMPO : '["aaa"]'
       
       steps:
       #チェック確認
