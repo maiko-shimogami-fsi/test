@@ -66,7 +66,7 @@ jobs:
           run: |
              echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}"
              targetcompo=${{ matrix.compolist }}
-             #MY_ENV_COMPO=("${MY_ENV_COMPO[@]/$targetcompo}")
+             MY_ENV_COMPO=("${MY_ENV_COMPO[@]/$targetcompo}")
              echo "MY_ENV_COMPO=$MY_ENV_COMPO"
              echo "MY_ENV_COMPO=$MY_ENV_COMPO" >> "$GITHUB_ENV"
              
