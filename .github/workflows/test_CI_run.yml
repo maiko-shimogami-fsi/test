@@ -76,7 +76,7 @@ jobs:
         - name: step1
           id: step2
           run: |
-             echo "::set-output name=targetcompo2::${{ matrix.compolist | filter(item => item.status =='success') }}"
+             echo "::set-output name=targetcompo2::${{ matrix.compolist | filter(item => item.status == 'success') }}"
         #- name: step2
         #  id: step2
         #  run: |
