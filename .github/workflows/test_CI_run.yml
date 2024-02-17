@@ -64,7 +64,7 @@ jobs:
         - name: step1
           id: step1
           run: |
-             echo "MY_ENV_COMPO=${{ needs.check-bats-version1.outputs.targetcompo }}" >> "$GITHUB_ENV"
+             echo "MY_ENV_COMPO='${{ needs.check-bats-version1.outputs.targetcompo }}'" >> "$GITHUB_ENV"
              #echo "targetcompo=${{ matrix.compolist }}" >> "$GITHUB_ENV"
              
         - name: step2
