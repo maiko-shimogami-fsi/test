@@ -57,29 +57,26 @@ jobs:
        matrix:
          compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
       env:
-       MY_ENV_COMPO : '["aaa"]'
+       MY_ENV_COMPO : ${{ needs.check-bats-version1.outputs.targetcompo }}
       
       steps:
       #チェック確認
         - name: step1
           id: step1
           run: |
-             echo "MY_ENV_COMPO='${{ needs.check-bats-version1.outputs.targetcompo }}'" >> "$GITHUB_ENV"
+             #echo "MY_ENV_COMPO='${{ needs.check-bats-version1.outputs.targetcompo }}'" >> "$GITHUB_ENV"
              #echo "targetcompo=${{ matrix.compolist }}" >> "$GITHUB_ENV"
              
         - name: step2
           id: step2
           run: |
-             if [ -z "$env_compo" ]; then
-              env_compo=${{ env.MY_ENV_COMPO }}
-             fi
+             echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}"
              targetcompo=${{ matrix.compolist }}
-             echo "env_compo=$env_compo"
              echo "targetcompo=$targetcompo"
-             env_compo=("${env_compo[@]/$targetcompo}")
+             #env_compo=("${env_compo[@]/$targetcompo}")
              #env_compo=("${env_compo[@]//\"\"}")
-             echo "targetcompo2=$env_compo"
-             echo "targetcompo2=$env_compo" >> "$GITHUB_OUTPUT"
+             echo "targetcompo2=$MY_ENV_COMPO"
+             echo "targetcompo2=$MY_ENV_COMPO" >> "$GITHUB_OUTPUT"
              
         #- name: step2
         #  if: always()
