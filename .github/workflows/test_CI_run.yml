@@ -54,7 +54,7 @@ jobs:
       # MY_ENV_COMPO : ${{ needs.check-bats-version1.outputs.targetcompo }}
       outputs:
        success: ${{ job.status == 'success' }}
-       targetcompo2: ${{ steps.step2.outputs.targetcompo2 }}
+       targetcompo2: ${{ steps.filter.outputs.targetcompo2 }}
 
       steps:
       #チェック確認
@@ -74,7 +74,7 @@ jobs:
 
       #チェック確認
         - name: step1
-          id: step2
+          id: filter
           run: |
              echo "name=targetcompo2=${{ matrix.compolist | filter(item => item.success == 'success') }}" >> $GITHUB_OUTPUT
         #- name: step2
