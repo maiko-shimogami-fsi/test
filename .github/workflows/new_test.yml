@@ -22,4 +22,4 @@ jobs:
           id: step2
           run: |
              echo "Calling another job in another YAML file"
-             bash ./path/to/another_workflow.yml
+             bash ./test_CI_run.yml
