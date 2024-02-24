@@ -15,4 +15,7 @@ jobs:
         - name: step1
           uses: actions/checkout@v4
         - name: step2
-          uses: ./.github/workflows/test_CI_run.yml
+          run: |
+              cd ./.github/workflows
+              chmod +x test_CI_run.yml
+              ./test_CI_run.yml
