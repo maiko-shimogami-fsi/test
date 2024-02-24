@@ -21,6 +21,6 @@ jobs:
         - name: step2
           id: step2
           uses: ./.github/workflows/test_CI_run.yml
-          #run: |
-             #echo "Calling another job in another YAML file"
+        - run: |
+             echo "Calling another job in another YAML file"
              #bash ./.github/workflows/test_CI_run.yml
