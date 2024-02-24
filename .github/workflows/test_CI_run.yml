@@ -8,9 +8,7 @@ on:
 
 jobs:
     check-bats-version1:
-      runs-on: windows-latest
-      outputs:
-       targetcompo: ${{ steps.step2.outputs.targetcompo }}
+      runs-on: ubuntu-latest
       
       steps:
       #環境を設定する
@@ -23,88 +21,17 @@ jobs:
         - name: step2
           id: step2
           run: |
-             $targetcompo += "["
-             foreach ($l in Get-Content ./unittest_setting.json) {
-              if ($l -like "*node_name*") {
-                $node_name = $l.Substring(22, ($l.Length-24))
-               } elseif ($l -like "*scheduled*") {
-                if ($l -like "*true*") {
-                  $targetcompo += "`""
-                  $targetcompo += $node_name
-                  $targetcompo += "`""
-                  $targetcompo += ","
-                  }
-                }
-               }
-             $targetcompo += "]"
-             $targetcompo = $targetcompo -replace '\,]',']'
+             targetcompo="Lcd"
              echo "targetcompo=$targetcompo"
-             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
     check-bats-version2:
       runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
-      #outputs:
-       #targetcompo2: ${{ steps.step2.outputs.targetcompo2 }}
-      strategy:
-       max-parallel: 2
-       matrix:
-         compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-      #env:
-      # MY_ENV_COMPO : ${{ needs.check-bats-version1.outputs.targetcompo }}
-      outputs:
-       success: ${{ job.status == 'success' }}
-       targetcompo2: ${{ steps.filter.outputs.targetcompo2 }}
 
       steps:
       #チェック確認
         - name: step1
           id: step1
           run: |
-             #echo "MY_ENV_COMPO=${{ env.MY_ENV_COMPO }}"
-             #targetcompo=${{ matrix.compolist }}
-             #MY_ENV_COMPO=("${MY_ENV_COMPO[@]/$targetcompo}")
-             #echo "MY_ENV_COMPO=$MY_ENV_COMPO"
-             #echo "MY_ENV_COMPO=$MY_ENV_COMPO" >> "$GITHUB_ENV"
-             targetcompo=${{ matrix.compolist }}
-             if [ $targetcompo = 'Lcd' ]; then
-              exit 1
-              echo "エラー"
-             fi
-
-      #チェック確認
-        - name: step1
-          id: filter
-          run: |
-             echo "targetcompo2=${{ matrix.compolist | filter(item => item.success == 'success') }}" >> $GITHUB_OUTPUT
-        #- name: step2
-        #  id: step2
-        #  run: |
-        #     echo "targetcompo2=${{ env.MY_ENV_COMPO }}"
-        #     echo "targetcompo2=${{ env.MY_ENV_COMPO }}" >> $GITHUB_OUTPUT
-
-        #- name: step2
-        #  if: always()
-        #  run: |
-        #     echo "job.status=${{ job.status }}" 
-        #     if [ ${{ job.status }} = 'failure' ]; then
-        #      echo "エラー"
-        #     fi
-             
-    check-bats-version3:
-      runs-on: ubuntu-latest
-      needs: [ check-bats-version1,check-bats-version2 ]
-      if: ${{ needs.check-bats-version2.outputs.success }}
-      strategy:
-       max-parallel: 2
-       matrix:
-         compolist: ${{fromJson( needs.check-bats-version2.outputs.targetcompo2 )}}
-         
-      steps:
-      #チェック確認
-        - name: step1
-          uses: actions/checkout@v3
-        - run: |
-            #targetcompo3=${{ needs.check-bats-version2.outputs.targetcompo2 }}
-            echo "targetcompo3=$targetcompo3"
-            
+             targetcompo="Bsm"
+             echo "targetcompo=$targetcompo"   
