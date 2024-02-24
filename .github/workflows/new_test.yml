@@ -14,13 +14,5 @@ jobs:
       #環境を設定する
         - name: step1
           uses: actions/checkout@v3
-        - run: |
-             echo "checkout"
-             
-      #コンポの値設定
         - name: step2
-          id: step2
           uses: ./.github/workflows/test_CI_run.yml
-        - run: |
-             echo "Calling another job in another YAML file"
-             #bash ./.github/workflows/test_CI_run.yml
