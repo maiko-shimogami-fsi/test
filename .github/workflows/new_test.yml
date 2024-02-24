@@ -1,4 +1,4 @@
-name: form-example-new
+name: form-example-new 
 on:
  workflow_dispatch:
     inputs:
