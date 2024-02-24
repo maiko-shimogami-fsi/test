@@ -20,6 +20,7 @@ jobs:
       #コンポの値設定
         - name: step2
           id: step2
-          run: |
-             echo "Calling another job in another YAML file"
-             bash ./.github/workflows/test_CI_run.yml
+          uses: ./.github/workflows/test_CI_run.yml
+          #run: |
+             #echo "Calling another job in another YAML file"
+             #bash ./.github/workflows/test_CI_run.yml
