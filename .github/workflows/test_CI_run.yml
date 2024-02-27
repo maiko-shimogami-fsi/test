@@ -37,4 +37,18 @@ jobs:
         - name: step1
           id: step1
           run: |
+            if [ ${{ inputs.input_mod }} = 'Lcd' ]; then
+              echo "エラー"
+              exit 1
+            fi
+ 
+    call_check-bats-version3:
+      runs-on: ubuntu-latest
+      needs: [ call_check-bats-version1,call_check-bats-version2 ]
+
+      steps:
+      #チェック確認
+        - name: step1
+          id: step1
+          run: |
              echo "check完了"   
