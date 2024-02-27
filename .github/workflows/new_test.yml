@@ -39,7 +39,7 @@ jobs:
       #環境を設定する
         - name: step1
           run: |
-             targetcompoA=needs.check-bats-version1.outputs.targetcompoA
+             targetcompoA=${{ needs.check-bats-version1.outputs.targetcompoA }}
              echo "targetcompoA=$targetcompoA"
 
     check-bats-version3:
@@ -50,5 +50,5 @@ jobs:
       #環境を設定する
         - name: step1
           run: |
-             targetcompoB=needs.check-bats-version1.outputs.targetcompoB
+             targetcompoB=${{ needs.check-bats-version1.outputs.targetcompoB }}
              echo "targetcompoB=$targetcompoB"
