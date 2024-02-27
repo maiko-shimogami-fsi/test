@@ -25,7 +25,7 @@ jobs:
           id: step2
           run: |
              $targetcompoA="Lcd"
-             $targetcompoB="Lcd"
+             $targetcompoB="Bsm"
              echo "targetcompoA=$targetcompoA"
              echo "targetcompoB=$targetcompoB"
              echo "targetcompoA=$targetcompoA" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
