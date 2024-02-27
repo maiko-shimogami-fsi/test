@@ -12,31 +12,29 @@ on:
         type: string
 
 jobs:
-    check-bats-version1:
+    call_check-bats-version1:
       runs-on: ubuntu-latest
       
       steps:
       #環境を設定する
         - name: step1
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
         - run: |
              echo "checkout"
              
       #コンポの値設定
-        - name: step2
-          id: step2
+        - name: compo_check
           run: |
-             targetcompo="Lcd"
+             targetcompo=${{ inputs.input_mod }}
              echo "targetcompo=$targetcompo"
              
-    check-bats-version2:
+    call_check-bats-version2:
       runs-on: ubuntu-latest
-      needs: [ check-bats-version1 ]
+      needs: [ call_check-bats-version1 ]
 
       steps:
       #チェック確認
         - name: step1
           id: step1
           run: |
-             targetcompo="Bsm"
-             echo "targetcompo=$targetcompo"   
+             echo "check完了"   
