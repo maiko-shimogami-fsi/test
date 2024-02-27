@@ -35,8 +35,8 @@ jobs:
       needs: [ check-bats-version1 ]
       uses: ./.github/workflows/test_CI_run.yml
       name: step1
-      #with:
-        #input_mod: ${{ needs.Create_Branch.outputs.targetbranch }}
+      with:
+        input_mod: ${{ needs.check-bats-version1.outputs.targetcompoA }}
 
     check-bats-version3:
       runs-on: ubuntu-latest
