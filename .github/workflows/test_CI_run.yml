@@ -5,6 +5,11 @@ on:
       input_mod:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
+        
+ workflow_call:
+    inputs:
+      input_mod:
+        type: string
 
 jobs:
     check-bats-version1:
