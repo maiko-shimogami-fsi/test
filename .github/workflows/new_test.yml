@@ -34,17 +34,13 @@ jobs:
     check-bats-version2:
       needs: [ check-bats-version1 ]
       uses: ./.github/workflows/test_CI_run.yml
-      name: step1
+      name: yml_compoA
       with:
         input_mod: ${{ needs.check-bats-version1.outputs.targetcompoA }}
 
     check-bats-version3:
-      runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
-      
-      steps:
-      #環境を設定する
-        - name: step1
-          run: |
-             targetcompoB=${{ needs.check-bats-version1.outputs.targetcompoB }}
-             echo "targetcompoB=$targetcompoB"
+      uses: ./.github/workflows/test_CI_run.yml
+      name: yml_compoB
+      with:
+        input_mod: ${{ needs.check-bats-version1.outputs.targetcompoB }}
