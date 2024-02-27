@@ -32,15 +32,11 @@ jobs:
              echo "targetcompoB=$targetcompoB" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
     check-bats-version2:
-      runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
-      
-      steps:
-      #環境を設定する
-        - name: step1
-          run: |
-             targetcompoA=${{ needs.check-bats-version1.outputs.targetcompoA }}
-             echo "targetcompoA=$targetcompoA"
+      uses: ./.github/workflows/test_CI_run.yml
+      name: step1
+      #with:
+        #input_mod: ${{ needs.Create_Branch.outputs.targetbranch }}
 
     check-bats-version3:
       runs-on: ubuntu-latest
