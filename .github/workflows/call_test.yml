@@ -1,0 +1,23 @@
+name: form-example-new2
+on:
+ workflow_dispatch:
+    inputs:
+      input_mod:
+        description: 'Please enter the SHA-1 or branch name to UnitTest.'
+        required: false
+
+jobs:
+    check-bats-version0:
+      runs-on: windows-latest
+      
+      steps:
+      #環境を設定する
+        - name: step1
+          uses: actions/checkout@v4
+        - run: |
+             echo "checkout"
+
+    check-bats-version01:
+      needs: [ check-bats-version0 ]
+      uses: ./.github/workflows/new_test.yml
+      name: call_yml
