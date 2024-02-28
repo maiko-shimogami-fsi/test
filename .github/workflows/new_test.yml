@@ -35,6 +35,12 @@ jobs:
              echo "targetcompoB=$targetcompoB"
              echo "targetcompoA=$targetcompoA" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              echo "targetcompoB=$targetcompoB" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+
+        - name: step3
+          id: step3
+          run: |
+             echo "targetcompoA1=$targetcompoA"
+             echo "targetcompoA2=${{ steps.step2.outputs.targetcompoA }}"
              
     check-bats-version2:
       needs: [ check-bats-version1 ]
