@@ -39,8 +39,7 @@ jobs:
         - name: step3
           id: step3
           run: |
-             echo "targetcompoA1=${{ steps.step2.outputs.targetcompoA }}"
-             echo "targetcompoA2=${{ needs.check-bats-version1.outputs.targetcompoA }}"
+             echo "targetcompoA1=${{ step2.outputs.targetcompoA }}"
              
     check-bats-version2:
       needs: [ check-bats-version1 ]
