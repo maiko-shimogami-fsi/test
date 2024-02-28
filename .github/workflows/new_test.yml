@@ -40,7 +40,7 @@ jobs:
           id: step3
           run: |
              echo "targetcompoA1=${{ steps.step2.outputs.targetcompoA }}"
-             #echo "targetcompoA2=${{fromJson( steps.step2.outputs.targetcompoA )}}"
+             #echo "targetcompoA2=${{ needs.check-bats-version1.outputs.targetcompoA }}"
              
     check-bats-version2:
       needs: [ check-bats-version1 ]
