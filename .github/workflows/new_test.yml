@@ -13,7 +13,7 @@ on:
         
 jobs:
     check-bats-version1:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       #outputs:
       # targetcompoA: ${{ steps.step2.outputs.targetcompoA }}
       # targetcompoB: ${{ steps.step2.outputs.targetcompoB }}
@@ -29,7 +29,7 @@ jobs:
         - name: step2
           id: step2
           run: |
-             targetcompoA="Lcd"
+             $targetcompoA="Lcd"
              echo "targetcompoA=$targetcompoA"
              #echo "targetcompoA=$targetcompoA" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              echo "targetcompoA=$targetcompoA" >> $GITHUB_ENV
