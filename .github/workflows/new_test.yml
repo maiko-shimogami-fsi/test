@@ -14,9 +14,9 @@ on:
 jobs:
     check-bats-version1:
       runs-on: windows-latest
-      outputs:
-       targetcompoA: ${{ steps.step2.outputs.targetcompoA }}
-       targetcompoB: ${{ steps.step2.outputs.targetcompoB }}
+      #outputs:
+      # targetcompoA: ${{ steps.step2.outputs.targetcompoA }}
+      # targetcompoB: ${{ steps.step2.outputs.targetcompoB }}
       
       steps:
       #環境を設定する
@@ -39,18 +39,18 @@ jobs:
         - name: step3
           id: step3
           run: |
-             echo "targetcompoA1=${{ step2.outputs.targetcompoA }}"
+             echo "targetcompoA=${{ env.targetcompoA }}"
              
-    check-bats-version2:
-      needs: [ check-bats-version1 ]
-      uses: ./.github/workflows/test_CI_run.yml
-      name: yml_compoA
-      with:
-        input_mod: ${{ needs.check-bats-version1.outputs.targetcompoA }}
+    #check-bats-version2:
+    #  needs: [ check-bats-version1 ]
+    #  uses: ./.github/workflows/test_CI_run.yml
+    #  name: yml_compoA
+    #  with:
+    #    input_mod: ${{ needs.check-bats-version1.outputs.targetcompoA }}
 
-    check-bats-version3:
-      needs: [ check-bats-version1 ]
-      uses: ./.github/workflows/test_CI_run.yml
-      name: yml_compoB
-      with:
-        input_mod: ${{ needs.check-bats-version1.outputs.targetcompoB }}
+    #check-bats-version3:
+    #  needs: [ check-bats-version1 ]
+    #  uses: ./.github/workflows/test_CI_run.yml
+    #  name: yml_compoB
+    #  with:
+    #    input_mod: ${{ needs.check-bats-version1.outputs.targetcompoB }}
