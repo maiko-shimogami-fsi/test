@@ -31,8 +31,8 @@ jobs:
           run: |
              $targetcompoA="Lcd"
              echo "targetcompoA=$targetcompoA"
-             #echo "targetcompoA=$targetcompoA" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "targetcompoA=$targetcompoA" >> $GITHUB_ENV
+             echo "targetcompoA=$targetcompoA" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             #echo "targetcompoA=$targetcompoA" >> $GITHUB_ENV
 
         - name: step3
           id: step3
