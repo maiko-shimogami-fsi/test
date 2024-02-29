@@ -37,7 +37,7 @@ jobs:
         - name: step3
           id: step3
           run: |
-             echo "targetcompoA=${{ env.targetcompoA }}"
+             echo "targetcompoA=${env:targetcompoA}"
              
     #check-bats-version2:
     #  needs: [ check-bats-version1 ]
