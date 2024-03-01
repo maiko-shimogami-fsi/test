@@ -76,8 +76,8 @@ jobs:
              $targetcompo.Count
              $judge_targetcompo = $targetcompo[2]
              
-             if ($targetcompo.Count -le 2) {
-               echo "対象コンポが2以上。"
+             if ($targetcompo.Count -le 1) {
+               echo "対象コンポが1以下。"
                #exit 1
              }
 
