@@ -56,24 +56,29 @@ jobs:
         - name: step2
           id: step2
           run: |
-            [string[]]$targetcompo = @()
+            #[string[]]$targetcompo = @()
+            $targetcompo = New-Object System.Collections.ArrayList
 
              foreach ($l in Get-Content ./unittest_setting.json) {
               if ($l -like "*node_name*") {
                 $node_name = $l.Substring(22, ($l.Length-24))
                } elseif ($l -like "*scheduled*") {
                 if ($l -like "*true*") {
-                  $targetcompo += $node_name
+                  $targetcompo.Add("$node_name")
+                  #$targetcompo += $node_name
                   }
                }
              }
+
+             echo "targetcompo=$targetcompo"
+             echo "targetcompo[0]=$targetcompo[0]"
              
-             if ("$targetcompo[2]" -ne "") {
-               echo "対象コンポが3つ以上あります。エラーを返します。"
-               exit 1
-             } else {
-              #$targetcompoA = $targetcompo[0]
-              #$targetcompoB = $targetcompo[1]
-             }
+             #if ("$targetcompo[2]" -ne "") {
+             #  echo "対象コンポが3つ以上あります。エラーを返します。"
+             #  exit 1
+             #} else {
+             # #$targetcompoA = $targetcompo[0]
+             # #$targetcompoB = $targetcompo[1]
+             #}
              echo "targetcompoA=$targetcompoA"
              echo "targetcompoB=$targetcompoB"
