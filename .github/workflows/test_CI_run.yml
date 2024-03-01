@@ -1,6 +1,6 @@
 name: form-example 
 on:
-# workflow_dispatch:
+ workflow_dispatch:
 #    inputs:
 #      input_mod:
 #        description: 'Please enter the SHA-1 or branch name to UnitTest.'
