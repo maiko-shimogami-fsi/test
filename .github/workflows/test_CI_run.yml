@@ -56,7 +56,7 @@ jobs:
         - name: step2
           id: step2
           run: |
-             $targetcompo += "["
+            # $targetcompo += "["
              foreach ($l in Get-Content ./unittest_setting.json) {
               if ($l -like "*node_name*") {
                 $node_name = $l.Substring(22, ($l.Length-24))
@@ -69,8 +69,8 @@ jobs:
                   }
                 }
                }
-             $targetcompo += "]"
-             $targetcompo = $targetcompo -replace '\,]',']'
+             #$targetcompo += "]"
+             #$targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
