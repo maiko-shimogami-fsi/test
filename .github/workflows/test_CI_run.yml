@@ -25,8 +25,8 @@ jobs:
       #コンポの値設定
         - name: compo_check
           run: |
-             targetcompo=${{ inputs.input_mod }}
-             echo "targetcompo=$targetcompo"
+             #targetcompo=${{ inputs.input_mod }}
+             #echo "targetcompo=$targetcompo"
              
     call_check-bats-version2:
       runs-on: ubuntu-latest
@@ -41,6 +41,27 @@ jobs:
               echo "エラー"
               exit 1
             fi
+
+        - name: step2
+          id: step2
+          run: |
+            $targetcompo += "["
+             foreach ($l in Get-Content ./unittest_setting.json) {
+              if ($l -like "*node_name*") {
+                $node_name = $l.Substring(22, ($l.Length-24))
+               } elseif ($l -like "*scheduled*") {
+                if ($l -like "*true*") {
+                  $targetcompo += "`""
+                  $targetcompo += $node_name
+                  $targetcompo += "`""
+                  $targetcompo += ","
+                  }
+                }
+               }
+             $targetcompo += "]"
+             $targetcompo = $targetcompo -replace '\,]',']'
+             echo "targetcompo=$targetcompo"
+             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
  
     call_check-bats-version3:
       runs-on: ubuntu-latest
