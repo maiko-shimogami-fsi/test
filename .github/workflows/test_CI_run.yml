@@ -47,9 +47,14 @@ jobs:
       needs: [ call_check-bats-version1,call_check-bats-version2 ]
 
       steps:
-      #チェック確認
+        #環境を設定する
         - name: step1
-          id: step1
+          uses: actions/checkout@v4
+        - run: |
+             echo "checkout"
+             
+        - name: step2
+          id: step2
           run: |
              $targetcompo += "["
              foreach ($l in Get-Content ./unittest_setting.json) {
