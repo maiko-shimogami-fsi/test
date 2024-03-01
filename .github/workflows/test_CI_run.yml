@@ -67,18 +67,8 @@ jobs:
                   }
                }
              }
-             echo "targetcompo=$targetcompo"
-             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
-             $targetcompoA = $targetcompo[0]
-             $targetcompoB = $targetcompo[1]
-             $targetcompoC = $targetcompo[2] 
-             
-             echo "targetcompoA = $targetcompoA"
-             echo "targetcompoB = $targetcompoB"
-             echo "targetcompoC = $targetcompoC"
-             
-             if ("$targetcompoC" -ne "") {
+             if ("$targetcompo[2]" -ne "") {
                echo "対象コンポが3つ以上あります。エラーを返します。"
                exit 1
              } else {
