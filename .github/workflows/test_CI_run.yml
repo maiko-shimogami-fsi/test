@@ -62,7 +62,7 @@ jobs:
                 $node_name = $l.Substring(22, ($l.Length-24))
                } elseif ($l -like "*scheduled*") {
                 if ($l -like "*true*") {
-                  #$targetcompo += $node_name
+                  $targetcompo += $node_name
                   }
                }
              }
