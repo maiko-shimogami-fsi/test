@@ -78,12 +78,12 @@ jobs:
              echo "targetcompoB = $targetcompoB"
              echo "targetcompoC = $targetcompoC"
              
-             if ($targetcompoC -eq " ") {
+             if ("$targetcompoC" -ne "") {
+               echo "対象コンポが3つ以上あります。エラーを返します。"
+               exit 1
+             } else {
               #$targetcompoA = $targetcompo[0]
               #$targetcompoB = $targetcompo[1]
-             }else{
-              echo "対象コンポが3つ以上あります。エラーを返します。"
-              exit 1
              }
              echo "targetcompoA=$targetcompoA"
              echo "targetcompoB=$targetcompoB"
