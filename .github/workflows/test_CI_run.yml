@@ -73,3 +73,10 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             
+             if ($targetcompo.Count <= 2) {
+              $targetcompoA = $targetcompo[0]
+              $targetcompoB = $targetcompo[1]
+             }
+             echo "targetcompoA=$targetcompoA"
+             echo "targetcompoB=$targetcompoB"
