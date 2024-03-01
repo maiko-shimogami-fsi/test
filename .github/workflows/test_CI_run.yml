@@ -1,15 +1,15 @@
 name: form-example 
 on:
- workflow_dispatch:
-    inputs:
-      input_mod:
-        description: 'Please enter the SHA-1 or branch name to UnitTest.'
-        required: false
+# workflow_dispatch:
+#    inputs:
+#      input_mod:
+#        description: 'Please enter the SHA-1 or branch name to UnitTest.'
+#        required: false
         
- workflow_call:
-    inputs:
-      input_mod:
-        type: string
+# workflow_call:
+#    inputs:
+#      input_mod:
+#        type: string
 
 jobs:
     call_check-bats-version1:
