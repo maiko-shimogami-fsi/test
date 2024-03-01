@@ -71,7 +71,8 @@ jobs:
              }
 
              echo "targetcompo=$targetcompo"
-             echo "targetcompo[0]=$targetcompo[0]"
+             echo "targetcompo[0]=($targetcompo[0])"
+             $targetcompo.Count
              
              #if ("$targetcompo[2]" -ne "") {
              #  echo "対象コンポが3つ以上あります。エラーを返します。"
