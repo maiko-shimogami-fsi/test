@@ -78,7 +78,7 @@ jobs:
              echo "targetcompoB = $targetcompoB"
              echo "targetcompoC = $targetcompoC"
              
-             if ($targetcompoC -eq "") {
+             if ($targetcompoC -eq " ") {
               #$targetcompoA = $targetcompo[0]
               #$targetcompoB = $targetcompo[1]
              }else{
