@@ -56,20 +56,16 @@ jobs:
         - name: step2
           id: step2
           run: |
-            #[string[]]$targetcompo = @()
-            $targetcompo = New-Object System.Collections.ArrayList
-
+            [string[]]$targetcompo = @()
              foreach ($l in Get-Content ./unittest_setting.json) {
               if ($l -like "*node_name*") {
                 $node_name = $l.Substring(22, ($l.Length-24))
                } elseif ($l -like "*scheduled*") {
                 if ($l -like "*true*") {
-                  $targetcompo.Add("$node_name")
                   #$targetcompo += $node_name
                   }
                }
              }
-             $targetcompo.Add("aaa")
              echo "targetcompo=$targetcompo"
              $targetcompo.Count
              
