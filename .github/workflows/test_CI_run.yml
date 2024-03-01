@@ -69,8 +69,8 @@ jobs:
                   }
                 }
                }
-             #$targetcompo += "]"
-             #$targetcompo = $targetcompo -replace '\,]',']'
+             $targetcompo += "]"
+             $targetcompo = $targetcompo -replace '\,]',''
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
