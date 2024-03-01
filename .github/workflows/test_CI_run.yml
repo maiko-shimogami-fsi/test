@@ -71,15 +71,20 @@ jobs:
              }
 
              echo "targetcompo=$targetcompo"
-             echo "targetcompo[0]=" + $targetcompo[0]
+             echo "targetcompo[0]="
+             $targetcompo[0]
              $targetcompo.Count
+             $judge_targetcompo = $targetcompo[2]
              
-             #if ("$targetcompo[2]" -ne "") {
-             #  echo "対象コンポが3つ以上あります。エラーを返します。"
-             #  exit 1
-             #} else {
-             # #$targetcompoA = $targetcompo[0]
-             # #$targetcompoB = $targetcompo[1]
-             #}
+             if ($targetcompo.Count -le 2) {
+               echo "対象コンポが2以上。"
+               #exit 1
+             }
+
+             if ("$judge_targetcompo" -eq "") {
+               echo "空白"
+               #exit 1
+             }
+
              echo "targetcompoA=$targetcompoA"
              echo "targetcompoB=$targetcompoB"
