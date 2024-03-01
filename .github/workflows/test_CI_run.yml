@@ -75,9 +75,9 @@ jobs:
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
-             echo "targetcompo.Count=$targetcompo.Count"
+             echo "targetcompo.Count=${{targetcompo.Count}}"
              
-             if ($targetcompo.Count -le 2) {
+             if (${{targetcompo.Count}} -le 2) {
               $targetcompoA = $targetcompo[0]
               $targetcompoB = $targetcompo[1]
              }
