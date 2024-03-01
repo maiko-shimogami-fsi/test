@@ -63,12 +63,16 @@ jobs:
                 $node_name = $l.Substring(22, ($l.Length-24))
                } elseif ($l -like "*scheduled*") {
                 if ($l -like "*true*") {
-                  #$targetcompo += $node_name
+                  $targetcompo += $node_name
                   }
-                }
                }
+             }
              echo "targetcompo=$targetcompo"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+
+             echo "targetcompo[0]=$targetcompo[0]"
+             echo "targetcompo[1]=$targetcompo[1]"
+             echo "targetcompo[2]=$targetcompo[2]"
              
              if ($targetcompo[2] -eq "") {
               $targetcompoA = $targetcompo[0]
