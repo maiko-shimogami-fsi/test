@@ -69,22 +69,18 @@ jobs:
                   }
                }
              }
-
+             $targetcompo.Add("aaa")
              echo "targetcompo=$targetcompo"
-             echo "targetcompo[0]="
-             $targetcompo[0]
              $targetcompo.Count
-             $judge_targetcompo = $targetcompo[2]
              
-             if ($targetcompo.Count -le 1) {
-               echo "対象コンポが1以下。"
-               #exit 1
+             if ($targetcompo.Count -le 2) {
+               echo "対象コンポが2以下。"
+               $targetcompoA = $targetcompo[0]
+               $targetcompoB = $targetcompo[1]
+             }else{
+               echo "対象コンポが3以上のためエラー終了します。"
+               exit 1
              }
-
-             if ("$judge_targetcompo" -eq "") {
-               echo "空白"
-               #exit 1
-             }
-
+             
              echo "targetcompoA=$targetcompoA"
              echo "targetcompoB=$targetcompoB"
