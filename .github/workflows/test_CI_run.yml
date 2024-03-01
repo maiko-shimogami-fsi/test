@@ -68,7 +68,7 @@ jobs:
                 }
                }
              echo "targetcompo=$targetcompo"
-             echo "$(targetcompo).Length"
+             echo "($targetcompo).Length"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
              
