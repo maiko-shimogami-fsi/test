@@ -69,7 +69,7 @@ jobs:
                }
              $targetcompo="Lcd", "Bsm"
              echo "targetcompo=$targetcompo"
-             echo "($targetcompo).Length"
+             echo "($targetcompo).count"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
              
