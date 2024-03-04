@@ -1,15 +1,15 @@
 name: form-example 
 on:
  workflow_dispatch:
-#    inputs:
-#      input_mod:
-#        description: 'Please enter the SHA-1 or branch name to UnitTest.'
-#        required: false
+    inputs:
+      input_mod:
+        description: 'Please enter the SHA-1 or branch name to UnitTest.'
+        required: false
         
-# workflow_call:
-#    inputs:
-#      input_mod:
-#        type: string
+ workflow_call:
+    inputs:
+      input_mod:
+        type: string
 
 jobs:
     call_check-bats-version1:
@@ -53,30 +53,28 @@ jobs:
         - run: |
              echo "checkout"
              
-        - name: step2
-          id: step2
-          run: |
-            [string[]]$targetcompo = @()
-             foreach ($l in Get-Content ./unittest_setting.json) {
-              if ($l -like "*node_name*") {
-                $node_name = $l.Substring(22, ($l.Length-24))
-               } elseif ($l -like "*scheduled*") {
-                if ($l -like "*true*") {
-                  $targetcompo += $node_name
-                  }
-               }
-             }
-             echo "targetcompo=$targetcompo"
-             $targetcompo.Count
+        # - name: step2
+        #   id: step2
+        #  run: |
+        #     echo "checkout"
+        #    [string[]]$targetcompo = @()
+        #     foreach ($l in Get-Content ./unittest_setting.json) {
+        #      if ($l -like "*node_name*") {
+        #        $node_name = $l.Substring(22, ($l.Length-24))
+        #       } elseif ($l -like "*scheduled*") {
+        #        if ($l -like "*true*") {
+        #          $targetcompo += $node_name
+        #          }
+        #       }
+        #     }
+        #     echo "targetcompo=$targetcompo"
+        #     $targetcompo.Count
              
-             if ($targetcompo.Count -le 2) {
-               echo "対象コンポが2以下。"
-               $targetcompoA = $targetcompo[0]
-               $targetcompoB = $targetcompo[1]
-             }else{
-               echo "対象コンポが3以上のためエラー終了します。"
-               exit 1
-             }
-             
-             echo "targetcompoA=$targetcompoA"
-             echo "targetcompoB=$targetcompoB"
+        #     if ($targetcompo.Count -le 2) {
+        #       echo "対象コンポが2以下。"
+        #       $targetcompoA = $targetcompo[0]
+        #       $targetcompoB = $targetcompo[1]
+        #     }else{
+        #       echo "対象コンポが3以上のためエラー終了します。"
+        #       exit 1
+        #     }
