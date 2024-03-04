@@ -39,12 +39,26 @@ jobs:
           run: |
              echo "targetcompoA=${env:targetcompoA}"
              
-    #check-bats-version2:
-    #  needs: [ check-bats-version1 ]
-    #  uses: ./.github/workflows/test_CI_run.yml
-    #  name: yml_compoA
-    #  with:
-    #    input_mod: ${{ needs.check-bats-version1.outputs.targetcompoA }}
+    check-bats-version2:
+      runs-on: ubuntu-latest
+      needs: [ check-bats-version1 ]
+      steps:
+      #コンポの値設定
+        - name: step1
+          id: step1
+          run: |
+             echo "errorです"
+             exit 1
+             
+    check-bats-version3:
+      runs-on: ubuntu-latest
+      needs: [ check-bats-version1, check-bats-version2 ]
+      steps:
+      #コンポの値設定
+        - name: step1
+          id: step1
+          run: |
+             echo "errorではないです"
 
     #check-bats-version3:
     #  needs: [ check-bats-version1 ]
