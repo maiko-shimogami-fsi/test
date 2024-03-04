@@ -14,9 +14,8 @@ on:
 jobs:
     check-bats-version1:
       runs-on: windows-latest
-      #outputs:
-      # targetcompoA: ${{ steps.step2.outputs.targetcompoA }}
-      # targetcompoB: ${{ steps.step2.outputs.targetcompoB }}
+      outputs:
+       targetcompo: ${{ steps.step2.outputs.targetcompo }}
       
       steps:
       #環境を設定する
@@ -29,27 +28,36 @@ jobs:
         - name: step2
           id: step2
           run: |
-             $targetcompoA="Lcd"
-             echo "targetcompoA=$targetcompoA"
-             echo "targetcompoA=$targetcompoA" | Out-File -Append -FilePath $env:GITHUB_ENV
-             #echo "targetcompoA=$targetcompoA" >> $GITHUB_ENV
-
-        - name: step3
-          id: step3
-          run: |
-             echo "targetcompoA=${env:targetcompoA}"
+             $targetcompo += "["
+             foreach ($l in Get-Content ./unittest_setting.json) {
+              if ($l -like "*node_name*") {
+                $node_name = $l.Substring(22, ($l.Length-24))
+               } elseif ($l -like "*scheduled*") {
+                if ($l -like "*true*") {
+                  $targetcompo += "`""
+                  $targetcompo += $node_name
+                  $targetcompo += "`""
+                  $targetcompo += ","
+                  }
+                }
+               }
+             $targetcompo += "]"
+             $targetcompo = $targetcompo -replace '\,]',']'
+             echo "targetcompo=$targetcompo"
+             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
     check-bats-version2:
-      runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
-      steps:
-      #コンポの値設定
-        - name: step1
-          id: step1
-          run: |
-             echo "errorです"
-             exit 1
-             
+      strategy:
+        max-parallel: 2
+        matrix:
+         compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
+      uses: ./.github/workflows/test_CI_run.yml
+      name: call_yml
+      #if: always()
+      with:
+       input_mod: ${{ matrix.compolist }}
+ 
     check-bats-version3:
       runs-on: ubuntu-latest
       needs: [ check-bats-version1, check-bats-version2 ]
