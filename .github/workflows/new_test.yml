@@ -25,38 +25,67 @@ jobs:
              echo "checkout"
              
       #コンポの値設定
-        - name: step2
-          id: step2
+        #- name: step2
+        #  id: step2
+        #  run: |
+        #     $targetcompo += "["
+        #     foreach ($l in Get-Content ./unittest_setting.json) {
+        #      if ($l -like "*node_name*") {
+        #        $node_name = $l.Substring(22, ($l.Length-24))
+        #       } elseif ($l -like "*scheduled*") {
+        #        if ($l -like "*true*") {
+        #          $targetcompo += "`""
+        #          $targetcompo += $node_name
+        #          $targetcompo += "`""
+        #          $targetcompo += ","
+        #          }
+        #        }
+        #       }
+        #     $targetcompo += "]"
+        #     $targetcompo = $targetcompo -replace '\,]',']'
+        #     echo "targetcompo=$targetcompo"
+        #     echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+        - name: step3
+          id: step3
           run: |
-             $targetcompo += "["
+             [string[]]$targetcompo = @()
              foreach ($l in Get-Content ./unittest_setting.json) {
               if ($l -like "*node_name*") {
                 $node_name = $l.Substring(22, ($l.Length-24))
                } elseif ($l -like "*scheduled*") {
                 if ($l -like "*true*") {
-                  $targetcompo += "`""
                   $targetcompo += $node_name
-                  $targetcompo += "`""
-                  $targetcompo += ","
                   }
-                }
                }
-             $targetcompo += "]"
-             $targetcompo = $targetcompo -replace '\,]',']'
+             }
              echo "targetcompo=$targetcompo"
-             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             COUNT=$targetcompo.Count
              
-    check-bats-version2:
-      needs: [ check-bats-version1 ]
-      strategy:
-        max-parallel: 2
-        matrix:
-         compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-      uses: ./.github/workflows/test_CI_run.yml
-      name: call_yml
-      #if: always()
-      with:
-       input_mod: ${{ matrix.compolist }}
+             for i in $(seq 1 $COUNT); do
+              cat <<EOF > job_$i.yml
+              name: job_$i
+              jobs:
+                build_$i:
+                needs: [ check-bats-version1 ]
+                  steps:
+                    uses: ./.github/workflows/test_CI_run.yml
+                    name: Run your_yml_file.yml
+                    with:
+                     input_mod: $targetcompo[i]
+               EOF
+             done
+             
+    #check-bats-version2:
+   #   needs: [ check-bats-version1 ]
+    #  strategy:
+    ##    max-parallel: 2
+    #    matrix:
+    #     compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
+    #  uses: ./.github/workflows/test_CI_run.yml
+    #  name: call_yml
+    #  #if: always()
+    #  with:
+    #   input_mod: ${{ matrix.compolist }}
 
     #check-bats-version3:
     #  needs: [ check-bats-version1 ]
