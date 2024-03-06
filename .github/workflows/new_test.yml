@@ -29,20 +29,27 @@ jobs:
         - name: step2
           id: step2
           run: |
-             [string[]]$targetcompo = @()
+             $targetcompo += "["
              foreach ($l in Get-Content ./unittest_setting.json) {
               if ($l -like "*node_name*") {
                 $node_name = $l.Substring(22, ($l.Length-24))
                } elseif ($l -like "*scheduled*") {
                 if ($l -like "*true*") {
+                  $targetcompo += "`""
                   $targetcompo += $node_name
+                  $targetcompo += "`""
+                  $targetcompo += ","
                   }
+                }
                }
-             }
+             $targetcompo += "]"
+             $targetcompo = $targetcompo -replace '\,]',']'
              echo "targetcompo=$targetcompo"
+             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+
+             #コンポ数を取得
              $compo_num=$targetcompo.Count
              echo "compo_num=$compo_num"
-             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              echo "compo_num=$compo_num" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
     check-bats-version2:
