@@ -44,9 +44,14 @@ jobs:
              echo "compo_num=$compo_num"
              echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              echo "compo_num=$compo_num" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             
-        - name: step3
-          id: step3
+
+    check-bats-version2:
+      runs-on: windows-latest
+      needs: [ check-bats-version1 ]
+
+      steps:
+        - name: step1
+          id: step1
           run: |
              [string[]]$targetcompo_list = @()
              $targetcompo_list=${{ needs.check-bats-version1.outputs.targetcompo }}
