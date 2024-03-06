@@ -40,7 +40,7 @@ jobs:
                }
              }
              echo "targetcompo=$targetcompo"
-             compo_num=$targetcompo.Count
+             $compo_num=$targetcompo.Count
              echo "compo_num=$compo_num"
              
         - name: step3
