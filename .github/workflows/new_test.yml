@@ -55,8 +55,10 @@ jobs:
           id: step1
           run: |
              targetcompo_list=${{ needs.check-bats-version1.outputs.targetcompo }}
+             targetcompo_arr=($targetcompo_list)
+             compo_num=${#targetcompo_arr[@]}
              #コンポ数を取得
-             compo_num=$targetcompo_list.Count
+             #compo_num=$targetcompo_list.Count
              echo "targetcompo_list=$targetcompo_list"
              echo "compo_num=$compo_num"
 
