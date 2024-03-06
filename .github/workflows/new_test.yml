@@ -53,14 +53,14 @@ jobs:
              echo "compo_num=$compo_num" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
 
     check-bats-version2:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       needs: [ check-bats-version1 ]
 
       steps:
         - name: step1
           id: step1
           run: |
-             $targetcompo_list=${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-             $compo_num=${{ needs.check-bats-version1.outputs.compo_num }}
+             targetcompo_list=${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
+             compo_num=${{ needs.check-bats-version1.outputs.compo_num }}
              echo "targetcompo_list=$targetcompo_list"
              echo "compo_num=$compo_num"
