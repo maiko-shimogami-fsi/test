@@ -16,6 +16,7 @@ jobs:
       runs-on: windows-latest
       outputs:
        targetcompo: ${{ steps.step2.outputs.targetcompo }}
+       compo_num: ${{ steps.step2.outputs.targetcompo }}
       
       steps:
       #環境を設定する
@@ -25,28 +26,8 @@ jobs:
              echo "checkout"
              
       #コンポの値設定
-        #- name: step2
-        #  id: step2
-        #  run: |
-        #     $targetcompo += "["
-        #     foreach ($l in Get-Content ./unittest_setting.json) {
-        #      if ($l -like "*node_name*") {
-        #        $node_name = $l.Substring(22, ($l.Length-24))
-        #       } elseif ($l -like "*scheduled*") {
-        #        if ($l -like "*true*") {
-        #          $targetcompo += "`""
-        #          $targetcompo += $node_name
-        #          $targetcompo += "`""
-        #          $targetcompo += ","
-        #          }
-        #        }
-        #       }
-        #     $targetcompo += "]"
-        #     $targetcompo = $targetcompo -replace '\,]',']'
-        #     echo "targetcompo=$targetcompo"
-        #     echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-        - name: step3
-          id: step3
+        - name: step2
+          id: step2
           run: |
              [string[]]$targetcompo = @()
              foreach ($l in Get-Content ./unittest_setting.json) {
@@ -59,37 +40,11 @@ jobs:
                }
              }
              echo "targetcompo=$targetcompo"
-             COUNT=$targetcompo.Count
+             compo_num=$targetcompo.Count
+             echo "compo_num=$compo_num"
              
-             for i in $(seq 1 $COUNT); do
-              cat <<EOF > job_$i.yml
-              name: job_$i
-              jobs:
-                build_$i:
-                needs: [ check-bats-version1 ]
-                  steps:
-                    uses: ./.github/workflows/test_CI_run.yml
-                    name: Run your_yml_file.yml
-                    with:
-                     input_mod: $targetcompo[i]
-               EOF
-             done
-             
-    #check-bats-version2:
-   #   needs: [ check-bats-version1 ]
-    #  strategy:
-    ##    max-parallel: 2
-    #    matrix:
-    #     compolist: ${{fromJson( needs.check-bats-version1.outputs.targetcompo )}}
-    #  uses: ./.github/workflows/test_CI_run.yml
-    #  name: call_yml
-    #  #if: always()
-    #  with:
-    #   input_mod: ${{ matrix.compolist }}
+        - name: step3
+          id: step3
+          run: |
+             echo "お試し"
 
-    #check-bats-version3:
-    #  needs: [ check-bats-version1 ]
-    #  uses: ./.github/workflows/test_CI_run.yml
-    #  name: yml_compoB
-    #  with:
-    #    input_mod: ${{ needs.check-bats-version1.outputs.targetcompoB }}
