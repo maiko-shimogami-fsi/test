@@ -42,9 +42,14 @@ jobs:
              echo "targetcompo=$targetcompo"
              $compo_num=$targetcompo.Count
              echo "compo_num=$compo_num"
+             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "compo_num=$compo_num" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
         - name: step3
           id: step3
           run: |
-             echo "お試し"
-
+             [string[]]$targetcompo_list = @()
+             $targetcompo_list=${{ needs.check-bats-version1.outputs.targetcompo }}
+             $compo_num=${{ needs.check-bats-version1.outputs.compo_num }}
+             echo "targetcompo_list=$targetcompo_list"
+             echo "compo_num=$compo_num"
