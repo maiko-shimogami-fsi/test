@@ -53,7 +53,7 @@ jobs:
         - name: step1
           id: step1
           run: |
-             [string[]]$targetcompo_list = @()
+             #[string[]]$targetcompo_list = @()
              $targetcompo_list=${{ needs.check-bats-version1.outputs.targetcompo }}
              $compo_num=${{ needs.check-bats-version1.outputs.compo_num }}
              echo "targetcompo_list=$targetcompo_list"
