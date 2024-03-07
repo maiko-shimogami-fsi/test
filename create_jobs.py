@@ -5,7 +5,7 @@ import os
 
 def Createjobs():
  # YAMLファイルの読み込み
- file_path = os.path.abspath('.github/workflows/template.yml')
+ file_path = os.path.abspath('.github/workflows/new_test.yml')
  with open(file_path, 'r') as f:
     yaml_obj = ruamel.yaml.YAML().load(f)
 
