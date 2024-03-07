@@ -1,13 +1,9 @@
 name: form-example-new2
 on:
  workflow_dispatch:
-    inputs:
-      input_mod:
-        description: 'Please enter the SHA-1 or branch name to UnitTest.'
-        required: false
 
 jobs:
-    check-bats-version0:
+    check-bats-version1:
       runs-on: windows-latest
       
       steps:
@@ -16,8 +12,31 @@ jobs:
           uses: actions/checkout@v4
         - run: |
              echo "checkout"
-
-    check-bats-version01:
-      needs: [ check-bats-version0 ]
+             
+      #コンポの値設定
+        - name: step2
+          id: step2
+          run: |
+             $targetcompo += "["
+             foreach ($l in Get-Content ./unittest_setting.json) {
+              if ($l -like "*node_name*") {
+                $node_name = $l.Substring(22, ($l.Length-24))
+               } elseif ($l -like "*scheduled*") {
+                if ($l -like "*true*") {
+                  $targetcompo += "`""
+                  $targetcompo += $node_name
+                  $targetcompo += "`""
+                  $targetcompo += ","
+                  }
+                }
+               }
+             $targetcompo += "]"
+             $targetcompo = $targetcompo -replace '\,]',']'
+                         
+             #ymlファイル生成
+             #python3 create_yml.py $targetcompo
+             
+    check-bats-version2:
+      needs: [ check-bats-version1 ]
       uses: ./.github/workflows/new_test.yml
       name: call_yml
