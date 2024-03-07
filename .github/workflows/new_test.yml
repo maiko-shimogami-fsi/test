@@ -17,4 +17,5 @@ jobs:
       uses: ./.github/workflows/test_CI_run.yml
       name: yml_compo
       with:
-        input_mod: <<targetcompo>>
+        input_mod: "master"
+        input_compo: "Lcd"
