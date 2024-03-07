@@ -36,6 +36,7 @@ jobs:
              echo "targetcompo=$targetcompo"
 
              python3 -m pip install pyyaml
+             pipenv install ruamel.yaml
              
              #ymlファイル生成
              python3 create_jobs.py $targetcompo
