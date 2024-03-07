@@ -29,10 +29,10 @@ jobs:
       #コンポの値設定
         - name: compo_check
           run: |
+             targetmod=${{ inputs.input_mod }}
+             echo "targetmod=$targetmod"
              targetcompo=${{ inputs.input_compo }}
              echo "targetcompo=$targetcompo"
-             targetmod=${{ inputs.input_mod }}
-             echo "targetmod=$targetmod"        
              
     call_check-bats-version2:
       runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
         - name: step1
           id: step1
           run: |
-            if [ ${{ inputs.input_mod }} = 'Lcd' ]; then
+            if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
               echo "Lcdのためエラー"
               exit 1
             fi
