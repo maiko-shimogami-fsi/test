@@ -32,9 +32,11 @@ jobs:
                }
              $targetcompo += "]"
              $targetcompo = $targetcompo -replace '\,]',']'
+
+             echo "targetcompo=$targetcompo"
                          
              #ymlファイル生成
-             #python3 create_yml.py $targetcompo
+             python3 create_jobs.py $targetcompo
              
     check-bats-version2:
       needs: [ check-bats-version1 ]
