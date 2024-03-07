@@ -5,12 +5,16 @@ on:
       input_mod:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
-        
+      input_compo:
+        description: 'Please enter the compo name to UnitTest.'
+        required: false
  workflow_call:
     inputs:
       input_mod:
         type: string
-
+      input_compo:
+        type: string
+        
 jobs:
     call_check-bats-version1:
       runs-on: ubuntu-latest
@@ -25,8 +29,10 @@ jobs:
       #コンポの値設定
         - name: compo_check
           run: |
-             targetcompo=${{ inputs.input_mod }}
+             targetcompo=${{ inputs.input_compo }}
              echo "targetcompo=$targetcompo"
+             targetmod=${{ inputs.input_mod }}
+             echo "targetmod=$targetmod"        
              
     call_check-bats-version2:
       runs-on: ubuntu-latest
