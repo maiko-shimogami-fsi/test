@@ -1,22 +1,10 @@
-name: form-example-new 
+name: form-example-new
 on:
  workflow_dispatch:
-    inputs:
-      input_mod:
-        description: 'Please enter the SHA-1 or branch name to UnitTest.'
-        required: false
-        
- workflow_call:
-    inputs:
-      input_mod:
-        type: string
         
 jobs:
     check-bats-version1:
       runs-on: windows-latest
-      outputs:
-       targetcompo: ${{ steps.step2.outputs.targetcompo }}
-      
       steps:
       #環境を設定する
         - name: step1
@@ -24,41 +12,9 @@ jobs:
         - run: |
              echo "checkout"
              
-      #コンポの値設定
-        - name: step2
-          id: step2
-          run: |
-             $targetcompo += "["
-             foreach ($l in Get-Content ./unittest_setting.json) {
-              if ($l -like "*node_name*") {
-                $node_name = $l.Substring(22, ($l.Length-24))
-               } elseif ($l -like "*scheduled*") {
-                if ($l -like "*true*") {
-                  $targetcompo += "`""
-                  $targetcompo += $node_name
-                  $targetcompo += "`""
-                  $targetcompo += ","
-                  }
-                }
-               }
-             $targetcompo += "]"
-             $targetcompo = $targetcompo -replace '\,]',']'
-             echo "targetcompo=$targetcompo"
-             echo "targetcompo=$targetcompo" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-
-    check-bats-version2:
-      runs-on: ubuntu-latest
+    job_node:
       needs: [ check-bats-version1 ]
-
-      steps:
-        - name: step1
-          id: step1
-          run: |
-             targetcompo_list=${{ needs.check-bats-version1.outputs.targetcompo }}
-             targetcompo_arr=($targetcompo_list)
-             compo_num=${#targetcompo_arr[@]}
-             #コンポ数を取得
-             #compo_num=$targetcompo_list.Count
-             echo "targetcompo_list=$targetcompo_list"
-             echo "compo_num=$compo_num"
-
+      uses: ./.github/workflows/test_CI_run.yml
+      name: yml_compo
+      with:
+        input_mod: <<targetcompo>>
