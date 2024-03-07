@@ -1,6 +1,8 @@
 name: form-example-new
 on:
  workflow_dispatch:
+ workflow_call:
+ 
 #jobを定義
 jobs:
     check-bats-version1:
@@ -17,12 +19,5 @@ jobs:
       uses: ./.github/workflows/test_CI_run.yml
       name: yml_compo
       with:
-        input_mod: "master"
-        input_compo: "Lcd"
-    job_node2:
-      needs: [ check-bats-version1 ]
-      uses: ./.github/workflows/test_CI_run.yml
-      name: yml_compo2
-      with:
-        input_mod: "master"
-        input_compo: "Bsm"
+        input_mod: "input_mod"
+        input_compo: "input_compo"
