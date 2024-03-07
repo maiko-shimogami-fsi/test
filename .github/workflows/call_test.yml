@@ -34,7 +34,9 @@ jobs:
              $targetcompo = $targetcompo -replace '\,]',']'
 
              echo "targetcompo=$targetcompo"
-                         
+
+             python3 -m pip install pyyaml
+             
              #ymlファイル生成
              python3 create_jobs.py $targetcompo
              
