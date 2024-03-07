@@ -51,7 +51,6 @@ jobs:
  
     call_check-bats-version3:
       runs-on: windows-latest
-      if: always()
       needs: [ call_check-bats-version1,call_check-bats-version2 ]
 
       steps:
