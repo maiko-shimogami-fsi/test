@@ -43,7 +43,7 @@ jobs:
 
              BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
-             git add /.github/workflows/
+             git add .
 
              git commit -m "Commit and push output files completed."
              git push origin $BRANCH_NAME
