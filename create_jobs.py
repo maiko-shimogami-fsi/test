@@ -16,7 +16,7 @@ def Createjobs():
  # 新しいjob_nodeを作成
  new_job_node = {
     f'job_node{i+1}': {
-        'needs': ['check-bats-version1'],
+        #'needs': ['check-bats-version1'],
         'uses': './.github/workflows/test_CI_run.yml',
         'name': f'yml_compo{i+1}',
         'with': {
