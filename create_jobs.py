@@ -6,7 +6,7 @@ import os
 def Createjobs():
  # YAMLファイルの読み込み
  file_path = os.path.abspath('.github/workflows/new_test.yml')
- with open(file_path, 'r') as f:
+ with open(file_path, 'r', encoding='utf-8') as f:
     yaml_obj = ruamel.yaml.YAML().load(f)
 
  components = ['aaa', 'bbb']
@@ -37,7 +37,7 @@ def Createjobs():
     yaml_obj['jobs'][f'job_node{i+1}'] = dict(yaml_obj['jobs'][f'job_node{i+1}'])
 
  # YAMLファイルに書き込む
- with open(file_path, 'w') as f:   
+ with open(file_path, 'w', encoding='utf-8') as f:   
     ruamel.yaml.YAML().dump(yaml_obj, f)
 
 def main():
