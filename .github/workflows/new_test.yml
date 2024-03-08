@@ -7,15 +7,9 @@ on:
 jobs:
 
 #jobを定義  
-  job_node1:
+  job_node:
     uses: ./.github/workflows/test_CI_run.yml
-    name: yml_compo1
+    name:
     with:
       input_mod: master
-      input_compo: Lcd
-  job_node2:
-    uses: ./.github/workflows/test_CI_run.yml
-    name: yml_compo2
-    with:
-      input_mod: master
-      input_compo: Bsm
+      input_compo: input_compo
