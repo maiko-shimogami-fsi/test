@@ -32,7 +32,7 @@ def Createjobs():
  # 不要なjob_nodeを削除
  del yaml_obj['jobs']['job_node']
 
- # 新しいjob_nodeをコピーして、job_node2~4を作成
+ # 新しいjob_nodeをコピーして、job_node●●を作成
  for i in range(0, num_of_copies):
     yaml_obj['jobs'][f'job_node{i+1}'] = dict(yaml_obj['jobs'][f'job_node{i+1}'])
 
