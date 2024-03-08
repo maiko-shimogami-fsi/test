@@ -4,7 +4,7 @@ on:
 
 jobs:
     check-bats-version1:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       
       steps:
       #環境を設定する
@@ -17,29 +17,29 @@ jobs:
         - name: step2
           id: step2
           run: |
-             $targetcompo += "["
-             foreach ($l in Get-Content ./unittest_setting.json) {
-              if ($l -like "*node_name*") {
-                $node_name = $l.Substring(22, ($l.Length-24))
-               } elseif ($l -like "*scheduled*") {
-                if ($l -like "*true*") {
-                  $targetcompo += "`""
-                  $targetcompo += $node_name
-                  $targetcompo += "`""
-                  $targetcompo += ","
-                  }
-                }
-               }
-             $targetcompo += "]"
-             $targetcompo = $targetcompo -replace '\,]',']'
+             #$targetcompo += "["
+             #foreach ($l in Get-Content ./unittest_setting.json) {
+             # if ($l -like "*node_name*") {
+             #   $node_name = $l.Substring(22, ($l.Length-24))
+             #  } elseif ($l -like "*scheduled*") {
+             #   if ($l -like "*true*") {
+             #     $targetcompo += "`""
+             #     $targetcompo += $node_name
+             #     $targetcompo += "`""
+             #     $targetcompo += ","
+             #     }
+             #   }
+             #  }
+             #$targetcompo += "]"
+             #$targetcompo = $targetcompo -replace '\,]',']'
 
-             echo "targetcompo=$targetcompo"
+             #echo "targetcompo=$targetcompo"
 
              python3 -m pip install pyyaml
              pip install ruamel.yaml
 
-             $arr = @(aaa, bbb)
-             python3 create_jobs.py $($arr -join ' ')
+             arr=(aaa bbb)
+             python3 create_jobs.py "${arr[@]}"
              #ymlファイル生成
              #python3 create_jobs.py $targetcompo
              
