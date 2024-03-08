@@ -5,17 +5,16 @@ on:
  
 #jobを定義
 jobs:
-    check-bats-version1:
-      runs-on: windows-latest
-      steps:
-      #環境を設定する
-        - name: step1
-          uses: actions/checkout@v4
-        - run: |
-             echo "checkout"
+    #check-bats-version1:
+    #  runs-on: windows-latest
+    #  steps:
+    #  #環境を設定する
+    #    - name: step1
+    #      uses: actions/checkout@v4
+    #    - run: |
+    #        echo "checkout"
 #jobを定義  
     job_node:
-      needs: [ check-bats-version1 ]
       uses: ./.github/workflows/test_CI_run.yml
       name: yml_compo
       with:
