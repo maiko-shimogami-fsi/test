@@ -42,9 +42,10 @@ jobs:
              python3 create_jobs.py "${arr[@]}"
 
              BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-
+             
+             git config --global user.name "shimogam"
+             
              git add .
-
              git commit -m "Commit and push output files completed."
              git push origin $BRANCH_NAME
              
