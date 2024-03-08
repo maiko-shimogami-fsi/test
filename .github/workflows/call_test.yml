@@ -35,11 +35,11 @@ jobs:
 
              #echo "targetcompo=$targetcompo"
 
-             python3 -m pip install pyyaml
-             pip install ruamel.yaml
+             #python3 -m pip install pyyaml
+             #pip install ruamel.yaml
 
-             arr=(aaa bbb)
-             python3 create_jobs.py "${arr[@]}"
+             #arr=(aaa bbb)
+             #python3 create_jobs.py "${arr[@]}"
              #ymlファイル生成
              #python3 create_jobs.py $targetcompo
              
