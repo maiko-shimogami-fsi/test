@@ -35,8 +35,8 @@ jobs:
 
              #echo "targetcompo=$targetcompo"
 
-             #python3 -m pip install pyyaml
-             #pip install ruamel.yaml
+             python3 -m pip install pyyaml
+             pip install ruamel.yaml
 
              arr=(Lcd Bsm)
              python3 create_jobs.py "${arr[@]}"
