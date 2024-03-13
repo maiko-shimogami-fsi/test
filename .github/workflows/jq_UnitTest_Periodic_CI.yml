@@ -40,12 +40,12 @@ jobs:
                   $targetcompo += "`""
                   $targetcompo += $node_name
                   $targetcompo += "`""
-                  $targetcompo += ","
+                  $targetcompo += ", "
                   }
                 }
                }
              $targetcompo += ")"
-             $targetcompo = $targetcompo -replace ',\)' , ')'
+             $targetcompo = $targetcompo -replace ', \)' , ')'
              
              echo "targetcompo_before=$targetcompo"
 
