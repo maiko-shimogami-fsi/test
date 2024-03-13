@@ -45,7 +45,7 @@ jobs:
                 }
                }
              $targetcompo += ")"
-             $targetcompo = $targetcompo -replace '\,)',')'
+             #$targetcompo = $targetcompo -replace '\,)',')'
 
              echo "targetcompo=$targetcompo"
 
