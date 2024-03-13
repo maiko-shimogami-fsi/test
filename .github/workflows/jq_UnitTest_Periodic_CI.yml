@@ -47,9 +47,7 @@ jobs:
              pip install ruamel.yaml
             
              #python3 test.py $targetcompo
-             cd .github/workflows
-             chmod 777 create_jobs.py
-             echo "変更"
+             cd .github/scripts
              #ymlファイル生成
              python3 create_jobs.py $targetcompo
 
