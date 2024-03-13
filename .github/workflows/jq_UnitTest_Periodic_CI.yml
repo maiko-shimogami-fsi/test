@@ -22,6 +22,10 @@ jobs:
            Remove-Item -Recurse -Force -Path $github_workspace/.??*
            echo "--- Get-ChildItem -Force (after Remove-Item) ---"
            Get-ChildItem -Force
+      
+      #作業用リポジトリへチェックアウト
+        - name: checkout work-repo
+          uses: actions/checkout@v3
 
       #コンポの値設定
         - name: step2
