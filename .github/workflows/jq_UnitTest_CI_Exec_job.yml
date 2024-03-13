@@ -1,6 +1,7 @@
 name: jq UnitTest CI Exec job
 on:
   workflow_dispatch:
+  workflow_call:
 #jobを定義
 jobs:
     checkout_and_clean_repo:
