@@ -49,7 +49,7 @@ jobs:
              
              echo "targetcompo_before=$targetcompo"
 
-             $targetcompo = @(Lcd, Bsm)
+             $targetcompo = @('Lcd', 'Bsm')
              echo "targetcompo_after=$targetcompo"
 
              python3 -m pip install pyyaml
