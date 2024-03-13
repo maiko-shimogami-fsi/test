@@ -9,19 +9,19 @@ jobs:
       #作業用リポジトリのクリーン
         - name: Clean self-hosted runner
           run: |
-            echo "--- pwd ---"
-            pwd
-            echo "--- df / ---"
-            df /
-            echo "--- github.workspace=${{ github.workspace }} ---"
-            github_workspace="${{ github.workspace }}"
-            echo "--- ls -la (before rm) ---"
-            ls -la
-            echo "--- rm -rf $github_workspace/* ---"
-            rm -rf $github_workspace/*
-            rm -rf $github_workspace/.??*
-            echo "--- ls -la (after rm) ---"
-            ls -la
+           echo "--- Get-Location ---"
+           Get-Location
+           echo "--- Get-PSDrive -Name C ---"
+           Get-PSDrive -Name C
+           echo "--- github.workspace=${{ github.workspace }} ---"
+           $github_workspace="${{ github.workspace }}"
+           echo "--- Get-ChildItem -Force | Format-Table (before Remove-Item) ---"
+           Get-ChildItem -Force | Format-Table
+           echo "--- Remove-Item -Recurse -Force -Path $github_workspace/* ---"
+           Remove-Item -Recurse -Force -Path $github_workspace/*
+           Remove-Item -Recurse -Force -Path $github_workspace/.??*
+           echo "--- Get-ChildItem -Force (after Remove-Item) ---"
+           Get-ChildItem -Force
 
       #作業用リポジトリへチェックアウト
         - name: checkout work-repo
