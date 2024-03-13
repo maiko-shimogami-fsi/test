@@ -31,7 +31,7 @@ jobs:
         - name: step2
           id: step2
           run: |
-             #[string[]]$targetcompo = @()
+             [string[]]$targetcompo = @()
              foreach ($l in Get-Content ./unittest_setting.json) {
               if ($l -like "*node_name*") {
                 $node_name = $l.Substring(22, ($l.Length-24))
