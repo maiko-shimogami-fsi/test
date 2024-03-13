@@ -2,14 +2,24 @@ name: form-example
 on:
  workflow_dispatch:
     inputs:
+      no_approval_required_for_workflow_dispatch:
+        description: 'JQ member/On-site staff'
+        required: false
+        type: boolean
       input_mod:
         description: 'Please enter the SHA-1 or branch name to UnitTest.'
         required: false
       input_compo:
         description: 'Please enter the compo name to UnitTest.'
         required: false
+      terms_check:
+        description: 'Only check the terms and conditions'
+        required: false
+        type: boolean
  workflow_call:
     inputs:
+      no_approval_required_for_workflow_dispatch:
+        type: boolean
       input_mod:
         type: string
       input_compo:
