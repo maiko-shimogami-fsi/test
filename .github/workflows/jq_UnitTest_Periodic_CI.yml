@@ -4,7 +4,7 @@ on:
 #jobを定義
 jobs:
     checkout_and_clean_repo:
-      runs-on: [unit_test] #Windows動作を前提とした記述とする
+      runs-on: windows-latest
       steps:
       #作業用リポジトリのクリーン
         - name: Clean self-hosted runner
