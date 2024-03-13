@@ -1,0 +1,37 @@
+name: jq UnitTest CI Exec job
+on:
+  workflow_dispatch:
+#jobを定義
+jobs:
+    checkout_and_clean_repo:
+      runs-on: windows-latest
+      steps:
+      #作業用リポジトリのクリーン
+        - name: Clean self-hosted runner
+          run: |
+            echo "--- pwd ---"
+            pwd
+            echo "--- df / ---"
+            df /
+            echo "--- github.workspace=${{ github.workspace }} ---"
+            github_workspace="${{ github.workspace }}"
+            echo "--- ls -la (before rm) ---"
+            ls -la
+            echo "--- rm -rf $github_workspace/* ---"
+            rm -rf $github_workspace/*
+            rm -rf $github_workspace/.??*
+            echo "--- ls -la (after rm) ---"
+            ls -la
+
+      #作業用リポジトリへチェックアウト
+        - name: checkout work-repo
+          uses: actions/checkout@v3
+
+    job_node:
+      needs: [ checkout_and_clean_repo ]
+      uses: ./.github/workflows/jq_UnitTest_CI.yml
+      name: yml_compo
+      with:
+        input_mod: "master"
+        input_compo: "compo"
+        
