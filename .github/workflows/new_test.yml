@@ -1,3 +1,24 @@
 name: jq_UnitTest_CI_Exec_job
 on:
   workflow_dispatch:
+#jobを定義
+jobs:
+    checkout_and_clean_repo:
+      runs-on: windows-latest
+      steps:
+      #作業用リポジトリのクリーン
+        - name: Clean self-hosted runner
+          run: |
+           echo "--- Get-Location ---"
+           Get-Location
+           echo "--- Get-PSDrive -Name C ---"
+           Get-PSDrive -Name C
+           echo "--- github.workspace=${{ github.workspace }} ---"
+           $github_workspace="${{ github.workspace }}"
+           echo "--- Get-ChildItem -Force | Format-Table (before Remove-Item) ---"
+           Get-ChildItem -Force | Format-Table
+           echo "--- Remove-Item -Recurse -Force -Path $github_workspace/* ---"
+           Remove-Item -Recurse -Force -Path $github_workspace/*
+           Remove-Item -Recurse -Force -Path $github_workspace/.??*
+           echo "--- Get-ChildItem -Force (after Remove-Item) ---"
+           Get-ChildItem -Force
