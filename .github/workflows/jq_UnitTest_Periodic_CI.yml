@@ -46,8 +46,11 @@ jobs:
                }
              $targetcompo += ")"
              $targetcompo = $targetcompo -replace ',\)' , ')'
+             
+             echo "targetcompo_before=$targetcompo"
 
-             echo "targetcompo=$targetcompo"
+             $targetcompo = @(Lcd, Bsm)
+             echo "targetcompo_after=$targetcompo"
 
              python3 -m pip install pyyaml
              pip install ruamel.yaml
