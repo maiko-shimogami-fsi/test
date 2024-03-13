@@ -1,0 +1,70 @@
+name: jq UnitTest CI Periodic CI
+on:
+  workflow_dispatch:
+#jobを定義
+jobs:
+    checkout_and_clean_repo:
+      runs-on: [unit_test] #Windows動作を前提とした記述とする
+      steps:
+      #作業用リポジトリのクリーン
+        - name: Clean self-hosted runner
+          run: |
+           echo "--- Get-Location ---"
+           Get-Location
+           echo "--- Get-PSDrive -Name C ---"
+           Get-PSDrive -Name C
+           echo "--- github.workspace=${{ github.workspace }} ---"
+           $github_workspace="${{ github.workspace }}"
+           echo "--- Get-ChildItem -Force | Format-Table (before Remove-Item) ---"
+           Get-ChildItem -Force | Format-Table
+           echo "--- Remove-Item -Recurse -Force -Path $github_workspace/* ---"
+           Remove-Item -Recurse -Force -Path $github_workspace/*
+           Remove-Item -Recurse -Force -Path $github_workspace/.??*
+           echo "--- Get-ChildItem -Force (after Remove-Item) ---"
+           Get-ChildItem -Force
+
+      #コンポの値設定
+        - name: step2
+          id: step2
+          run: |
+             $targetcompo += "@("
+             foreach ($l in Get-Content ./unittest_setting.json) {
+              if ($l -like "*node_name*") {
+                $node_name = $l.Substring(22, ($l.Length-24))
+               } elseif ($l -like "*scheduled*") {
+                if ($l -like "*true*") {
+                  $targetcompo += "`""
+                  $targetcompo += $node_name
+                  $targetcompo += "`""
+                  $targetcompo += ","
+                  }
+                }
+               }
+             $targetcompo += ")"
+             $targetcompo = $targetcompo -replace '\,)',')'
+
+             echo "targetcompo=$targetcompo"
+
+             python3 -m pip install pyyaml
+             pip install ruamel.yaml
+             
+             python3 test.py $targetcompo
+             
+             #arr=(Lcd Bsm)
+             #python3 create_jobs.py "${arr[@]}"
+
+             #BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+             
+             #git config user.name github-actions
+             #git config user.email github-actions@github.com
+             #git add .
+             #git commit -m "Update"
+             #git push
+             
+             #ymlファイル生成
+             #python3 create_jobs.py $targetcompo
+             
+    check-bats-version2:
+      needs: [ checkout_and_clean_repo ]
+      uses: ./.github/workflows/jq_UnitTest_CI_Exec_job.yml
+      name: call_jq_UnitTest_CI_Exec_job
