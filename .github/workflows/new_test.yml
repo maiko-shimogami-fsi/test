@@ -1,15 +1,45 @@
-name: form-example-new
+name: jq_UnitTest_CI_Exec_job
 on:
- workflow_dispatch:
- workflow_call:
- 
+  workflow_dispatch:
 #jobを定義
 jobs:
+    checkout_and_clean_repo:
+      runs-on: windows-latest
+      steps:
+      #作業用リポジトリのクリーン
+        - name: Clean self-hosted runner
+          run: |
+           echo "--- Get-Location ---"
+           Get-Location
+           echo "--- Get-PSDrive -Name C ---"
+           Get-PSDrive -Name C
+           echo "--- github.workspace=${{ github.workspace }} ---"
+           $github_workspace="${{ github.workspace }}"
+           echo "--- Get-ChildItem -Force | Format-Table (before Remove-Item) ---"
+           Get-ChildItem -Force | Format-Table
+           echo "--- Remove-Item -Recurse -Force -Path $github_workspace/* ---"
+           Remove-Item -Recurse -Force -Path $github_workspace/*
+           Remove-Item -Recurse -Force -Path $github_workspace/.??*
+           echo "--- Get-ChildItem -Force (after Remove-Item) ---"
+           Get-ChildItem -Force
 
-#jobを定義  
-  job_node:
-    uses: ./.github/workflows/test_CI_run.yml
-    name:
-    with:
-      input_mod: master
-      input_compo: input_compo
+      #作業用リポジトリへチェックアウト
+        - name: checkout work-repo
+          uses: actions/checkout@v3
+
+    job_node1:
+      needs: [ checkout_and_clean_repo ]
+      uses: ./.github/workflows/jq_UnitTest_CI.yml
+      name: yml_compo1
+      with:
+        input_mod: "master"
+        input_compo: "Lcd"
+
+    job_node2:
+      needs: [ checkout_and_clean_repo ]
+      uses: ./.github/workflows/jq_UnitTest_CI.yml
+      name: yml_compo2
+      with:
+        input_mod: "master"
+        input_compo: "Bsm"
+        
