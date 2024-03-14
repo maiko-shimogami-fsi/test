@@ -1,6 +1,11 @@
 name: jq UnitTest CI Exec job
 on:
   workflow_dispatch:
+    inputs:
+      no_approval_required_for_workflow_dispatch:
+        description: 'JQ member/On-site staff'
+        required: true
+        type: boolean
   workflow_call:
 #jobを定義
 jobs:
