@@ -33,21 +33,18 @@ jobs:
         - name: checkout work-repo
           uses: actions/checkout@v3
 
-    job_node1:
-      needs: [ checkout_and_clean_repo ]
+    exec_UnitTest_CI_Lcd:
+      needs: [checkout_and_clean_repo]
       uses: ./.github/workflows/jq_UnitTest_CI.yml
-      name: yml_compo1
+      name: exec_UnitTest_CI_Lcd
       with:
-        no_approval_required_for_workflow_dispatch: true
         input_mod: "master"
         input_compo: "Lcd"
 
-    job_node2:
-      needs: [ checkout_and_clean_repo ]
+    exec_UnitTest_CI_Bsm:
+      needs: [checkout_and_clean_repo]
       uses: ./.github/workflows/jq_UnitTest_CI.yml
-      name: yml_compo2
+      name: exec_UnitTest_CI_Bsm
       with:
-        no_approval_required_for_workflow_dispatch: true
         input_mod: "master"
         input_compo: "Bsm"
-        
