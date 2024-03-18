@@ -55,7 +55,7 @@ jobs:
         - name: step1
           id: step1
           run: |
-            echo "スケジュール：${{{ inputs.input_scheduled" }}"
+            echo "スケジュール：${{ inputs.input_scheduled" }}"
             if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
               echo "Lcdのためエラー"
               exit 1
