@@ -25,7 +25,7 @@ on:
       input_compo:
         type: string
       input_scheduled:
-        type: boolean
+        type: string
         
 jobs:
     call_check-bats-version1:
