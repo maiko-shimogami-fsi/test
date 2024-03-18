@@ -24,6 +24,8 @@ on:
         type: string
       input_compo:
         type: string
+      input_scheduled:
+        type: boolean
         
 jobs:
     call_check-bats-version1:
@@ -53,6 +55,7 @@ jobs:
         - name: step1
           id: step1
           run: |
+            echo "スケジュール：${{{ inputs.input_scheduled" }}"
             if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
               echo "Lcdのためエラー"
               exit 1
