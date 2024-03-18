@@ -54,7 +54,7 @@ jobs:
       #チェック確認
         - name: step1
           id: step1
-          if: ${{ inputs.input_scheduled }} == true
+          if: ${{ inputs.input_scheduled }} == 'true'
           run: |
             echo "スケジュール：${{ inputs.input_scheduled }}"
             if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
