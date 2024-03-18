@@ -40,6 +40,7 @@ jobs:
       with:
         input_mod: "master"
         input_compo: "Lcd"
+        input_scheduled: "true"
 
     exec_UnitTest_CI_Bsm:
       needs: [checkout_and_clean_repo]
@@ -48,3 +49,4 @@ jobs:
       with:
         input_mod: "master"
         input_compo: "Bsm"
+        input_scheduled: "true"
