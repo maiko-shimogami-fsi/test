@@ -1,6 +1,8 @@
 name: form-example 
 on:
- workflow_dispatch:
+  schedule:
+    - cron: '0 21 * * 5'
+  workflow_dispatch:
     inputs:
       no_approval_required_for_workflow_dispatch:
         description: 'JQ member/On-site staff'
@@ -16,7 +18,7 @@ on:
         description: 'Only check the terms and conditions'
         required: false
         type: boolean
- workflow_call:
+  workflow_call:
     inputs:
       no_approval_required_for_workflow_dispatch:
         type: boolean
@@ -35,6 +37,7 @@ jobs:
           uses: actions/checkout@v4
         - run: |
              echo "checkout"
+             date
              
       #コンポの値設定
         - name: compo_check
