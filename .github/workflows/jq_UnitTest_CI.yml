@@ -33,11 +33,12 @@ jobs:
       #runs-on: ubuntu-latest
       runs-on: windows-latest
       outputs:
-       terms_check_fg : ${{ steps.call_check-bats-version1.outputs.terms_check_fg }}
+       terms_check_fg : ${{ steps.step1.outputs.terms_check_fg }}
       
       steps:
       #環境を設定する
         - name: step1
+          id: step1
           uses: actions/checkout@v4
         - run: |
              echo "checkout"
@@ -66,6 +67,7 @@ jobs:
             #fi
             #echo "Bsmのためエラーなし"
             terms_check_fg=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
+            terms_check_fg=${{ needs.Create_Branch.outputs.targetsha1 }}
             echo "terms_check_fg=$terms_check_fg"
  
     call_check-bats-version3:
