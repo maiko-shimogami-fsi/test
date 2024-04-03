@@ -1,7 +1,7 @@
 name: form-example 
 on:
   schedule:
-    - cron: '1 * * * *'
+    - cron: '10 * * * *'
   workflow_dispatch:
     inputs:
       no_approval_required_for_workflow_dispatch:
