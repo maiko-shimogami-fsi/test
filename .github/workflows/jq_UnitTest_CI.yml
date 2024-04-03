@@ -67,9 +67,8 @@ jobs:
            #  exit 1
            #fi
            #echo "Bsmのためエラーなし"
-            $terms_check_fg_a = ${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
-            #terms_check_fg_a=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
-            echo "terms_check_fg_a=$terms_check_fg_a"
+           $terms_check_fg_a = ${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
+           echo "terms_check_fg_a=$terms_check_fg_a"
  
     call_check-bats-version3:
       runs-on: windows-latest
