@@ -34,7 +34,6 @@ jobs:
       runs-on: windows-latest
       outputs:
        terms_check_fg : ${{ steps.step1.outputs.terms_check_fg }}
-       datetime:     ${{ steps.step1.outputs.datetime}}
       
       steps:
       #環境を設定する
@@ -59,16 +58,17 @@ jobs:
       needs: [ call_check-bats-version1 ]
       steps:
       #チェック確認
-        - name: step1
-          id: step1
+        - name: step2
+          id: step2
           run: |
+           $terms_check_fg_a=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
+           echo "terms_check_fg_a=$terms_check_fg_a"
+
            # if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
            #  echo "Lcdのためエラー"
            #  exit 1
            #fi
            #echo "Bsmのためエラーなし"
-           $terms_check_fg_a = ${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
-           echo "terms_check_fg_a=$terms_check_fg_a"
  
     call_check-bats-version3:
       runs-on: windows-latest
@@ -76,7 +76,7 @@ jobs:
       if: ${{ needs.call_check-bats-version1.outputs.terms_check_fg == 'false' }}
       steps:
         #環境を設定する
-        - name: step1
+        - name: step3
           run: |
              echo "check"
              
