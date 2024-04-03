@@ -34,6 +34,7 @@ jobs:
       runs-on: windows-latest
       outputs:
        terms_check_fg : ${{ steps.step1.outputs.terms_check_fg }}
+       datetime:     ${{ steps.step1.outputs.datetime}}
       
       steps:
       #環境を設定する
@@ -54,7 +55,7 @@ jobs:
         #     echo "targetcompo=$targetcompo"
              
     call_check-bats-version2:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       needs: [ call_check-bats-version1 ]
       steps:
       #チェック確認
@@ -66,7 +67,8 @@ jobs:
            #  exit 1
            #fi
            #echo "Bsmのためエラーなし"
-            terms_check_fg_a=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
+            $terms_check_fg_a = ${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
+            #terms_check_fg_a=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
             echo "terms_check_fg_a=$terms_check_fg_a"
  
     call_check-bats-version3:
