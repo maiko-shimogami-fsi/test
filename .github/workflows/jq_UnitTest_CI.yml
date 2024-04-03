@@ -67,7 +67,6 @@ jobs:
             #fi
             #echo "Bsmのためエラーなし"
             terms_check_fg=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
-            terms_check_fg=${{ needs.Create_Branch.outputs.targetsha1 }}
             echo "terms_check_fg=$terms_check_fg"
  
     call_check-bats-version3:
