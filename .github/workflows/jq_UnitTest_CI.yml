@@ -18,7 +18,7 @@ on:
         description: 'Only check the terms and conditions'
         required: false
         type: boolean
-        default: true
+        default: false
         
   workflow_call:
     inputs:
