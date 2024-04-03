@@ -30,7 +30,8 @@ on:
         
 jobs:
     call_check-bats-version1:
-      runs-on: ubuntu-latest
+      #runs-on: ubuntu-latest
+      runs-on: windows-latest
       
       steps:
       #環境を設定する
@@ -41,12 +42,12 @@ jobs:
              $terms_check="false"
              
       #コンポの値設定
-        - name: compo_check
-          run: |
-             targetmod=${{ inputs.input_mod }}
-             echo "targetmod=$targetmod"
-             targetcompo=${{ inputs.input_compo }}
-             echo "targetcompo=$targetcompo"
+        #- name: compo_check
+        #  run: |
+        #     targetmod=${{ inputs.input_mod }}
+        #     echo "targetmod=$targetmod"
+        #     targetcompo=${{ inputs.input_compo }}
+        #     echo "targetcompo=$targetcompo"
              
     call_check-bats-version2:
       runs-on: ubuntu-latest
