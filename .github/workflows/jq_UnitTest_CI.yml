@@ -41,8 +41,8 @@ jobs:
           id: step1
           uses: actions/checkout@v4
         - run: |
-             echo "checkout"
              $terms_check_fg="false"
+             echo "terms_check_fg=$terms_check_fg"
              echo "terms_check_fg=$terms_check_fg" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
       #コンポの値設定
@@ -62,12 +62,12 @@ jobs:
           id: step1
           run: |
            # if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
-            #  echo "Lcdのためエラー"
-            #  exit 1
-            #fi
-            #echo "Bsmのためエラーなし"
-            terms_check_fg=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
-            echo "terms_check_fg=$terms_check_fg"
+           #  echo "Lcdのためエラー"
+           #  exit 1
+           #fi
+           #echo "Bsmのためエラーなし"
+            terms_check_fg_a=${{ needs.call_check-bats-version1.outputs.terms_check_fg }}
+            echo "terms_check_fg_a=$terms_check_fg_a"
  
     call_check-bats-version3:
       runs-on: windows-latest
