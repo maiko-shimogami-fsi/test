@@ -38,7 +38,7 @@ jobs:
           uses: actions/checkout@v4
         - run: |
              echo "checkout"
-             $terms_check='false'
+             $terms_check="false"
              
       #コンポの値設定
         - name: compo_check
