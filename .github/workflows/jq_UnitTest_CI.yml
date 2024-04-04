@@ -43,10 +43,12 @@ jobs:
              echo "terms_check=$terms_check" | Out-File -Append -FilePath $env:GITHUB_ENV
              
       #コンポの値設定
-        #- name: compo_check
-        #  run: |
-        #     targetmod=${{ inputs.input_mod }}
-        #     echo "targetmod=$targetmod"
+        - name: compo_check
+          run: |
+             $input_mod='${{ inputs.input_mod }}'
+             $terms_check={{ inputs.terms_check }}
+             echo "targetmod=$targetmod"
+             echo "terms_check=$terms_check"
         #     targetcompo=${{ inputs.input_compo }}
         #     echo "targetcompo=$targetcompo"
              
