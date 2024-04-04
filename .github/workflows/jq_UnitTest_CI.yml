@@ -41,12 +41,6 @@ jobs:
         - run: |
              $terms_check="false"
              echo "terms_check=$terms_check" | Out-File -Append -FilePath $env:GITHUB_ENV
-
-      #コンポの値設定
-        - name: step2
-          run: |
-             $terms_check_fg=${{ inputs.terms_check }}
-             echo "terms_check_fg=$terms_check_fg"
              
       #コンポの値設定
         #- name: compo_check
