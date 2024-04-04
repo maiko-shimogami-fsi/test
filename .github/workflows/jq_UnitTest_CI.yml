@@ -58,8 +58,8 @@ jobs:
         - name: step2
           id: step2
           run: |
-           terms_check_fg2 = ${{ inputs.terms_check }}
-           echo "terms_check_fg2=$terms_check_fg2"
+           terms_check_fg2=${{ inputs.terms_check }}
+           #echo "terms_check_fg2=$terms_check_fg2"
            # if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
            #  echo "Lcdのためエラー"
            #  exit 1
