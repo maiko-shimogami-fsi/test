@@ -70,7 +70,7 @@ jobs:
              
     exec_UnitTest_CI_Lcd:
       needs: [checkout_and_clean_repo]
-      if: ${{ steps.checkout_and_clean_repo.outputs.UnitTestLcd == 'true' }}
+      if: ${{ needs.checkout_and_clean_repo.outputs.UnitTestLcd == 'true' }}
       uses: ./.github/workflows/jq_UnitTest_CI.yml
       name: exec_UnitTest_CI_Lcd
       with:
