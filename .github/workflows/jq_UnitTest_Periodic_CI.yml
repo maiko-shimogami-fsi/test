@@ -5,6 +5,11 @@ on:
 jobs:
     checkout_and_clean_repo:
       runs-on: windows-latest
+      outputs:
+        UnitTestLcd: ${{ steps.step3.outputs.UnitTestLcd }}
+        UnitTestBsm:   ${{ steps.step3.outputs.UnitTestBsm }}
+        UnitTestDestJdg:  ${{ steps.step3.outputs.UnitTestDestJdg }}
+        
       steps:
       #作業用リポジトリのクリーン
         - name: Clean self-hosted runner
@@ -42,24 +47,48 @@ jobs:
                 }
                }
              echo "targetcompo=$targetcompo"
-
-             python3 -m pip install pyyaml
-             pip install ruamel.yaml
-            
-             #python3 test.py $targetcompo
-             cd .github/scripts
-             #ymlファイル生成
-             python3 create_jobs.py $targetcompo
-
-             BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
              
-             git config user.name github-actions
-             git config user.email github-actions@github.com
-             git add .
-             git commit -m "Update"
-             git push
+      #コンポの値設定3
+        - name: step3
+          id: step3
+          run: |
+             foreach ($l in Get-Content ./unittest_setting.json) {
+              if ($l -like "*node_name*") {
+                $node_name = $l.Substring(22, ($l.Length-24))
+               } elseif ($l -like "*scheduled*") {
+                if ($node_name -eq "Lcd") {
+                  if ($l -like "*true*") {
+                    $UnitTestLcd = 'true'
+                    } else {
+                    $UnitTestLcd = 'false'
+                    }
+                }
+               }
+              }
+             echo "UnitTestLcd=$UnitTestLcd"      
+             echo "UnitTestLcd=$UnitTestLcd" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
-    #check-bats-version2:
-    #  needs: [ checkout_and_clean_repo ]
-    #  uses: ./.github/workflows/jq_UnitTest_CI_Exec_job.yml
-    #  name: call_jq_UnitTest_CI_Exec_job
+    exec_UnitTest_CI_Lcd:
+      needs: [checkout_and_clean_repo]
+      if: ${{ steps.checkout_and_clean_repo.outputs.UnitTestLcd == 'true' }}
+      uses: ./.github/workflows/jq_UnitTest_CI.yml
+      name: exec_UnitTest_CI_Lcd
+      with:
+        input_mod: "master"
+        input_compo: "Lcd"
+
+    exec_UnitTest_CI_Bsm:
+      needs: [checkout_and_clean_repo]
+      uses: ./.github/workflows/jq_UnitTest_CI.yml
+      name: exec_UnitTest_CI_Bsm
+      with:
+        input_mod: "master"
+        input_compo: "Bsm"
+
+    exec_UnitTest_CI_DestJdg:
+      needs: [checkout_and_clean_repo]
+      uses: ./.github/workflows/jq_UnitTest_CI.yml
+      name: exec_UnitTest_CI_DestJdg
+      with:
+        input_mod: "master"
+        input_compo: "DestJdg"
