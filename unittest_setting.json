@@ -23,7 +23,7 @@
         "csv_bratch": "TBD",
         "csv_pah": "TBD",
         "stub_path": "TBD",
-        "scheduled": "true"
+        "scheduled": "false"
     },
     "ObjectFusion": {
         "node_name": "ofsn",
@@ -62,7 +62,7 @@
         "csv_bratch": "TBD",
         "csv_pah": "TBD",
         "stub_path": "TBD",
-        "scheduled": "true"
+        "scheduled": "false"
     },
     "DestinationJudge": {
         "node_name": "DestJdg",
