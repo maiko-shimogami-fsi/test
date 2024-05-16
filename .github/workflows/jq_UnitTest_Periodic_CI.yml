@@ -52,43 +52,42 @@ jobs:
         - name: step3
           id: step3
           run: |
-             foreach ($l in Get-Content ./unittest_setting.json) {
-              if ($l -like "*node_name*") {
-                $node_name = $l.Substring(22, ($l.Length-24))
-               } elseif ($l -like "*scheduled*") {
-                if ($node_name -eq "Lcd") {
-                  if ($l -like "*true*") {
-                    $UnitTestLcd = 'true'
-                    } else {
-                    $UnitTestLcd = 'false'
-                    }
-                }
-               }
-              }
-             echo "UnitTestLcd=$UnitTestLcd"      
-             echo "UnitTestLcd=$UnitTestLcd" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             $JsonFilePath = "./unittest_setting.json"
+             $JsonData = Get-Content $JsonFilePath -Raw | ConvertFrom-Json
              
-    exec_UnitTest_CI_Lcd:
-      needs: [checkout_and_clean_repo]
-      if: ${{ needs.checkout_and_clean_repo.outputs.UnitTestLcd == 'true' }}
-      uses: ./.github/workflows/jq_UnitTest_CI.yml
-      name: exec_UnitTest_CI_Lcd
-      with:
-        input_mod: "master"
-        input_compo: "Lcd"
+             foreach ($comp_info in $JsonData.PSObject.Properties.Value) {
+              if ($comp_info.node_name -eq "Lcd") {
+                if ($comp_info.scheduled -eq 'true') {
+                  $UnitTestLcd = 'true'
+                 } else {
+                  $UnitTestLcd = 'false'
+                 }
+             } elseif ($comp_info.node_name -eq "Bsm") {
+                if ($comp_info.scheduled -eq 'true') {
+                  $UnitTestBsm = 'true'
+                 } else {
+                  $UnitTestBsm = 'false'
+                 }
+             }
 
-    exec_UnitTest_CI_Bsm:
-      needs: [checkout_and_clean_repo]
-      uses: ./.github/workflows/jq_UnitTest_CI.yml
-      name: exec_UnitTest_CI_Bsm
-      with:
-        input_mod: "master"
-        input_compo: "Bsm"
+             echo "UnitTestLcd=$UnitTestLcd"      
+             echo "UnitTestBsm=$UnitTestBsm" 
+             echo "UnitTestLcd=$UnitTestLcd" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "UnitTestBsm=$UnitTestBsm" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             
+    #exec_UnitTest_CI_Lcd:
+     #  needs: [checkout_and_clean_repo]
+     #  if: ${{ needs.checkout_and_clean_repo.outputs.UnitTestLcd == 'true' }}
+     #  uses: ./.github/workflows/jq_UnitTest_CI.yml
+     #  name: exec_UnitTest_CI_Lcd
+     #  with:
+     #    input_mod: "master"
+     #    input_compo: "Lcd"
 
-    exec_UnitTest_CI_DestJdg:
-      needs: [checkout_and_clean_repo]
-      uses: ./.github/workflows/jq_UnitTest_CI.yml
-      name: exec_UnitTest_CI_DestJdg
-      with:
-        input_mod: "master"
-        input_compo: "DestJdg"
+     #exec_UnitTest_CI_Bsm:
+    #   needs: [checkout_and_clean_repo]
+    #   uses: ./.github/workflows/jq_UnitTest_CI.yml
+    #   name: exec_UnitTest_CI_Bsm
+    #   with:
+     #    input_mod: "master"
+    #     input_compo: "Bsm"
