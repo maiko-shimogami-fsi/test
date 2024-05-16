@@ -31,22 +31,6 @@ jobs:
       #作業用リポジトリへチェックアウト
         - name: checkout work-repo
           uses: actions/checkout@v4
-
-      #コンポの値設定
-        - name: step2
-          id: step2
-          run: |
-             [string[]]$targetcompo = @()
-             foreach ($l in Get-Content ./unittest_setting.json) {
-              if ($l -like "*node_name*") {
-                $node_name = $l.Substring(22, ($l.Length-24))
-               } elseif ($l -like "*scheduled*") {
-                if ($l -like "*true*") {
-                  $targetcompo += $node_name
-                  }
-                }
-               }
-             echo "targetcompo=$targetcompo"
              
       #コンポの値設定3
         - name: step3
@@ -62,12 +46,13 @@ jobs:
                  } else {
                   $UnitTestLcd = 'false'
                  }
-             } elseif ($comp_info.node_name -eq "Bsm") {
+              } elseif ($comp_info.node_name -eq "Bsm") {
                 if ($comp_info.scheduled -eq 'true') {
                   $UnitTestBsm = 'true'
                  } else {
                   $UnitTestBsm = 'false'
                  }
+              }
              }
 
              echo "UnitTestLcd=$UnitTestLcd"      
