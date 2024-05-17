@@ -36,7 +36,7 @@
         "csv_bratch": "TBD",
         "csv_pah": "TBD",
         "stub_path": "TBD",
-        "scheduled": "false"
+        "scheduled": "true"
     },
     "MultiRadarObjectFusion": {
         "node_name": "Mrf",
@@ -62,7 +62,7 @@
         "csv_bratch": "TBD",
         "csv_pah": "TBD",
         "stub_path": "TBD",
-        "scheduled": "false"
+        "scheduled": "true"
     },
     "DestinationJudge": {
         "node_name": "DestJdg",
