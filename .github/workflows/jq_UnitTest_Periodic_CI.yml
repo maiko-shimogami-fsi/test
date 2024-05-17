@@ -6,9 +6,11 @@ jobs:
     checkout_and_clean_repo:
       runs-on: windows-latest
       outputs:
-        UnitTestLcd: ${{ steps.step3.outputs.UnitTestLcd }}
-        UnitTestBsm:   ${{ steps.step3.outputs.UnitTestBsm }}
-        UnitTestDestJdg:  ${{ steps.step3.outputs.UnitTestDestJdg }}
+        ExecLcd: ${{ steps.step3.outputs.ExecLcd }}
+        ExecBsm: ${{ steps.step3.outputs.ExecBsm }}
+        ExecDestJdg: ${{ steps.step3.outputs.ExecDestJdg }}
+        ExecTlmf: ${{ steps.step3.outputs.ExecTlmf }}
+        Execofsn: ${{ steps.step3.outputs.Execofsn }}
         
       steps:
       #作業用リポジトリのクリーン
@@ -38,31 +40,46 @@ jobs:
           run: |
              $JsonFilePath = "./unittest_setting.json"
              $JsonData = Get-Content $JsonFilePath -Raw | ConvertFrom-Json
+
+             $ExecLcd = 'false
+             $ExecBsm = 'false'
+             $ExecDestJdg = 'false'
+             $ExecTlmf = 'false'
+             $Execofsn = 'false'
              
              foreach ($comp_info in $JsonData.PSObject.Properties.Value) {
               if ($comp_info.node_name -eq "Lcd") {
                 if ($comp_info.scheduled -eq 'true') {
-                  $UnitTestLcd = 'true'
-                 } else {
-                  $UnitTestLcd = 'false'
+                  $ExecLcd = 'true'
                  }
               } elseif ($comp_info.node_name -eq "Bsm") {
                 if ($comp_info.scheduled -eq 'true') {
-                  $UnitTestBsm = 'true'
-                 } else {
-                  $UnitTestBsm = 'false'
+                  $ExecBsm = 'true'
                  }
+              } elseif ($comp_info.node_name -eq "DestJdg") {
+               if ($comp_info.scheduled -eq 'true') {
+                   $ExecDestJdg = 'true'
+                  }
+              } elseif ($comp_info.node_name -eq "Tlmf") {
+               if ($comp_info.scheduled -eq 'true') {
+                   $ExecTlmf = 'true'
+                  }
+              } elseif ($comp_info.node_name -eq "ofsn") {
+               if ($comp_info.scheduled -eq 'true') {
+                   $Execofsn = 'true'
+                  }
               }
              }
 
-             echo "UnitTestLcd=$UnitTestLcd"      
-             echo "UnitTestBsm=$UnitTestBsm" 
-             echo "UnitTestLcd=$UnitTestLcd" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
-             echo "UnitTestBsm=$UnitTestBsm" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "ExecLcd=$ExecLcd" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "ExecBsm=$ExecBsm" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "ExecDestJdg=$ExecDestJdg" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "ExecTlmf=$ExecTlmf" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
+             echo "Execofsn=$Execofsn" | Out-File -Append -FilePath $env:GITHUB_OUTPUT
              
     exec_UnitTest_CI_Lcd:
        needs: [checkout_and_clean_repo]
-       if: ${{ needs.checkout_and_clean_repo.outputs.UnitTestLcd == 'true' }}
+       if: ${{ needs.checkout_and_clean_repo.outputs.ExecLcd == 'true' }}
        uses: ./.github/workflows/jq_UnitTest_CI.yml
        name: exec_UnitTest_CI_Lcd
        with:
@@ -71,7 +88,7 @@ jobs:
 
     exec_UnitTest_CI_Bsm:
        needs: [checkout_and_clean_repo]
-       if: ${{ needs.checkout_and_clean_repo.outputs.UnitTestBsm == 'true' }}
+       if: ${{ needs.checkout_and_clean_repo.outputs.ExecBsm == 'true' }}
        uses: ./.github/workflows/jq_UnitTest_CI.yml
        name: exec_UnitTest_CI_Bsm
        with:
