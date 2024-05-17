@@ -68,7 +68,6 @@ jobs:
     call_check-bats-version3:
       runs-on: windows-latest
       needs: [ call_check-bats-version1,call_check-bats-version2 ]
-      if: ${{ github.event.inputs.terms_check == 'false' }}
       steps:
         #環境を設定する
         - name: step3
