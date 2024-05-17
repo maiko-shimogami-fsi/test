@@ -41,7 +41,7 @@ jobs:
              $JsonFilePath = "./unittest_setting.json"
              $JsonData = Get-Content $JsonFilePath -Raw | ConvertFrom-Json
 
-             $ExecLcd = 'false
+             $ExecLcd = 'false'
              $ExecBsm = 'false'
              $ExecDestJdg = 'false'
              $ExecTlmf = 'false'
@@ -94,3 +94,12 @@ jobs:
        with:
          input_mod: "master"
          input_compo: "Bsm"
+
+    exec_UnitTest_CI_DestJdg:
+       needs: [checkout_and_clean_repo]
+       if: ${{ needs.checkout_and_clean_repo.outputs.ExecDestJdg == 'true' }}
+       uses: ./.github/workflows/jq_UnitTest_CI.yml
+       name: exec_UnitTest_CI_DestJdg
+       with:
+         input_mod: "master"
+         input_compo: "DestJdg"
