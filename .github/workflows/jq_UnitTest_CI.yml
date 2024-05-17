@@ -21,8 +21,6 @@ on:
         
   workflow_call:
     inputs:
-      no_approval_required_for_workflow_dispatch:
-        type: boolean
       input_mod:
         type: string
       input_compo:
@@ -60,13 +58,12 @@ jobs:
         - name: step2
           id: step2
           run: |
-           terms_check_fg2=${{ inputs.terms_check }}
-           #echo "terms_check_fg2=$terms_check_fg2"
-           # if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
-           #  echo "Lcdのためエラー"
-           #  exit 1
-           #fi
-           #echo "Bsmのためエラーなし"
+           echo "input_compo=${{ inputs.input_compo }}"
+            if [ ${{ inputs.input_compo }} = 'Lcd' ]; then
+             echo "Lcdのためエラー"
+             exit 1
+           fi
+           echo "Lcd以外のためエラーなし"
  
     call_check-bats-version3:
       runs-on: windows-latest
